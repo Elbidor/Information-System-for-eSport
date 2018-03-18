@@ -2263,7 +2263,7 @@ namespace Information_System_for_eSport {
             
             private global::System.Data.DataColumn columnRoleID;
             
-            private global::System.Data.DataColumn columnEmal;
+            private global::System.Data.DataColumn columnEmail;
             
             private global::System.Data.DataColumn columnPassword;
             
@@ -2382,9 +2382,9 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn EmalColumn {
+            public global::System.Data.DataColumn EmailColumn {
                 get {
-                    return this.columnEmal;
+                    return this.columnEmail;
                 }
             }
             
@@ -2433,7 +2433,7 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, CountriesRow parentCountriesRowByFK_Players_Countries, byte Age, double Rating, int PlayedMaps, int PlayedRounds, RolesRow parentRolesRowByFK_Players_Roles, string Emal, string Password) {
+            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, CountriesRow parentCountriesRowByFK_Players_Countries, byte Age, double Rating, int PlayedMaps, int PlayedRounds, RolesRow parentRolesRowByFK_Players_Roles, string Email, string Password) {
                 PlayersRow rowPlayersRow = ((PlayersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PlayerID,
@@ -2446,7 +2446,7 @@ namespace Information_System_for_eSport {
                         PlayedMaps,
                         PlayedRounds,
                         null,
-                        Emal,
+                        Email,
                         Password};
                 if ((parentCountriesRowByFK_Players_Countries != null)) {
                     columnValuesArray[4] = parentCountriesRowByFK_Players_Countries[0];
@@ -2493,7 +2493,7 @@ namespace Information_System_for_eSport {
                 this.columnPlayedMaps = base.Columns["PlayedMaps"];
                 this.columnPlayedRounds = base.Columns["PlayedRounds"];
                 this.columnRoleID = base.Columns["RoleID"];
-                this.columnEmal = base.Columns["Emal"];
+                this.columnEmail = base.Columns["Email"];
                 this.columnPassword = base.Columns["Password"];
             }
             
@@ -2520,8 +2520,8 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnPlayedRounds);
                 this.columnRoleID = new global::System.Data.DataColumn("RoleID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRoleID);
-                this.columnEmal = new global::System.Data.DataColumn("Emal", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEmal);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
                 this.columnPassword = new global::System.Data.DataColumn("Password", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassword);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -2540,8 +2540,8 @@ namespace Information_System_for_eSport {
                 this.columnPlayedMaps.AllowDBNull = false;
                 this.columnPlayedRounds.AllowDBNull = false;
                 this.columnRoleID.AllowDBNull = false;
-                this.columnEmal.AllowDBNull = false;
-                this.columnEmal.MaxLength = 50;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 50;
                 this.columnPassword.AllowDBNull = false;
                 this.columnPassword.MaxLength = 50;
             }
@@ -5166,12 +5166,12 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Emal {
+            public string Email {
                 get {
-                    return ((string)(this[this.tablePlayers.EmalColumn]));
+                    return ((string)(this[this.tablePlayers.EmailColumn]));
                 }
                 set {
-                    this[this.tablePlayers.EmalColumn] = value;
+                    this[this.tablePlayers.EmailColumn] = value;
                 }
             }
             
@@ -6372,8 +6372,8 @@ namespace Information_System_for_eSport.CybersportDBDataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Cities] ([CityID], [CountryID], [Name]) VALUES (@CityID, @Coun" +
-                "tryID, @Name);\r\nSELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @City" +
-                "ID)";
+                "tryID, @Name);\nSELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityI" +
+                "D)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6704,15 +6704,15 @@ SELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityID)";
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Countries] ([CountryID], [Country]) VALUES (@CountryID, @Count" +
-                "ry);\r\nSELECT CountryID, Country FROM Countries WHERE (CountryID = @CountryID)";
+                "ry);\nSELECT CountryID, Country FROM Countries WHERE (CountryID = @CountryID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Countries] SET [CountryID] = @CountryID, [Country] = @Country WHERE" +
-                " (([CountryID] = @Original_CountryID) AND ([Country] = @Original_Country));\r\nSEL" +
-                "ECT CountryID, Country FROM Countries WHERE (CountryID = @CountryID)";
+                " (([CountryID] = @Original_CountryID) AND ([Country] = @Original_Country));\nSELE" +
+                "CT CountryID, Country FROM Countries WHERE (CountryID = @CountryID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Country", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Country", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7023,16 +7023,16 @@ SELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Maps] ([MapID], [Name]) VALUES (@MapID, @Name);\r\nSELECT MapID," +
-                " Name FROM Maps WHERE (MapID = @MapID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Maps] ([MapID], [Name]) VALUES (@MapID, @Name);\nSELECT MapID, " +
+                "Name FROM Maps WHERE (MapID = @MapID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MapID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MapID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Maps] SET [MapID] = @MapID, [Name] = @Name WHERE (([MapID] = @Origi" +
-                "nal_MapID) AND ([Name] = @Original_Name));\r\nSELECT MapID, Name FROM Maps WHERE (" +
-                "MapID = @MapID)";
+                "nal_MapID) AND ([Name] = @Original_Name));\nSELECT MapID, Name FROM Maps WHERE (M" +
+                "apID = @MapID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MapID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MapID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7678,9 +7678,9 @@ SELECT MathID, TournamentID, FirstTeamID, SecondTeamID, Date FROM MatchesInTourn
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Participants] ([TournamentID], [TeamID], [Place], [Money]) VAL" +
-                "UES (@TournamentID, @TeamID, @Place, @Money);\r\nSELECT TournamentID, TeamID, Plac" +
-                "e, Money FROM Participants WHERE (TeamID = @TeamID) AND (TournamentID = @Tournam" +
-                "entID)";
+                "UES (@TournamentID, @TeamID, @Place, @Money);\nSELECT TournamentID, TeamID, Place" +
+                ", Money FROM Participants WHERE (TeamID = @TeamID) AND (TournamentID = @Tourname" +
+                "ntID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TournamentID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TournamentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8040,12 +8040,12 @@ SELECT TournamentID, TeamID, Place, Money FROM Participants WHERE (TeamID = @Tea
             tableMapping.ColumnMappings.Add("PlayedMaps", "PlayedMaps");
             tableMapping.ColumnMappings.Add("PlayedRounds", "PlayedRounds");
             tableMapping.ColumnMappings.Add("RoleID", "RoleID");
-            tableMapping.ColumnMappings.Add("Emal", "Emal");
+            tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("Password", "Password");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Players] WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Emal] = @Original_Emal) AND ([Password] = @Original_Password))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Players] WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8057,12 +8057,12 @@ SELECT TournamentID, TeamID, Place, Money FROM Participants WHERE (TeamID = @Tea
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Emal", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Emal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Players] ([PlayerID], [Name], [Nickname], [Surname], [CountryID], [Age], [Rating], [PlayedMaps], [PlayedRounds], [RoleID], [Emal], [Password]) VALUES (@PlayerID, @Name, @Nickname, @Surname, @CountryID, @Age, @Rating, @PlayedMaps, @PlayedRounds, @RoleID, @Emal, @Password);
-SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Emal, Password FROM Players WHERE (PlayerID = @PlayerID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Players] ([PlayerID], [Name], [Nickname], [Surname], [CountryID], [Age], [Rating], [PlayedMaps], [PlayedRounds], [RoleID], [Email], [Password]) VALUES (@PlayerID, @Name, @Nickname, @Surname, @CountryID, @Age, @Rating, @PlayedMaps, @PlayedRounds, @RoleID, @Email, @Password);
+SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password FROM Players WHERE (PlayerID = @PlayerID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8074,12 +8074,12 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Emal", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Emal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Players] SET [PlayerID] = @PlayerID, [Name] = @Name, [Nickname] = @Nickname, [Surname] = @Surname, [CountryID] = @CountryID, [Age] = @Age, [Rating] = @Rating, [PlayedMaps] = @PlayedMaps, [PlayedRounds] = @PlayedRounds, [RoleID] = @RoleID, [Emal] = @Emal, [Password] = @Password WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Emal] = @Original_Emal) AND ([Password] = @Original_Password));
-SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Emal, Password FROM Players WHERE (PlayerID = @PlayerID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Players] SET [PlayerID] = @PlayerID, [Name] = @Name, [Nickname] = @Nickname, [Surname] = @Surname, [CountryID] = @CountryID, [Age] = @Age, [Rating] = @Rating, [PlayedMaps] = @PlayedMaps, [PlayedRounds] = @PlayedRounds, [RoleID] = @RoleID, [Email] = @Email, [Password] = @Password WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password));
+SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password FROM Players WHERE (PlayerID = @PlayerID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8091,7 +8091,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Emal", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Emal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8103,7 +8103,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Emal", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Emal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -8121,7 +8121,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pla" +
-                "yedRounds, RoleID, Emal, Password FROM dbo.Players";
+                "yedRounds, RoleID, Email, Password FROM dbo.Players";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8182,7 +8182,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_PlayerID, string Original_Name, string Original_Nickname, string Original_Surname, int Original_CountryID, byte Original_Age, double Original_Rating, int Original_PlayedMaps, int Original_PlayedRounds, System.Guid Original_RoleID, string Original_Emal, string Original_Password) {
+        public virtual int Delete(System.Guid Original_PlayerID, string Original_Name, string Original_Nickname, string Original_Surname, int Original_CountryID, byte Original_Age, double Original_Rating, int Original_PlayedMaps, int Original_PlayedRounds, System.Guid Original_RoleID, string Original_Email, string Original_Password) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_PlayerID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -8208,11 +8208,11 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_PlayedMaps));
             this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_PlayedRounds));
             this.Adapter.DeleteCommand.Parameters[9].Value = ((System.Guid)(Original_RoleID));
-            if ((Original_Emal == null)) {
-                throw new global::System.ArgumentNullException("Original_Emal");
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Emal));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Email));
             }
             if ((Original_Password == null)) {
                 throw new global::System.ArgumentNullException("Original_Password");
@@ -8240,7 +8240,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, byte Age, double Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Emal, string Password) {
+        public virtual int Insert(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, byte Age, double Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -8266,11 +8266,11 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this.Adapter.InsertCommand.Parameters[7].Value = ((int)(PlayedMaps));
             this.Adapter.InsertCommand.Parameters[8].Value = ((int)(PlayedRounds));
             this.Adapter.InsertCommand.Parameters[9].Value = ((System.Guid)(RoleID));
-            if ((Emal == null)) {
-                throw new global::System.ArgumentNullException("Emal");
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Emal));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Email));
             }
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");
@@ -8309,7 +8309,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
                     int PlayedMaps, 
                     int PlayedRounds, 
                     System.Guid RoleID, 
-                    string Emal, 
+                    string Email, 
                     string Password, 
                     System.Guid Original_PlayerID, 
                     string Original_Name, 
@@ -8321,7 +8321,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
                     int Original_PlayedMaps, 
                     int Original_PlayedRounds, 
                     System.Guid Original_RoleID, 
-                    string Original_Emal, 
+                    string Original_Email, 
                     string Original_Password) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
             if ((Name == null)) {
@@ -8348,11 +8348,11 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(PlayedMaps));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(PlayedRounds));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((System.Guid)(RoleID));
-            if ((Emal == null)) {
-                throw new global::System.ArgumentNullException("Emal");
+            if ((Email == null)) {
+                throw new global::System.ArgumentNullException("Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Emal));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Email));
             }
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");
@@ -8385,11 +8385,11 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_PlayedMaps));
             this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_PlayedRounds));
             this.Adapter.UpdateCommand.Parameters[21].Value = ((System.Guid)(Original_RoleID));
-            if ((Original_Emal == null)) {
-                throw new global::System.ArgumentNullException("Original_Emal");
+            if ((Original_Email == null)) {
+                throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Emal));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Email));
             }
             if ((Original_Password == null)) {
                 throw new global::System.ArgumentNullException("Original_Password");
@@ -8427,7 +8427,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
                     int PlayedMaps, 
                     int PlayedRounds, 
                     System.Guid RoleID, 
-                    string Emal, 
+                    string Email, 
                     string Password, 
                     System.Guid Original_PlayerID, 
                     string Original_Name, 
@@ -8439,9 +8439,9 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
                     int Original_PlayedMaps, 
                     int Original_PlayedRounds, 
                     System.Guid Original_RoleID, 
-                    string Original_Emal, 
+                    string Original_Email, 
                     string Original_Password) {
-            return this.Update(Original_PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Emal, Password, Original_PlayerID, Original_Name, Original_Nickname, Original_Surname, Original_CountryID, Original_Age, Original_Rating, Original_PlayedMaps, Original_PlayedRounds, Original_RoleID, Original_Emal, Original_Password);
+            return this.Update(Original_PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password, Original_PlayerID, Original_Name, Original_Nickname, Original_Surname, Original_CountryID, Original_Age, Original_Rating, Original_PlayedMaps, Original_PlayedRounds, Original_RoleID, Original_Email, Original_Password);
         }
     }
     
@@ -8585,9 +8585,9 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PlayersInTeams] ([PlayerID], [TeamID], [Start], [Finish]) VALU" +
-                "ES (@PlayerID, @TeamID, @Start, @Finish);\r\nSELECT PlayerID, TeamID, Start, Finis" +
-                "h FROM PlayersInTeams WHERE (PlayerID = @PlayerID) AND (Start = @Start) AND (Tea" +
-                "mID = @TeamID)";
+                "ES (@PlayerID, @TeamID, @Start, @Finish);\nSELECT PlayerID, TeamID, Start, Finish" +
+                " FROM PlayersInTeams WHERE (PlayerID = @PlayerID) AND (Start = @Start) AND (Team" +
+                "ID = @TeamID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8924,16 +8924,16 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Regions] ([RegionID], [Name]) VALUES (@RegionID, @Name);\r\nSELE" +
-                "CT RegionID, Name FROM Regions WHERE (RegionID = @RegionID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Regions] ([RegionID], [Name]) VALUES (@RegionID, @Name);\nSELEC" +
+                "T RegionID, Name FROM Regions WHERE (RegionID = @RegionID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Regions] SET [RegionID] = @RegionID, [Name] = @Name WHERE (([Region" +
-                "ID] = @Original_RegionID) AND ([Name] = @Original_Name));\r\nSELECT RegionID, Name" +
-                " FROM Regions WHERE (RegionID = @RegionID)";
+                "ID] = @Original_RegionID) AND ([Name] = @Original_Name));\nSELECT RegionID, Name " +
+                "FROM Regions WHERE (RegionID = @RegionID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9244,16 +9244,16 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Role", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Role", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Roles] ([RoleID], [Role]) VALUES (@RoleID, @Role);\r\nSELECT Rol" +
-                "eID, Role FROM Roles WHERE (RoleID = @RoleID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Roles] ([RoleID], [Role]) VALUES (@RoleID, @Role);\nSELECT Role" +
+                "ID, Role FROM Roles WHERE (RoleID = @RoleID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Role", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Role", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Roles] SET [RoleID] = @RoleID, [Role] = @Role WHERE (([RoleID] = @O" +
-                "riginal_RoleID) AND ([Role] = @Original_Role));\r\nSELECT RoleID, Role FROM Roles " +
-                "WHERE (RoleID = @RoleID)";
+                "riginal_RoleID) AND ([Role] = @Original_Role));\nSELECT RoleID, Role FROM Roles W" +
+                "HERE (RoleID = @RoleID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Role", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Role", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -9572,9 +9572,9 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Sets] ([SetID], [MatchID], [MapID], [FirstTeam], [SecondTeam])" +
-                " VALUES (@SetID, @MatchID, @MapID, @FirstTeam, @SecondTeam);\r\nSELECT SetID, Matc" +
-                "hID, MapID, FirstTeam, SecondTeam FROM Sets WHERE (MatchID = @MatchID) AND (SetI" +
-                "D = @SetID)";
+                " VALUES (@SetID, @MatchID, @MapID, @FirstTeam, @SecondTeam);\nSELECT SetID, Match" +
+                "ID, MapID, FirstTeam, SecondTeam FROM Sets WHERE (MatchID = @MatchID) AND (SetID" +
+                " = @SetID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SetID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SetID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MatchID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MatchID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

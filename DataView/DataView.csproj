@@ -98,6 +98,7 @@
     <EmbeddedResource Include="Forms\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Configs\packages.config" />
     <None Include="CybersportDBDataSet1.xsc">
       <DependentUpon>CybersportDBDataSet1.xsd</DependentUpon>
@@ -135,6 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\security1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,7 +35,12 @@
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.PlayerTab = new MetroFramework.Controls.MetroTabPage();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.TeamTab = new MetroFramework.Controls.MetroTabPage();
+            this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.cybersportDBDataSet = new Information_System_for_eSport.CybersportDBDataSet();
+            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.playersTableAdapter = new Information_System_for_eSport.CybersportDBDataSetTableAdapters.PlayersTableAdapter();
             this.playerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nicknameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,18 +51,13 @@
             this.playedMapsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playedRoundsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cybersportDBDataSet = new Information_System_for_eSport.CybersportDBDataSet();
-            this.TeamTab = new MetroFramework.Controls.MetroTabPage();
-            this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
-            this.playersTableAdapter = new Information_System_for_eSport.CybersportDBDataSetTableAdapters.PlayersTableAdapter();
             this.TabControl.SuspendLayout();
             this.PlayerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -72,20 +72,20 @@
             this.TabControl.Location = new System.Drawing.Point(23, 74);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1322, 491);
+            this.TabControl.Size = new System.Drawing.Size(1113, 491);
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
             // 
             // PlayerTab
             // 
-            this.PlayerTab.Controls.Add(this.metroTile1);
             this.PlayerTab.Controls.Add(this.metroGrid1);
+            this.PlayerTab.Controls.Add(this.metroTile1);
             this.PlayerTab.HorizontalScrollbarBarColor = true;
             this.PlayerTab.HorizontalScrollbarHighlightOnWheel = false;
             this.PlayerTab.HorizontalScrollbarSize = 10;
             this.PlayerTab.Location = new System.Drawing.Point(4, 39);
             this.PlayerTab.Name = "PlayerTab";
-            this.PlayerTab.Size = new System.Drawing.Size(1314, 448);
+            this.PlayerTab.Size = new System.Drawing.Size(1105, 448);
             this.PlayerTab.TabIndex = 0;
             this.PlayerTab.Text = "Игроки";
             this.PlayerTab.VerticalScrollbarBarColor = true;
@@ -102,6 +102,34 @@
             this.metroTile1.Text = "metroTile1";
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.Registation_Click);
+            // 
+            // TeamTab
+            // 
+            this.TeamTab.HorizontalScrollbarBarColor = true;
+            this.TeamTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.TeamTab.HorizontalScrollbarSize = 10;
+            this.TeamTab.Location = new System.Drawing.Point(4, 39);
+            this.TeamTab.Name = "TeamTab";
+            this.TeamTab.Size = new System.Drawing.Size(1105, 448);
+            this.TeamTab.TabIndex = 1;
+            this.TeamTab.Text = "Команды";
+            this.TeamTab.VerticalScrollbarBarColor = true;
+            this.TeamTab.VerticalScrollbarHighlightOnWheel = false;
+            this.TeamTab.VerticalScrollbarSize = 10;
+            // 
+            // TournamentTab
+            // 
+            this.TournamentTab.HorizontalScrollbarBarColor = true;
+            this.TournamentTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.TournamentTab.HorizontalScrollbarSize = 10;
+            this.TournamentTab.Location = new System.Drawing.Point(4, 39);
+            this.TournamentTab.Name = "TournamentTab";
+            this.TournamentTab.Size = new System.Drawing.Size(1105, 448);
+            this.TournamentTab.TabIndex = 2;
+            this.TournamentTab.Text = "Чемпионаты";
+            this.TournamentTab.VerticalScrollbarBarColor = true;
+            this.TournamentTab.VerticalScrollbarHighlightOnWheel = false;
+            this.TournamentTab.VerticalScrollbarSize = 10;
             // 
             // metroGrid1
             // 
@@ -131,7 +159,7 @@
             this.playedMapsDataGridViewTextBoxColumn,
             this.playedRoundsDataGridViewTextBoxColumn,
             this.roleIDDataGridViewTextBoxColumn,
-            this.emalDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
             this.passwordDataGridViewTextBoxColumn});
             this.metroGrid1.DataSource = this.playersBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -145,7 +173,7 @@
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(4, 79);
+            this.metroGrid1.Location = new System.Drawing.Point(4, 81);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -159,8 +187,22 @@
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.RowTemplate.Height = 24;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(1243, 150);
-            this.metroGrid1.TabIndex = 2;
+            this.metroGrid1.Size = new System.Drawing.Size(705, 150);
+            this.metroGrid1.TabIndex = 4;
+            // 
+            // cybersportDBDataSet
+            // 
+            this.cybersportDBDataSet.DataSetName = "CybersportDBDataSet";
+            this.cybersportDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // playersBindingSource
+            // 
+            this.playersBindingSource.DataMember = "Players";
+            this.playersBindingSource.DataSource = this.cybersportDBDataSet;
+            // 
+            // playersTableAdapter
+            // 
+            this.playersTableAdapter.ClearBeforeFill = true;
             // 
             // playerIDDataGridViewTextBoxColumn
             // 
@@ -222,11 +264,11 @@
             this.roleIDDataGridViewTextBoxColumn.HeaderText = "RoleID";
             this.roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
             // 
-            // emalDataGridViewTextBoxColumn
+            // emailDataGridViewTextBoxColumn
             // 
-            this.emalDataGridViewTextBoxColumn.DataPropertyName = "Emal";
-            this.emalDataGridViewTextBoxColumn.HeaderText = "Emal";
-            this.emalDataGridViewTextBoxColumn.Name = "emalDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             // 
             // passwordDataGridViewTextBoxColumn
             // 
@@ -234,53 +276,11 @@
             this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
             // 
-            // playersBindingSource
-            // 
-            this.playersBindingSource.DataMember = "Players";
-            this.playersBindingSource.DataSource = this.cybersportDBDataSet;
-            // 
-            // cybersportDBDataSet
-            // 
-            this.cybersportDBDataSet.DataSetName = "CybersportDBDataSet";
-            this.cybersportDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // TeamTab
-            // 
-            this.TeamTab.HorizontalScrollbarBarColor = true;
-            this.TeamTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.TeamTab.HorizontalScrollbarSize = 10;
-            this.TeamTab.Location = new System.Drawing.Point(4, 39);
-            this.TeamTab.Name = "TeamTab";
-            this.TeamTab.Size = new System.Drawing.Size(1314, 448);
-            this.TeamTab.TabIndex = 1;
-            this.TeamTab.Text = "Команды";
-            this.TeamTab.VerticalScrollbarBarColor = true;
-            this.TeamTab.VerticalScrollbarHighlightOnWheel = false;
-            this.TeamTab.VerticalScrollbarSize = 10;
-            // 
-            // TournamentTab
-            // 
-            this.TournamentTab.HorizontalScrollbarBarColor = true;
-            this.TournamentTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.TournamentTab.HorizontalScrollbarSize = 10;
-            this.TournamentTab.Location = new System.Drawing.Point(4, 39);
-            this.TournamentTab.Name = "TournamentTab";
-            this.TournamentTab.Size = new System.Drawing.Size(1314, 448);
-            this.TournamentTab.TabIndex = 2;
-            this.TournamentTab.Text = "Чемпионаты";
-            this.TournamentTab.VerticalScrollbarBarColor = true;
-            this.TournamentTab.VerticalScrollbarHighlightOnWheel = false;
-            this.TournamentTab.VerticalScrollbarSize = 10;
-            // 
-            // playersTableAdapter
-            // 
-            this.playersTableAdapter.ClearBeforeFill = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1368, 588);
+            this.ClientSize = new System.Drawing.Size(1159, 771);
             this.Controls.Add(this.TabControl);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -288,8 +288,8 @@
             this.TabControl.ResumeLayout(false);
             this.PlayerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,10 +300,11 @@
         private MetroFramework.Controls.MetroTabPage PlayerTab;
         private MetroFramework.Controls.MetroTabPage TeamTab;
         private MetroFramework.Controls.MetroTabPage TournamentTab;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroGrid metroGrid1;
         private CybersportDBDataSet cybersportDBDataSet;
         private System.Windows.Forms.BindingSource playersBindingSource;
         private CybersportDBDataSetTableAdapters.PlayersTableAdapter playersTableAdapter;
-        private MetroFramework.Controls.MetroGrid metroGrid1;
         private System.Windows.Forms.DataGridViewTextBoxColumn playerIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nicknameDataGridViewTextBoxColumn;
@@ -314,9 +315,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn playedMapsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn playedRoundsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }
 

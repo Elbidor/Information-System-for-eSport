@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataModel;
 using DataController;
+using DataModel;
 
 namespace Information_System_for_eSport
 {
@@ -23,14 +23,15 @@ namespace Information_System_for_eSport
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "cybersportDBDataSet.Players". При необходимости она может быть перемещена или удалена.
             this.playersTableAdapter.Fill(this.cybersportDBDataSet.Players);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "cybersportDBDataSet.Players". При необходимости она может быть перемещена или удалена.
         }
-        
+
         private void Registation_Click(object sender, EventArgs e)
         {
             Registration reg = new Registration();
             reg.Owner = this;
             reg.Show();
-            this.Enabled = false;
+            this.Hide();
         }
     }
 }

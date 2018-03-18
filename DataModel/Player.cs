@@ -25,13 +25,13 @@ namespace DataModel
         public string Nickname { get; set; }
         public string Surname { get; set; }
         public int CountryID { get; set; }
-        public byte Age { get; set; }
+        public int Age { get; set; }
         public double Rating { get; set; }
         public int PlayedMaps { get; set; }
         public int PlayedRounds { get; set; }
         public System.Guid RoleID { get; set; }
-        public string Emal { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Role Role { get; set; }
