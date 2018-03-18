@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Information_System_for_eSport
 {
-    public partial class Form1 : Form
+    public partial class Registration : MetroFramework.Forms.MetroForm
     {
-        public Form1()
+        public Registration()
         {
             InitializeComponent();
         }
