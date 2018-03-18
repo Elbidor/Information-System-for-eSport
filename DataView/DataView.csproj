@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F2274872-2AEC-4171-A84B-235E9648958B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>DataView</RootNamespace>
-    <AssemblyName>DataView</AssemblyName>
+    <RootNamespace>Information_System_for_eSport</RootNamespace>
+    <AssemblyName>Information_System_for_eSport</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -124,11 +124,11 @@
     <None Include="Configs\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DataModel.csproj">
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{48564811-6612-4990-896c-6d0c5d1e89fb}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataModel\DataController.csproj">
+    <ProjectReference Include="..\DataController\DataController.csproj">
       <Project>{abac55c2-8812-48f1-9ea7-7571c15fb8d8}</Project>
       <Name>DataController</Name>
     </ProjectReference>

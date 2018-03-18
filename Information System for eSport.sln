@@ -1,13 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataView", "Information System for eSport\DataView.csproj", "{F2274872-2AEC-4171-A84B-235E9648958B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataView", "DataView\DataView.csproj", "{F2274872-2AEC-4171-A84B-235E9648958B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "ClassLibrary1\DataModel.csproj", "{48564811-6612-4990-896C-6D0C5D1E89FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{48564811-6612-4990-896C-6D0C5D1E89FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataController", "DataModel\DataController.csproj", "{ABAC55C2-8812-48F1-9EA7-7571C15FB8D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataController", "DataController\DataController.csproj", "{ABAC55C2-8812-48F1-9EA7-7571C15FB8D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

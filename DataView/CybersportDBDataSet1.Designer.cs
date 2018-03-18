@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace DataView {
+namespace Information_System_for_eSport {
     
     
     /// <summary>
@@ -6231,7 +6231,7 @@ namespace DataView {
         }
     }
 }
-namespace DataView.CybersportDBDataSetTableAdapters {
+namespace Information_System_for_eSport.CybersportDBDataSetTableAdapters {
     
     
     /// <summary>
@@ -6396,7 +6396,7 @@ SELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6724,7 +6724,7 @@ SELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7044,7 +7044,7 @@ SELECT CityID, CountryID, Name FROM Cities WHERE (CityID = @CityID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7380,7 +7380,7 @@ SELECT MathID, TournamentID, FirstTeamID, SecondTeamID, Date FROM MatchesInTourn
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7707,7 +7707,7 @@ SELECT TournamentID, TeamID, Place, Money FROM Participants WHERE (TeamID = @Tea
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8111,7 +8111,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, Age, Rating, PlayedMaps, Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8613,7 +8613,7 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8945,7 +8945,7 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9265,7 +9265,7 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9602,7 +9602,7 @@ SELECT SetID, MatchID, MapID, FirstTeam, SecondTeam FROM Sets WHERE (MatchID = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9947,7 +9947,7 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10359,7 +10359,7 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DataView.Properties.Settings.Default.CybersportDBConnectionString;
+            this._connection.ConnectionString = global::Information_System_for_eSport.Properties.Settings.Default.CybersportDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

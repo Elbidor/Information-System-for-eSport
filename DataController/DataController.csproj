@@ -45,7 +45,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DataModel.csproj">
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{48564811-6612-4990-896c-6d0c5d1e89fb}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
