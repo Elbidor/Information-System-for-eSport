@@ -80,6 +80,7 @@
             this.PasswordField.UseSelectable = true;
             this.PasswordField.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PasswordField.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.PasswordField.Click += new System.EventHandler(this.OnTextboxClick);
             // 
             // EmailField
             // 
@@ -114,6 +115,7 @@
             this.EmailField.UseSelectable = true;
             this.EmailField.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.EmailField.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.EmailField.Click += new System.EventHandler(this.OnTextboxClick);
             // 
             // Login
             // 
@@ -124,7 +126,9 @@
             this.Controls.Add(this.EmailField);
             this.Controls.Add(this.EnterButton);
             this.Name = "Login";
+            this.Resizable = false;
             this.Text = "Вход";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.ResumeLayout(false);
 
         }

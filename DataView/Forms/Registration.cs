@@ -77,10 +77,7 @@ namespace Information_System_for_eSport
             {
                 player.RoleID = ReturnRole();                
                 Controller.CreatePlayer(player);
-                int i = 0;
-                i++;
-                Program.currentPlayer = player;
-                Owner.Enabled = true;                
+                Program.currentPlayer = player;             
                 this.Close();                
             }
         }

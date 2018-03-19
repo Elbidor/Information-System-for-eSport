@@ -36,7 +36,14 @@ namespace DataController
         public static Player FindPlayer (string log, string pass)
         {
             var ctx = new CybersportDBEntities();
-            return ctx.Players.ToList().First(pl => pl.Email == log && pl.Password == pass);
+            try
+            {
+                return ctx.Players.ToList().First(pl => pl.Email == log && pl.Password == pass);
+            }
+            catch
+            {
+                return null;
+            }
         }
         public static List<Role> GetRoles()
         {

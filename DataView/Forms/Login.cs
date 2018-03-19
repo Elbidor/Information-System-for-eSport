@@ -26,11 +26,17 @@ namespace Information_System_for_eSport.Forms
                 var eMailValidator = new System.Net.Mail.MailAddress(EmailField.Text);
                 if (string.IsNullOrWhiteSpace(PasswordField.Text))
                 {
-                    MetroFramework.MetroMessageBox.Show(this, "Необходимо заполнить все поля.", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MetroFramework.MetroMessageBox.Show(this, "Заполните поле пароля.", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     Program.currentPlayer = Controller.FindPlayer(EmailField.Text, PasswordField.Text);
+                    if(Program.currentPlayer != null)
+                    {
+                        Owner.Enabled = true;
+                        this.Close();
+                    }
+                    else MetroFramework.MetroMessageBox.Show(this, "Неправильно введен логин/пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch
@@ -38,6 +44,15 @@ namespace Information_System_for_eSport.Forms
                 MetroFramework.MetroMessageBox.Show(this, "Необходимо правильно ввести почту", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+        private void OnTextboxClick(object sender, EventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
+            textBox.Text = null;        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Owner.Enabled = true;
         }
     }
 }
