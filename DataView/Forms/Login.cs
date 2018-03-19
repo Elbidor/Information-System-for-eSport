@@ -48,7 +48,8 @@ namespace Information_System_for_eSport.Forms
         private void OnTextboxClick(object sender, EventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
-            textBox.Text = null;        }
+            textBox.SelectAll();
+        }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -14,18 +14,40 @@ namespace DataController
         public static void CreatePlayer(Player player)
         {
             var ctx = new CybersportDBEntities();
-            if (ctx.Players.Where(p => p.Nickname == player.Nickname).Count() != 0)
-            {
-                throw new Exception("К сожалению, этот никнейм уже занят.");
-            }
+            player.PlayerID = Guid.NewGuid();
             player.Country = ctx.Countries.ToList().First(c => c.CountryID == player.CountryID);
             player.Role = ctx.Roles.ToList().First(r => r.RoleID == player.RoleID);
-            player.CountryName = player.Country.Country1;
+            player.CountryName = player.Country.Country1.Trim();
             player.Rating = 1.0;
             player.PlayedMaps = 0;
             player.PlayedRounds = 0;
             ctx.Players.Add(player);
             ctx.SaveChanges();
+        }
+        public static void DeletePlayer(Player player)
+        {
+            var ctx = new CybersportDBEntities();
+            if(player.Role.Role1 =="Администратор")
+            {
+                throw new Exception("Нельзя удалять единственного администратора!");
+            }
+            Player delPlayer = new Player
+            {
+                PlayerID = player.PlayerID
+            };
+            ctx.Players.Attach(delPlayer);
+            ctx.Players.Remove(delPlayer);
+            ctx.SaveChanges();
+        }
+        public static void EditPlayer(Player oldPlayer)
+        {
+            var ctx = new CybersportDBEntities();
+            oldPlayer.Country = ctx.Countries.ToList().First(c => c.CountryID == oldPlayer.CountryID);
+            oldPlayer.Role = ctx.Roles.ToList().First(r => r.RoleID == oldPlayer.RoleID);
+            oldPlayer.CountryName = oldPlayer.Country.Country1.Trim();
+            ctx.Entry(oldPlayer).State = System.Data.Entity.EntityState.Modified;
+            ctx.SaveChanges();
+            
         }
         public static List<Country> GetCountries()
         {
@@ -59,13 +81,13 @@ namespace DataController
         //    return role;
         //}
 
-        //public static Country GetCountries(int id)
-        //{
-        //    var ctx = new CybersportDBEntities();
-        //    var countries = ctx.Countries.ToList();
-        //    Country country = countries.First(c => c.CountryID == id);
-        //    return country;
-        //}
+        public static Country GetCountries(int id)
+        {
+            var ctx = new CybersportDBEntities();
+            var countries = ctx.Countries.ToList();
+            Country country = countries.First(c => c.CountryID == id);
+            return country;
+        }
 
 
     }

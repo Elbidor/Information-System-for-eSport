@@ -15,7 +15,7 @@ namespace Information_System_for_eSport
     public partial class Registration : MetroFramework.Forms.MetroForm
     {
         public Player player = new Player();
-        bool errorsExist;
+        bool errorsExist = false;
         public Registration()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace Information_System_for_eSport
         private void OnTextboxClick (object sender, EventArgs e)
         {
             MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
-            textBox.Text = null;
+            textBox.SelectAll();
         }
         private void OnRadioButtonClick(object sender, EventArgs e)
         {
@@ -36,7 +36,6 @@ namespace Information_System_for_eSport
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            errorsExist = false;
             if (string.IsNullOrWhiteSpace(NameField.Text) || string.IsNullOrWhiteSpace(NicknameField.Text) || string.IsNullOrWhiteSpace(SurnameField.Text) || string.IsNullOrWhiteSpace(AgeField.Text) || string.IsNullOrWhiteSpace(PasswordField.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Необходимо заполнить все поля.", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,11 +43,15 @@ namespace Information_System_for_eSport
             }
             else
             {
-                player.Name = NameField.Text;
-                player.Nickname = NicknameField.Text;
-                player.Surname = SurnameField.Text;
-                player.Password = PasswordField.Text;
-                if ((player.Age = Convert.ToInt32(AgeField.Text)) < 0)
+                player.Name = NameField.Text.Trim();
+                player.Nickname = NicknameField.Text.Trim();
+                player.Surname = SurnameField.Text.Trim();
+                player.Password = PasswordField.Text.Trim();
+                try
+                {
+                    player.Age = Convert.ToInt32(AgeField.Text);
+                }
+                catch
                 {
                     MetroFramework.MetroMessageBox.Show(this, "Необходимо ввести положительное число в поле возраста", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorsExist = true;
@@ -57,7 +60,7 @@ namespace Information_System_for_eSport
             try
             {
                 var eMailValidator = new System.Net.Mail.MailAddress(EmailField.Text);
-                player.Email = EmailField.Text;
+                player.Email = EmailField.Text.Trim();
             }
             catch 
             {
@@ -75,18 +78,46 @@ namespace Information_System_for_eSport
             }
             if(!errorsExist)
             {
-                player.RoleID = ReturnRole();                
-                Controller.CreatePlayer(player);
-                Program.currentPlayer = player;             
+
+                if(Program.currentPlayer !=null)
+                {
+                    player.PlayerID = Program.currentPlayer.PlayerID;
+                    player.RoleID = Program.currentPlayer.RoleID;
+                    Controller.EditPlayer(player);                    
+                }
+                else
+                {
+                    player.RoleID = ReturnRole();
+                    Controller.CreatePlayer(player);
+                }      
+                Program.currentPlayer = player;
+                Owner.Enabled = true;
+                Owner.Show();
                 this.Close();                
             }
         }
 
         private void Registration_Load(object sender, EventArgs e)
         {
+
             this.countriesTableAdapter.Fill(this.cybersportDBDataSet2.Countries);
-            player.PlayerID = Guid.NewGuid();
-            AsPlayerCheckBox.Checked = true;
+            if (Program.currentPlayer !=null)
+            {
+                NameField.Text = Program.currentPlayer.Name;
+                SurnameField.Text = Program.currentPlayer.Surname;
+                NicknameField.Text = Program.currentPlayer.Nickname;
+                AgeField.Text = Program.currentPlayer.Age.ToString();
+                CountryField.SelectedValue = Program.currentPlayer.CountryID;
+                EmailField.Text = Program.currentPlayer.Email;
+                PasswordField.Text = Program.currentPlayer.Password;
+                AsManagerCheckBox.Visible = false;
+                AsManagerCheckBox.Enabled = false;
+                AsPlayerCheckBox.Visible = false;
+                AsPlayerCheckBox.Enabled = false;
+                AsOrganizerCheckBox.Visible = false;
+                AsOrganizerCheckBox.Enabled = false;
+            }
+            else AsPlayerCheckBox.Checked = true;  
         }    
         private Guid ReturnRole()
         {
@@ -105,8 +136,10 @@ namespace Information_System_for_eSport
             }
             return checkedRoledID;
         }
+
         private void Registration_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Owner.Enabled = true;
             Owner.Show();
         }
     }

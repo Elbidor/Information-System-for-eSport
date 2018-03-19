@@ -323,10 +323,10 @@
             // AcceptButton1
             // 
             this.AcceptButton1.Image = global::Information_System_for_eSport.Properties.Resources.security;
-            this.AcceptButton1.ImageSize = 60;
-            this.AcceptButton1.Location = new System.Drawing.Point(571, 233);
+            this.AcceptButton1.ImageSize = 90;
+            this.AcceptButton1.Location = new System.Drawing.Point(492, 204);
             this.AcceptButton1.Name = "AcceptButton1";
-            this.AcceptButton1.Size = new System.Drawing.Size(100, 100);
+            this.AcceptButton1.Size = new System.Drawing.Size(118, 129);
             this.AcceptButton1.TabIndex = 17;
             this.AcceptButton1.UseSelectable = true;
             this.AcceptButton1.Click += new System.EventHandler(this.AcceptButton_Click);
@@ -335,7 +335,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(694, 364);
+            this.ClientSize = new System.Drawing.Size(640, 357);
             this.Controls.Add(this.AcceptButton1);
             this.Controls.Add(this.AsOrganizerCheckBox);
             this.Controls.Add(this.AsManagerCheckBox);

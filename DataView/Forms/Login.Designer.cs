@@ -38,7 +38,7 @@
             this.EnterButton.ActiveControl = null;
             this.EnterButton.Location = new System.Drawing.Point(23, 188);
             this.EnterButton.Name = "EnterButton";
-            this.EnterButton.Size = new System.Drawing.Size(240, 39);
+            this.EnterButton.Size = new System.Drawing.Size(240, 59);
             this.EnterButton.Style = MetroFramework.MetroColorStyle.Purple;
             this.EnterButton.TabIndex = 6;
             this.EnterButton.Text = "Готово!";
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 247);
+            this.ClientSize = new System.Drawing.Size(287, 270);
             this.Controls.Add(this.PasswordField);
             this.Controls.Add(this.EmailField);
             this.Controls.Add(this.EnterButton);

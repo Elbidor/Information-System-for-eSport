@@ -30,6 +30,7 @@ namespace Information_System_for_eSport
             Registration reg = new Registration();
             reg.Owner = this;
             reg.Show();
+            this.Enabled = false;
             this.Hide();
         }        
 
@@ -60,9 +61,14 @@ namespace Information_System_for_eSport
                 RegistrationButton.Visible = false;
                 ExitButton.Visible = true;
                 ExitButton.Enabled = true;
+                EditButton.Visible = true;
+                EditButton.Enabled = true;
+                DeleteButton.Enabled = true;
+                DeleteButton.Visible = true;
                 NicknameLabel.Visible = true;
                 NicknameLabel.Text = Program.currentPlayer.Nickname;
                 metroLabel1.Visible = false;
+                this.playersTableAdapter.Fill(this.cybersportDBDataSet2.Players);
             }
             else
             {
@@ -76,7 +82,30 @@ namespace Information_System_for_eSport
                 NicknameLabel.Visible = false;
                 NicknameLabel.Text = "";
                 metroLabel1.Visible = true;
+                EditButton.Visible = false;
+                EditButton.Enabled = false;
+                DeleteButton.Enabled = false;
+                DeleteButton.Visible = false;
+                PlayerGrid.DataSource = null;
+                PlayerGrid.DataSource = playersBindingSource1;
+                this.playersTableAdapter.Fill(this.cybersportDBDataSet2.Players);
             }
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            Controller.DeletePlayer(Program.currentPlayer);
+            Program.currentPlayer = null;
+            Form1_EnabledChanged(sender, e);
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            Registration reg = new Registration();
+            reg.Owner = this;
+            reg.Show();
+            this.Enabled = false;
+            this.Hide();
         }
     }
 }
