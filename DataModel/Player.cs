@@ -25,6 +25,7 @@ namespace DataModel
         public string Nickname { get; set; }
         public string Surname { get; set; }
         public int CountryID { get; set; }
+        public string CountryName { get; set; }
         public int Age { get; set; }
         public double Rating { get; set; }
         public int PlayedMaps { get; set; }

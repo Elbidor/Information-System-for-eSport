@@ -21,9 +21,7 @@ namespace Information_System_for_eSport
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "cybersportDBDataSet.Players". При необходимости она может быть перемещена или удалена.
-            this.playersTableAdapter.Fill(this.cybersportDBDataSet.Players);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "cybersportDBDataSet.Players". При необходимости она может быть перемещена или удалена.
+            this.playersTableAdapter.Fill(this.cybersportDBDataSet2.Players);            
         }
 
         private void Registation_Click(object sender, EventArgs e)
@@ -32,6 +30,11 @@ namespace Information_System_for_eSport
             reg.Owner = this;
             reg.Show();
             this.Hide();
+        }        
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

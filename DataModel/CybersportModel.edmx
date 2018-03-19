@@ -56,6 +56,7 @@
           <Property Name="Nickname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="Rating" Type="float" Nullable="false" />
           <Property Name="PlayedMaps" Type="int" Nullable="false" />
@@ -206,30 +207,6 @@
             </Principal>
             <Dependent Role="Participants">
               <PropertyRef Name="TournamentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Players_Countries">
-          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
-          <End Role="Players" Type="Self.Players" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Countries">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="Players">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Players_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Players" Type="Self.Players" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="Players">
-              <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -386,14 +363,6 @@
             <End Role="Tournaments" EntitySet="Tournaments" />
             <End Role="Participants" EntitySet="Participants" />
           </AssociationSet>
-          <AssociationSet Name="FK_Players_Countries" Association="Self.FK_Players_Countries">
-            <End Role="Countries" EntitySet="Countries" />
-            <End Role="Players" EntitySet="Players" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Players_Roles" Association="Self.FK_Players_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Players" EntitySet="Players" />
-          </AssociationSet>
           <AssociationSet Name="FK_PlayersInTeams_Players" Association="Self.FK_PlayersInTeams_Players">
             <End Role="Players" EntitySet="Players" />
             <End Role="PlayersInTeams" EntitySet="PlayersInTeams" />
@@ -500,6 +469,7 @@
           <NavigationProperty Name="Role" Relationship="Self.FK_Players_Roles" FromRole="Players" ToRole="Roles" />
           <NavigationProperty Name="PlayersInTeams" Relationship="Self.FK_PlayersInTeams_Players" FromRole="Players" ToRole="PlayersInTeams" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PlayersInTeam">
           <Key>
@@ -940,6 +910,7 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="CybersportDBModel.Player">
               <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

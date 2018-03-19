@@ -75,25 +75,22 @@ namespace Information_System_for_eSport
             }
             if(!errorsExist)
             {
-                player.RoleID = ReturnRole();
+                player.RoleID = ReturnRole();                
                 Controller.CreatePlayer(player);
-                Owner.Enabled = true;
-                this.Close();
+                int i = 0;
+                i++;
+                Program.currentPlayer = player;
+                Owner.Enabled = true;                
+                this.Close();                
             }
         }
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "cybersportDBDataSet.Countries". При необходимости она может быть перемещена или удалена.
-            this.countriesTableAdapter.Fill(this.cybersportDBDataSet.Countries);
+            this.countriesTableAdapter.Fill(this.cybersportDBDataSet2.Countries);
             player.PlayerID = Guid.NewGuid();
             AsPlayerCheckBox.Checked = true;
-        }        
-
-        private void Registration_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Owner.Enabled = true;
-        }
+        }    
         private Guid ReturnRole()
         {
             Guid checkedRoledID = new Guid();
@@ -111,6 +108,9 @@ namespace Information_System_for_eSport
             }
             return checkedRoledID;
         }
-
+        private void Registration_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Owner.Show();
+        }
     }
 }

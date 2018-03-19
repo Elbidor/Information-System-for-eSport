@@ -63,10 +63,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CybersportDBDataSet1.Designer.cs">
+    <Compile Include="CybersportDBDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CybersportDBDataSet1.xsd</DependentUpon>
+      <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +88,9 @@
     <Compile Include="Forms\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,16 +109,16 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Configs\packages.config" />
-    <None Include="CybersportDBDataSet1.xsc">
-      <DependentUpon>CybersportDBDataSet1.xsd</DependentUpon>
+    <None Include="CybersportDBDataSet2.xsc">
+      <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
     </None>
-    <None Include="CybersportDBDataSet1.xsd">
+    <None Include="CybersportDBDataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CybersportDBDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CybersportDBDataSet2.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CybersportDBDataSet1.xss">
-      <DependentUpon>CybersportDBDataSet1.xsd</DependentUpon>
+    <None Include="CybersportDBDataSet2.xss">
+      <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -137,8 +146,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\security1.png" />
+    <None Include="Resources\security.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,18 +33,18 @@
             this.NicknameField = new MetroFramework.Controls.MetroTextBox();
             this.SurnameField = new MetroFramework.Controls.MetroTextBox();
             this.CountryField = new MetroFramework.Controls.MetroComboBox();
-            this.countriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cybersportDBDataSet = new Information_System_for_eSport.CybersportDBDataSet();
             this.EmailField = new MetroFramework.Controls.MetroTextBox();
             this.PasswordField = new MetroFramework.Controls.MetroTextBox();
             this.AgeField = new MetroFramework.Controls.MetroTextBox();
             this.AsPlayerCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.AsManagerCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.AsOrganizerCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
+            this.countriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.countriesTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.CountriesTableAdapter();
             this.AcceptButton1 = new MetroFramework.Controls.MetroLink();
-            this.countriesTableAdapter = new Information_System_for_eSport.CybersportDBDataSetTableAdapters.CountriesTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countriesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // NameField
@@ -167,16 +167,6 @@
             this.CountryField.Tag = "Страна";
             this.CountryField.UseSelectable = true;
             this.CountryField.ValueMember = "CountryID";
-            // 
-            // countriesBindingSource
-            // 
-            this.countriesBindingSource.DataMember = "Countries";
-            this.countriesBindingSource.DataSource = this.cybersportDBDataSet;
-            // 
-            // cybersportDBDataSet
-            // 
-            this.cybersportDBDataSet.DataSetName = "CybersportDBDataSet";
-            this.cybersportDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // EmailField
             // 
@@ -316,6 +306,20 @@
             this.AsOrganizerCheckBox.UseSelectable = true;
             this.AsOrganizerCheckBox.Click += new System.EventHandler(this.OnRadioButtonClick);
             // 
+            // cybersportDBDataSet2
+            // 
+            this.cybersportDBDataSet2.DataSetName = "CybersportDBDataSet2";
+            this.cybersportDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // countriesBindingSource
+            // 
+            this.countriesBindingSource.DataMember = "Countries";
+            this.countriesBindingSource.DataSource = this.cybersportDBDataSet2;
+            // 
+            // countriesTableAdapter
+            // 
+            this.countriesTableAdapter.ClearBeforeFill = true;
+            // 
             // AcceptButton1
             // 
             this.AcceptButton1.Image = global::Information_System_for_eSport.Properties.Resources.security;
@@ -326,10 +330,6 @@
             this.AcceptButton1.TabIndex = 17;
             this.AcceptButton1.UseSelectable = true;
             this.AcceptButton1.Click += new System.EventHandler(this.AcceptButton_Click);
-            // 
-            // countriesTableAdapter
-            // 
-            this.countriesTableAdapter.ClearBeforeFill = true;
             // 
             // Registration
             // 
@@ -349,10 +349,10 @@
             this.Controls.Add(this.NameField);
             this.Name = "Registration";
             this.Text = "Регистрация нового пользователя";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Registration_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Registration_FormClosed);
             this.Load += new System.EventHandler(this.Registration_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countriesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -368,9 +368,9 @@
         private MetroFramework.Controls.MetroCheckBox AsPlayerCheckBox;
         private MetroFramework.Controls.MetroCheckBox AsManagerCheckBox;
         private MetroFramework.Controls.MetroCheckBox AsOrganizerCheckBox;
-        private MetroFramework.Controls.MetroLink AcceptButton1;
-        private CybersportDBDataSet cybersportDBDataSet;
+        private CybersportDBDataSet2 cybersportDBDataSet2;
         private System.Windows.Forms.BindingSource countriesBindingSource;
-        private CybersportDBDataSetTableAdapters.CountriesTableAdapter countriesTableAdapter;
+        private CybersportDBDataSet2TableAdapters.CountriesTableAdapter countriesTableAdapter;
+        private MetroFramework.Controls.MetroLink AcceptButton1;
     }
 }
