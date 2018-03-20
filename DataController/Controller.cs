@@ -54,12 +54,7 @@ namespace DataController
             var ctx = new CybersportDBEntities();
             return ctx.Players.ToList().First(pl => pl.PlayerID == id);
         }
-        public static List<Country> GetCountries()
-        {
-            var ctx = new CybersportDBEntities();
-            var countries = ctx.Countries.ToList();
-            return countries;
-        }
+        
         public static Player FindPlayer (string log, string pass)
         {
             var ctx = new CybersportDBEntities();
@@ -72,7 +67,18 @@ namespace DataController
                 return null;
             }
         }
-       
+        public static List<Player> GetPlayers()
+        {
+            var ctx = new CybersportDBEntities();
+            var players = ctx.Players.ToList();
+            return players;
+        }
+        public static List<Country> GetCountries()
+        {
+            var ctx = new CybersportDBEntities();
+            var countries = ctx.Countries.ToList();
+            return countries;
+        }
         public static List<Role> GetRoles()
         {
             var ctx = new CybersportDBEntities();

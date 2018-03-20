@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.PlayerTab = new MetroFramework.Controls.MetroTabPage();
+            this.CreateExcelButton = new MetroFramework.Controls.MetroLink();
+            this.CreateWordButton = new MetroFramework.Controls.MetroLink();
+            this.CreatePdfButton = new MetroFramework.Controls.MetroLink();
             this.PlayerGrid = new MetroFramework.Controls.MetroGrid();
             this.playerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,13 +49,15 @@
             this.playedMapsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playedRoundsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.playersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.countryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playersInTeamsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TeamTab = new MetroFramework.Controls.MetroTabPage();
             this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
-            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
             this.RegistrationButton = new MetroFramework.Controls.MetroTile();
             this.playersTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.PlayersTableAdapter();
             this.EnterButton = new MetroFramework.Controls.MetroTile();
@@ -80,12 +85,12 @@
             this.InfoPanelName = new MetroFramework.Controls.MetroLabel();
             this.InfoPanelHeadLabel = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.citiesTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.CitiesTableAdapter();
             this.TabControl.SuspendLayout();
             this.PlayerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
             this.InformationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +112,9 @@
             // 
             // PlayerTab
             // 
+            this.PlayerTab.Controls.Add(this.CreateExcelButton);
+            this.PlayerTab.Controls.Add(this.CreateWordButton);
+            this.PlayerTab.Controls.Add(this.CreatePdfButton);
             this.PlayerTab.Controls.Add(this.PlayerGrid);
             this.PlayerTab.HorizontalScrollbarBarColor = true;
             this.PlayerTab.HorizontalScrollbarHighlightOnWheel = false;
@@ -120,6 +128,39 @@
             this.PlayerTab.VerticalScrollbarHighlightOnWheel = false;
             this.PlayerTab.VerticalScrollbarSize = 10;
             // 
+            // CreateExcelButton
+            // 
+            this.CreateExcelButton.Image = global::Information_System_for_eSport.Properties.Resources.if_9_2136359;
+            this.CreateExcelButton.ImageSize = 50;
+            this.CreateExcelButton.Location = new System.Drawing.Point(927, 13);
+            this.CreateExcelButton.Name = "CreateExcelButton";
+            this.CreateExcelButton.Size = new System.Drawing.Size(75, 62);
+            this.CreateExcelButton.TabIndex = 7;
+            this.CreateExcelButton.UseSelectable = true;
+            this.CreateExcelButton.Click += new System.EventHandler(this.CreateExcelButton_Click);
+            // 
+            // CreateWordButton
+            // 
+            this.CreateWordButton.Image = global::Information_System_for_eSport.Properties.Resources.if_15_2136361;
+            this.CreateWordButton.ImageSize = 50;
+            this.CreateWordButton.Location = new System.Drawing.Point(846, 13);
+            this.CreateWordButton.Name = "CreateWordButton";
+            this.CreateWordButton.Size = new System.Drawing.Size(75, 62);
+            this.CreateWordButton.TabIndex = 6;
+            this.CreateWordButton.UseSelectable = true;
+            this.CreateWordButton.Click += new System.EventHandler(this.CreateWordButton_Click);
+            // 
+            // CreatePdfButton
+            // 
+            this.CreatePdfButton.Image = global::Information_System_for_eSport.Properties.Resources.if_24_2136378;
+            this.CreatePdfButton.ImageSize = 50;
+            this.CreatePdfButton.Location = new System.Drawing.Point(765, 13);
+            this.CreatePdfButton.Name = "CreatePdfButton";
+            this.CreatePdfButton.Size = new System.Drawing.Size(75, 62);
+            this.CreatePdfButton.TabIndex = 5;
+            this.CreatePdfButton.UseSelectable = true;
+            this.CreatePdfButton.Click += new System.EventHandler(this.CreatePdfButton_Click);
+            // 
             // PlayerGrid
             // 
             this.PlayerGrid.AllowUserToAddRows = false;
@@ -132,14 +173,14 @@
             this.PlayerGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PlayerGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.PlayerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.playerIDDataGridViewTextBoxColumn,
@@ -153,17 +194,20 @@
             this.playedMapsDataGridViewTextBoxColumn,
             this.playedRoundsDataGridViewTextBoxColumn,
             this.roleIDDataGridViewTextBoxColumn,
+            this.passwordDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
-            this.passwordDataGridViewTextBoxColumn});
-            this.PlayerGrid.DataSource = this.playersBindingSource1;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            this.countryDataGridViewTextBoxColumn,
+            this.roleDataGridViewTextBoxColumn,
+            this.playersInTeamsDataGridViewTextBoxColumn});
+            this.PlayerGrid.DataSource = this.playerBindingSource;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle5;
             this.PlayerGrid.EnableHeadersVisualStyles = false;
             this.PlayerGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PlayerGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -172,14 +216,14 @@
             this.PlayerGrid.Name = "PlayerGrid";
             this.PlayerGrid.ReadOnly = true;
             this.PlayerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.PlayerGrid.RowHeadersVisible = false;
             this.PlayerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PlayerGrid.RowTemplate.Height = 24;
@@ -193,10 +237,11 @@
             // playerIDDataGridViewTextBoxColumn
             // 
             this.playerIDDataGridViewTextBoxColumn.DataPropertyName = "PlayerID";
-            this.playerIDDataGridViewTextBoxColumn.HeaderText = "PlayerID";
+            this.playerIDDataGridViewTextBoxColumn.HeaderText = "Номер";
             this.playerIDDataGridViewTextBoxColumn.Name = "playerIDDataGridViewTextBoxColumn";
             this.playerIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.playerIDDataGridViewTextBoxColumn.Visible = false;
+            this.playerIDDataGridViewTextBoxColumn.Width = 80;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -229,6 +274,7 @@
             this.countryIDDataGridViewTextBoxColumn.Name = "countryIDDataGridViewTextBoxColumn";
             this.countryIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.countryIDDataGridViewTextBoxColumn.Visible = false;
+            this.countryIDDataGridViewTextBoxColumn.Width = 133;
             // 
             // countryNameDataGridViewTextBoxColumn
             // 
@@ -277,14 +323,7 @@
             this.roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
             this.roleIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.roleIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Visible = false;
+            this.roleIDDataGridViewTextBoxColumn.Width = 98;
             // 
             // passwordDataGridViewTextBoxColumn
             // 
@@ -293,16 +332,47 @@
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
             this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
             this.passwordDataGridViewTextBoxColumn.Visible = false;
+            this.passwordDataGridViewTextBoxColumn.Width = 124;
             // 
-            // playersBindingSource1
+            // emailDataGridViewTextBoxColumn
             // 
-            this.playersBindingSource1.DataMember = "Players";
-            this.playersBindingSource1.DataSource = this.cybersportDBDataSet2;
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Visible = false;
+            this.emailDataGridViewTextBoxColumn.Width = 86;
             // 
-            // cybersportDBDataSet2
+            // countryDataGridViewTextBoxColumn
             // 
-            this.cybersportDBDataSet2.DataSetName = "CybersportDBDataSet2";
-            this.cybersportDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.countryDataGridViewTextBoxColumn.DataPropertyName = "Country";
+            this.countryDataGridViewTextBoxColumn.HeaderText = "Country";
+            this.countryDataGridViewTextBoxColumn.Name = "countryDataGridViewTextBoxColumn";
+            this.countryDataGridViewTextBoxColumn.ReadOnly = true;
+            this.countryDataGridViewTextBoxColumn.Visible = false;
+            this.countryDataGridViewTextBoxColumn.Width = 113;
+            // 
+            // roleDataGridViewTextBoxColumn
+            // 
+            this.roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
+            this.roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            this.roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
+            this.roleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.roleDataGridViewTextBoxColumn.Visible = false;
+            this.roleDataGridViewTextBoxColumn.Width = 78;
+            // 
+            // playersInTeamsDataGridViewTextBoxColumn
+            // 
+            this.playersInTeamsDataGridViewTextBoxColumn.DataPropertyName = "PlayersInTeams";
+            this.playersInTeamsDataGridViewTextBoxColumn.HeaderText = "PlayersInTeams";
+            this.playersInTeamsDataGridViewTextBoxColumn.Name = "playersInTeamsDataGridViewTextBoxColumn";
+            this.playersInTeamsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playersInTeamsDataGridViewTextBoxColumn.Visible = false;
+            this.playersInTeamsDataGridViewTextBoxColumn.Width = 174;
+            // 
+            // playerBindingSource
+            // 
+            this.playerBindingSource.DataSource = typeof(DataModel.Player);
             // 
             // TeamTab
             // 
@@ -332,10 +402,10 @@
             this.TournamentTab.VerticalScrollbarHighlightOnWheel = false;
             this.TournamentTab.VerticalScrollbarSize = 10;
             // 
-            // playersBindingSource
+            // cybersportDBDataSet2
             // 
-            this.playersBindingSource.DataMember = "Players";
-            this.playersBindingSource.DataSource = this.cybersportDBDataSet2;
+            this.cybersportDBDataSet2.DataSetName = "CybersportDBDataSet2";
+            this.cybersportDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // RegistrationButton
             // 
@@ -671,6 +741,10 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // citiesTableAdapter
+            // 
+            this.citiesTableAdapter.ClearBeforeFill = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -693,9 +767,8 @@
             this.TabControl.ResumeLayout(false);
             this.PlayerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
             this.InformationPanel.ResumeLayout(false);
             this.InformationPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -712,28 +785,13 @@
         private MetroFramework.Controls.MetroTile RegistrationButton;
         private MetroFramework.Controls.MetroGrid PlayerGrid;
         private CybersportDBDataSet2 cybersportDBDataSet2;
-        private System.Windows.Forms.BindingSource playersBindingSource;
         private CybersportDBDataSet2TableAdapters.PlayersTableAdapter playersTableAdapter;
-        private System.Windows.Forms.BindingSource playersBindingSource1;
         private MetroFramework.Controls.MetroTile EnterButton;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel NicknameLabel;
         private MetroFramework.Controls.MetroTile ExitButton;
         private MetroFramework.Controls.MetroTile EditButton;
         private MetroFramework.Controls.MetroTile DeleteButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nicknameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playedMapsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playedRoundsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
         private MetroFramework.Controls.MetroPanel InformationPanel;
         private MetroFramework.Controls.MetroLabel InfoPanelCountry;
         private MetroFramework.Controls.MetroLabel InfoPanelAge;
@@ -753,6 +811,27 @@
         private MetroFramework.Controls.MetroLabel InfoPanelNicknameField;
         private MetroFramework.Controls.MetroLabel InfoPanelNameField;
         private System.Windows.Forms.Timer timer1;
+        private MetroFramework.Controls.MetroLink CreateExcelButton;
+        private MetroFramework.Controls.MetroLink CreateWordButton;
+        private MetroFramework.Controls.MetroLink CreatePdfButton;
+        private CybersportDBDataSet2TableAdapters.CitiesTableAdapter citiesTableAdapter;
+        private System.Windows.Forms.BindingSource playerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nicknameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playedMapsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playedRoundsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playersInTeamsDataGridViewTextBoxColumn;
     }
 }
 
