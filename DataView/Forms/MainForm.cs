@@ -17,6 +17,7 @@ using Spire.Doc.Formatting;
 using Spire.Xls;
 using Spire.Xls.Collections;
 using Spire.Xls.Core;
+using System.Drawing;
 
 namespace Information_System_for_eSport
 {
@@ -32,6 +33,7 @@ namespace Information_System_for_eSport
         {
             currentGrid = PlayerGrid;
             currentGrid.DataSource = Controller.GetPlayers();
+            PlayerGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
         }
 
         private void Registation_Click(object sender, EventArgs e)
@@ -169,10 +171,14 @@ namespace Information_System_for_eSport
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (InformationPanel.Width <= 402) InformationPanel.Width += 60;
+            if (InformationPanel.Width < 300) InformationPanel.Width += 60;
             else timer1.Stop();
         }
-
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (InformationPanel.Width > 10) InformationPanel.Width -= 60;
+            else timer2.Stop();
+        }
         private void CreatePdfButton_Click(object sender, EventArgs e)
         {
             CreateFile(true, false);
@@ -312,6 +318,15 @@ namespace Information_System_for_eSport
             doc.SaveToFile("result.doc", Spire.Doc.FileFormat.Docx);
             System.Diagnostics.Process.Start("result.doc");
         }
+
+        private void CloseInfoPanel_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+            InformationPanel.Enabled = false;
+            InformationPanel.Visible = false;
+        }
+
+        
     }
     
 }

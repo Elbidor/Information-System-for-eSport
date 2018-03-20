@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using DataModel;
 
 namespace DataController
@@ -75,9 +77,8 @@ namespace DataController
         }
         public static List<Country> GetCountries()
         {
-            var ctx = new CybersportDBEntities();
-            var countries = ctx.Countries.ToList();
-            return countries;
+            var ctx = new CybersportDBEntities();            
+            return ctx.Countries.OrderBy(c => c.Country1).ToList();
         }
         public static List<Role> GetRoles()
         {
@@ -101,6 +102,37 @@ namespace DataController
             return country;
         }
 
+        /// <summary>
+        /// Отправка письма пользователю на почту.
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <param name="purpose"></param>
+        public static void SendEmail(string receiver, string purpose)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                message.From = new MailAddress("shotfuse2@gmail.com");
+                message.To.Add(new MailAddress(receiver));
+                message.Subject = "Выполнен вход в Cybersport Information System";
+                if(purpose == "login") message.Body = "Доброго времени суток!\n\nВами был выполнен вход в информационную систему. Приятного пользования!\nС уважением,\nКрасильников Роман\nСтудент БИ-16-1";
+                if(purpose == "registration") message.Body = "Доброго времени суток!\n\nТолько что вы были зарегистрированы в информационной системе. Приятного пользования!\nС уважением,\nКрасильников Роман\nСтудент БИ-16-1";
+                if (purpose == "joinTeam") message.Body = "Доброго времени суток!\n\nВы были приглашены в команду! Зайдите в ИС, чтобы дать свой ответ.\nС уважением,\nКрасильников Роман\nСтудент БИ-16-1";
+                if (purpose == "joinTournament") message.Body = "Доброго времени суток!\n\nВашу команду пригласили на турнир! Зайдите в ИС, чтобы дать свой ответ.\nС уважением,\nКрасильников Роман\nСтудент БИ-16-1";
+                smtp.Port = 587;
+                smtp.Host = "smtp.gmail.com";
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("shotfuse2@gmail.com", "59904939240Zz");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

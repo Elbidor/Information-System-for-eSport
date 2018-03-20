@@ -43,8 +43,10 @@
             this.AsOrganizerCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.countriesTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.CountriesTableAdapter();
             this.AcceptButton1 = new MetroFramework.Controls.MetroLink();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.countriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // NameField
@@ -155,16 +157,17 @@
             // CountryField
             // 
             this.CountryField.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.CountryField.DataSource = this.countriesBindingSource;
-            this.CountryField.DisplayMember = "Country";
+            this.CountryField.DataSource = this.countryBindingSource;
+            this.CountryField.DisplayMember = "Country1";
+            this.CountryField.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.CountryField.FormattingEnabled = true;
             this.CountryField.ItemHeight = 24;
             this.CountryField.Location = new System.Drawing.Point(25, 254);
             this.CountryField.Name = "CountryField";
             this.CountryField.Size = new System.Drawing.Size(240, 30);
-            this.CountryField.Style = MetroFramework.MetroColorStyle.Green;
             this.CountryField.TabIndex = 5;
             this.CountryField.Tag = "Страна";
+            this.CountryField.Theme = MetroFramework.MetroThemeStyle.Light;
             this.CountryField.UseSelectable = true;
             this.CountryField.ValueMember = "CountryID";
             // 
@@ -331,6 +334,10 @@
             this.AcceptButton1.UseSelectable = true;
             this.AcceptButton1.Click += new System.EventHandler(this.AcceptButton_Click);
             // 
+            // countryBindingSource
+            // 
+            this.countryBindingSource.DataSource = typeof(DataModel.Country);
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -354,6 +361,7 @@
             this.Load += new System.EventHandler(this.Registration_Load);
             ((System.ComponentModel.ISupportInitialize)(this.countriesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,5 +381,6 @@
         private System.Windows.Forms.BindingSource countriesBindingSource;
         private CybersportDBDataSet2TableAdapters.CountriesTableAdapter countriesTableAdapter;
         private MetroFramework.Controls.MetroLink AcceptButton1;
+        private System.Windows.Forms.BindingSource countryBindingSource;
     }
 }

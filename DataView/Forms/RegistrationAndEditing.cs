@@ -89,6 +89,7 @@ namespace Information_System_for_eSport
                 {
                     player.RoleID = ReturnRole();
                     Controller.CreatePlayer(player);
+                    Controller.SendEmail(player.Email, "registration");
                 }      
                 Program.currentPlayer = player;
                 Owner.Enabled = true;
@@ -99,8 +100,8 @@ namespace Information_System_for_eSport
 
         private void Registration_Load(object sender, EventArgs e)
         {
-
-            this.countriesTableAdapter.Fill(this.cybersportDBDataSet2.Countries);
+            //this.countriesTableAdapter.Fill(this.cybersportDBDataSet2.Countries);
+            CountryField.DataSource = Controller.GetCountries();
             if (Program.currentPlayer !=null)
             {
                 NameField.Text = Program.currentPlayer.Name;

@@ -154,14 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\RegistrationAndEditing.resx">
       <DependentUpon>RegistrationAndEditing.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,11 +174,17 @@
       <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataModel.Country.datasource" />
     <None Include="Properties\DataSources\DataModel.Player.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -207,16 +208,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\if_9_2136359.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\security.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\if_15_2136361.png" />
+    <None Include="Resources\previous.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\if_24_2136378.png" />
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-xls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003-doc.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

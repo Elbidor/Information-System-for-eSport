@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,6 +37,7 @@ namespace Information_System_for_eSport.Forms
                     {
                         Owner.Enabled = true;
                         this.Close();
+                        Controller.SendEmail(Program.currentPlayer.Email, "login");
                     }
                     else MetroFramework.MetroMessageBox.Show(this, "Неправильно введен логин/пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

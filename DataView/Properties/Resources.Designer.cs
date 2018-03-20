@@ -63,9 +63,9 @@ namespace Information_System_for_eSport.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_15_2136361 {
+        internal static System.Drawing.Bitmap _001_xls {
             get {
-                object obj = ResourceManager.GetObject("if_15_2136361", resourceCulture);
+                object obj = ResourceManager.GetObject("001-xls", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Information_System_for_eSport.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_24_2136378 {
+        internal static System.Drawing.Bitmap _002_pdf {
             get {
-                object obj = ResourceManager.GetObject("if_24_2136378", resourceCulture);
+                object obj = ResourceManager.GetObject("002-pdf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,29 @@ namespace Information_System_for_eSport.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap if_9_2136359 {
+        internal static System.Drawing.Bitmap _003_doc {
             get {
-                object obj = ResourceManager.GetObject("if_9_2136359", resourceCulture);
+                object obj = ResourceManager.GetObject("003-doc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap group {
+            get {
+                object obj = ResourceManager.GetObject("group", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap previous {
+            get {
+                object obj = ResourceManager.GetObject("previous", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
