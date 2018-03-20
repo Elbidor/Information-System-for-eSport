@@ -49,6 +49,11 @@ namespace DataController
             ctx.SaveChanges();
             
         }
+        public static Player FindPlayer(Guid id)
+        {
+            var ctx = new CybersportDBEntities();
+            return ctx.Players.ToList().First(pl => pl.PlayerID == id);
+        }
         public static List<Country> GetCountries()
         {
             var ctx = new CybersportDBEntities();
@@ -67,6 +72,7 @@ namespace DataController
                 return null;
             }
         }
+       
         public static List<Role> GetRoles()
         {
             var ctx = new CybersportDBEntities();

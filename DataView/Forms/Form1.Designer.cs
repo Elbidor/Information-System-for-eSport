@@ -29,25 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.PlayerTab = new MetroFramework.Controls.MetroTabPage();
             this.PlayerGrid = new MetroFramework.Controls.MetroGrid();
-            this.playersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
-            this.TeamTab = new MetroFramework.Controls.MetroTabPage();
-            this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
-            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.RegistrationButton = new MetroFramework.Controls.MetroTile();
-            this.playersTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.PlayersTableAdapter();
-            this.EnterButton = new MetroFramework.Controls.MetroTile();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.NicknameLabel = new MetroFramework.Controls.MetroLabel();
-            this.ExitButton = new MetroFramework.Controls.MetroTile();
-            this.EditButton = new MetroFramework.Controls.MetroTile();
-            this.DeleteButton = new MetroFramework.Controls.MetroTile();
             this.playerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nicknameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +48,45 @@
             this.roleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
+            this.TeamTab = new MetroFramework.Controls.MetroTabPage();
+            this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
+            this.playersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.RegistrationButton = new MetroFramework.Controls.MetroTile();
+            this.playersTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.PlayersTableAdapter();
+            this.EnterButton = new MetroFramework.Controls.MetroTile();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.NicknameLabel = new MetroFramework.Controls.MetroLabel();
+            this.ExitButton = new MetroFramework.Controls.MetroTile();
+            this.EditButton = new MetroFramework.Controls.MetroTile();
+            this.DeleteButton = new MetroFramework.Controls.MetroTile();
+            this.InformationPanel = new MetroFramework.Controls.MetroPanel();
+            this.InfoPanelCurrentTeamField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelPlayedRoundsField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelPlayedMapsField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelCountryField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelAgeField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelSurnameField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelNicknameField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelNameField = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelCurrentTeam = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelPlayedRounds = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelPlayedMaps = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelCountry = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelAge = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelSurname = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelNickname = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelName = new MetroFramework.Controls.MetroLabel();
+            this.InfoPanelHeadLabel = new MetroFramework.Controls.MetroLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TabControl.SuspendLayout();
             this.PlayerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).BeginInit();
+            this.InformationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabControl
@@ -81,7 +101,7 @@
             this.TabControl.Location = new System.Drawing.Point(23, 74);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(1198, 523);
+            this.TabControl.Size = new System.Drawing.Size(1013, 523);
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
             // 
@@ -93,7 +113,7 @@
             this.PlayerTab.HorizontalScrollbarSize = 10;
             this.PlayerTab.Location = new System.Drawing.Point(4, 39);
             this.PlayerTab.Name = "PlayerTab";
-            this.PlayerTab.Size = new System.Drawing.Size(1190, 480);
+            this.PlayerTab.Size = new System.Drawing.Size(1005, 480);
             this.PlayerTab.TabIndex = 0;
             this.PlayerTab.Text = "Игроки";
             this.PlayerTab.VerticalScrollbarBarColor = true;
@@ -108,17 +128,18 @@
             this.PlayerGrid.AllowUserToResizeRows = false;
             this.PlayerGrid.AutoGenerateColumns = false;
             this.PlayerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.PlayerGrid.BackgroundColor = System.Drawing.Color.White;
+            this.PlayerGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.PlayerGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PlayerGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.PlayerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.playerIDDataGridViewTextBoxColumn,
@@ -135,37 +156,143 @@
             this.emailDataGridViewTextBoxColumn,
             this.passwordDataGridViewTextBoxColumn});
             this.PlayerGrid.DataSource = this.playersBindingSource1;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle11;
             this.PlayerGrid.EnableHeadersVisualStyles = false;
             this.PlayerGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.PlayerGrid.GridColor = System.Drawing.Color.White;
+            this.PlayerGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.PlayerGrid.Location = new System.Drawing.Point(4, 81);
+            this.PlayerGrid.MultiSelect = false;
             this.PlayerGrid.Name = "PlayerGrid";
             this.PlayerGrid.ReadOnly = true;
             this.PlayerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.PlayerGrid.RowHeadersVisible = false;
             this.PlayerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PlayerGrid.RowTemplate.Height = 24;
             this.PlayerGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.PlayerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.PlayerGrid.Size = new System.Drawing.Size(1094, 317);
+            this.PlayerGrid.Size = new System.Drawing.Size(1001, 317);
             this.PlayerGrid.Style = MetroFramework.MetroColorStyle.Lime;
             this.PlayerGrid.TabIndex = 4;
+            this.PlayerGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerGrid_CellContentDoubleClick);
+            // 
+            // playerIDDataGridViewTextBoxColumn
+            // 
+            this.playerIDDataGridViewTextBoxColumn.DataPropertyName = "PlayerID";
+            this.playerIDDataGridViewTextBoxColumn.HeaderText = "PlayerID";
+            this.playerIDDataGridViewTextBoxColumn.Name = "playerIDDataGridViewTextBoxColumn";
+            this.playerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playerIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // nicknameDataGridViewTextBoxColumn
+            // 
+            this.nicknameDataGridViewTextBoxColumn.DataPropertyName = "Nickname";
+            this.nicknameDataGridViewTextBoxColumn.HeaderText = "Никнейм";
+            this.nicknameDataGridViewTextBoxColumn.Name = "nicknameDataGridViewTextBoxColumn";
+            this.nicknameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nicknameDataGridViewTextBoxColumn.Width = 126;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.surnameDataGridViewTextBoxColumn.Width = 126;
+            // 
+            // countryIDDataGridViewTextBoxColumn
+            // 
+            this.countryIDDataGridViewTextBoxColumn.DataPropertyName = "CountryID";
+            this.countryIDDataGridViewTextBoxColumn.HeaderText = "CountryID";
+            this.countryIDDataGridViewTextBoxColumn.Name = "countryIDDataGridViewTextBoxColumn";
+            this.countryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.countryIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // countryNameDataGridViewTextBoxColumn
+            // 
+            this.countryNameDataGridViewTextBoxColumn.DataPropertyName = "CountryName";
+            this.countryNameDataGridViewTextBoxColumn.HeaderText = "Страна";
+            this.countryNameDataGridViewTextBoxColumn.Name = "countryNameDataGridViewTextBoxColumn";
+            this.countryNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.countryNameDataGridViewTextBoxColumn.Width = 104;
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "Возраст";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ageDataGridViewTextBoxColumn.Width = 112;
+            // 
+            // ratingDataGridViewTextBoxColumn
+            // 
+            this.ratingDataGridViewTextBoxColumn.DataPropertyName = "Rating";
+            this.ratingDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
+            this.ratingDataGridViewTextBoxColumn.Name = "ratingDataGridViewTextBoxColumn";
+            this.ratingDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ratingDataGridViewTextBoxColumn.Width = 113;
+            // 
+            // playedMapsDataGridViewTextBoxColumn
+            // 
+            this.playedMapsDataGridViewTextBoxColumn.DataPropertyName = "PlayedMaps";
+            this.playedMapsDataGridViewTextBoxColumn.HeaderText = "Сыграно карт";
+            this.playedMapsDataGridViewTextBoxColumn.Name = "playedMapsDataGridViewTextBoxColumn";
+            this.playedMapsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playedMapsDataGridViewTextBoxColumn.Width = 152;
+            // 
+            // playedRoundsDataGridViewTextBoxColumn
+            // 
+            this.playedRoundsDataGridViewTextBoxColumn.DataPropertyName = "PlayedRounds";
+            this.playedRoundsDataGridViewTextBoxColumn.HeaderText = "Сыграно раундов";
+            this.playedRoundsDataGridViewTextBoxColumn.Name = "playedRoundsDataGridViewTextBoxColumn";
+            this.playedRoundsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.playedRoundsDataGridViewTextBoxColumn.Width = 186;
+            // 
+            // roleIDDataGridViewTextBoxColumn
+            // 
+            this.roleIDDataGridViewTextBoxColumn.DataPropertyName = "RoleID";
+            this.roleIDDataGridViewTextBoxColumn.HeaderText = "RoleID";
+            this.roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
+            this.roleIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.roleIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            this.emailDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            this.passwordDataGridViewTextBoxColumn.Visible = false;
             // 
             // playersBindingSource1
             // 
@@ -184,7 +311,7 @@
             this.TeamTab.HorizontalScrollbarSize = 10;
             this.TeamTab.Location = new System.Drawing.Point(4, 39);
             this.TeamTab.Name = "TeamTab";
-            this.TeamTab.Size = new System.Drawing.Size(1016, 480);
+            this.TeamTab.Size = new System.Drawing.Size(1005, 480);
             this.TeamTab.TabIndex = 1;
             this.TeamTab.Text = "Команды";
             this.TeamTab.VerticalScrollbarBarColor = true;
@@ -198,7 +325,7 @@
             this.TournamentTab.HorizontalScrollbarSize = 10;
             this.TournamentTab.Location = new System.Drawing.Point(4, 39);
             this.TournamentTab.Name = "TournamentTab";
-            this.TournamentTab.Size = new System.Drawing.Size(1016, 480);
+            this.TournamentTab.Size = new System.Drawing.Size(1005, 480);
             this.TournamentTab.TabIndex = 2;
             this.TournamentTab.Text = "Чемпионаты";
             this.TournamentTab.VerticalScrollbarBarColor = true;
@@ -311,114 +438,244 @@
             this.DeleteButton.Visible = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // playerIDDataGridViewTextBoxColumn
+            // InformationPanel
             // 
-            this.playerIDDataGridViewTextBoxColumn.DataPropertyName = "PlayerID";
-            this.playerIDDataGridViewTextBoxColumn.HeaderText = "PlayerID";
-            this.playerIDDataGridViewTextBoxColumn.Name = "playerIDDataGridViewTextBoxColumn";
-            this.playerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.playerIDDataGridViewTextBoxColumn.Visible = false;
+            this.InformationPanel.Controls.Add(this.InfoPanelCurrentTeamField);
+            this.InformationPanel.Controls.Add(this.InfoPanelPlayedRoundsField);
+            this.InformationPanel.Controls.Add(this.InfoPanelPlayedMapsField);
+            this.InformationPanel.Controls.Add(this.InfoPanelCountryField);
+            this.InformationPanel.Controls.Add(this.InfoPanelAgeField);
+            this.InformationPanel.Controls.Add(this.InfoPanelSurnameField);
+            this.InformationPanel.Controls.Add(this.InfoPanelNicknameField);
+            this.InformationPanel.Controls.Add(this.InfoPanelNameField);
+            this.InformationPanel.Controls.Add(this.InfoPanelCurrentTeam);
+            this.InformationPanel.Controls.Add(this.InfoPanelPlayedRounds);
+            this.InformationPanel.Controls.Add(this.InfoPanelPlayedMaps);
+            this.InformationPanel.Controls.Add(this.InfoPanelCountry);
+            this.InformationPanel.Controls.Add(this.InfoPanelAge);
+            this.InformationPanel.Controls.Add(this.InfoPanelSurname);
+            this.InformationPanel.Controls.Add(this.InfoPanelNickname);
+            this.InformationPanel.Controls.Add(this.InfoPanelName);
+            this.InformationPanel.Controls.Add(this.InfoPanelHeadLabel);
+            this.InformationPanel.Enabled = false;
+            this.InformationPanel.HorizontalScrollbarBarColor = true;
+            this.InformationPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.InformationPanel.HorizontalScrollbarSize = 10;
+            this.InformationPanel.Location = new System.Drawing.Point(1043, 113);
+            this.InformationPanel.Name = "InformationPanel";
+            this.InformationPanel.Size = new System.Drawing.Size(10, 398);
+            this.InformationPanel.TabIndex = 10;
+            this.InformationPanel.VerticalScrollbarBarColor = true;
+            this.InformationPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.InformationPanel.VerticalScrollbarSize = 10;
+            this.InformationPanel.Visible = false;
             // 
-            // nameDataGridViewTextBoxColumn
+            // InfoPanelCurrentTeamField
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Имя";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 80;
+            this.InfoPanelCurrentTeamField.AutoSize = true;
+            this.InfoPanelCurrentTeamField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelCurrentTeamField.Location = new System.Drawing.Point(191, 273);
+            this.InfoPanelCurrentTeamField.Name = "InfoPanelCurrentTeamField";
+            this.InfoPanelCurrentTeamField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelCurrentTeamField.TabIndex = 18;
+            this.InfoPanelCurrentTeamField.Text = "Имя:";
+            this.InfoPanelCurrentTeamField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelCurrentTeamField.Visible = false;
             // 
-            // nicknameDataGridViewTextBoxColumn
+            // InfoPanelPlayedRoundsField
             // 
-            this.nicknameDataGridViewTextBoxColumn.DataPropertyName = "Nickname";
-            this.nicknameDataGridViewTextBoxColumn.HeaderText = "Никнейм";
-            this.nicknameDataGridViewTextBoxColumn.Name = "nicknameDataGridViewTextBoxColumn";
-            this.nicknameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nicknameDataGridViewTextBoxColumn.Width = 126;
+            this.InfoPanelPlayedRoundsField.AutoSize = true;
+            this.InfoPanelPlayedRoundsField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelPlayedRoundsField.Location = new System.Drawing.Point(193, 242);
+            this.InfoPanelPlayedRoundsField.Name = "InfoPanelPlayedRoundsField";
+            this.InfoPanelPlayedRoundsField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelPlayedRoundsField.TabIndex = 17;
+            this.InfoPanelPlayedRoundsField.Text = "Имя:";
+            this.InfoPanelPlayedRoundsField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelPlayedRoundsField.Visible = false;
             // 
-            // surnameDataGridViewTextBoxColumn
+            // InfoPanelPlayedMapsField
             // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Фамилия";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.surnameDataGridViewTextBoxColumn.Width = 126;
+            this.InfoPanelPlayedMapsField.AutoSize = true;
+            this.InfoPanelPlayedMapsField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelPlayedMapsField.Location = new System.Drawing.Point(158, 212);
+            this.InfoPanelPlayedMapsField.Name = "InfoPanelPlayedMapsField";
+            this.InfoPanelPlayedMapsField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelPlayedMapsField.TabIndex = 16;
+            this.InfoPanelPlayedMapsField.Text = "Имя:";
+            this.InfoPanelPlayedMapsField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelPlayedMapsField.Visible = false;
             // 
-            // countryIDDataGridViewTextBoxColumn
+            // InfoPanelCountryField
             // 
-            this.countryIDDataGridViewTextBoxColumn.DataPropertyName = "CountryID";
-            this.countryIDDataGridViewTextBoxColumn.HeaderText = "CountryID";
-            this.countryIDDataGridViewTextBoxColumn.Name = "countryIDDataGridViewTextBoxColumn";
-            this.countryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.countryIDDataGridViewTextBoxColumn.Visible = false;
+            this.InfoPanelCountryField.AutoSize = true;
+            this.InfoPanelCountryField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelCountryField.Location = new System.Drawing.Point(108, 181);
+            this.InfoPanelCountryField.Name = "InfoPanelCountryField";
+            this.InfoPanelCountryField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelCountryField.TabIndex = 15;
+            this.InfoPanelCountryField.Text = "Имя:";
+            this.InfoPanelCountryField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelCountryField.Visible = false;
             // 
-            // countryNameDataGridViewTextBoxColumn
+            // InfoPanelAgeField
             // 
-            this.countryNameDataGridViewTextBoxColumn.DataPropertyName = "CountryName";
-            this.countryNameDataGridViewTextBoxColumn.HeaderText = "Страна";
-            this.countryNameDataGridViewTextBoxColumn.Name = "countryNameDataGridViewTextBoxColumn";
-            this.countryNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.countryNameDataGridViewTextBoxColumn.Width = 104;
+            this.InfoPanelAgeField.AutoSize = true;
+            this.InfoPanelAgeField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelAgeField.Location = new System.Drawing.Point(113, 152);
+            this.InfoPanelAgeField.Name = "InfoPanelAgeField";
+            this.InfoPanelAgeField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelAgeField.TabIndex = 14;
+            this.InfoPanelAgeField.Text = "Имя:";
+            this.InfoPanelAgeField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelAgeField.Visible = false;
             // 
-            // ageDataGridViewTextBoxColumn
+            // InfoPanelSurnameField
             // 
-            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
-            this.ageDataGridViewTextBoxColumn.HeaderText = "Возраст";
-            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
-            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ageDataGridViewTextBoxColumn.Width = 112;
+            this.InfoPanelSurnameField.AutoSize = true;
+            this.InfoPanelSurnameField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelSurnameField.Location = new System.Drawing.Point(121, 122);
+            this.InfoPanelSurnameField.Name = "InfoPanelSurnameField";
+            this.InfoPanelSurnameField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelSurnameField.TabIndex = 13;
+            this.InfoPanelSurnameField.Text = "Имя:";
+            this.InfoPanelSurnameField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelSurnameField.Visible = false;
             // 
-            // ratingDataGridViewTextBoxColumn
+            // InfoPanelNicknameField
             // 
-            this.ratingDataGridViewTextBoxColumn.DataPropertyName = "Rating";
-            this.ratingDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
-            this.ratingDataGridViewTextBoxColumn.Name = "ratingDataGridViewTextBoxColumn";
-            this.ratingDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ratingDataGridViewTextBoxColumn.Width = 113;
+            this.InfoPanelNicknameField.AutoSize = true;
+            this.InfoPanelNicknameField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelNicknameField.Location = new System.Drawing.Point(121, 91);
+            this.InfoPanelNicknameField.Name = "InfoPanelNicknameField";
+            this.InfoPanelNicknameField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelNicknameField.TabIndex = 12;
+            this.InfoPanelNicknameField.Text = "Имя:";
+            this.InfoPanelNicknameField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelNicknameField.Visible = false;
             // 
-            // playedMapsDataGridViewTextBoxColumn
+            // InfoPanelNameField
             // 
-            this.playedMapsDataGridViewTextBoxColumn.DataPropertyName = "PlayedMaps";
-            this.playedMapsDataGridViewTextBoxColumn.HeaderText = "Сыграно карт";
-            this.playedMapsDataGridViewTextBoxColumn.Name = "playedMapsDataGridViewTextBoxColumn";
-            this.playedMapsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.playedMapsDataGridViewTextBoxColumn.Width = 152;
+            this.InfoPanelNameField.AutoSize = true;
+            this.InfoPanelNameField.Cursor = System.Windows.Forms.Cursors.Default;
+            this.InfoPanelNameField.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelNameField.Location = new System.Drawing.Point(82, 58);
+            this.InfoPanelNameField.Name = "InfoPanelNameField";
+            this.InfoPanelNameField.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelNameField.TabIndex = 11;
+            this.InfoPanelNameField.Text = "Имя:";
+            this.InfoPanelNameField.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.InfoPanelNameField.Visible = false;
             // 
-            // playedRoundsDataGridViewTextBoxColumn
+            // InfoPanelCurrentTeam
             // 
-            this.playedRoundsDataGridViewTextBoxColumn.DataPropertyName = "PlayedRounds";
-            this.playedRoundsDataGridViewTextBoxColumn.HeaderText = "Сыграно раундов";
-            this.playedRoundsDataGridViewTextBoxColumn.Name = "playedRoundsDataGridViewTextBoxColumn";
-            this.playedRoundsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.playedRoundsDataGridViewTextBoxColumn.Width = 186;
+            this.InfoPanelCurrentTeam.AutoSize = true;
+            this.InfoPanelCurrentTeam.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelCurrentTeam.Location = new System.Drawing.Point(26, 273);
+            this.InfoPanelCurrentTeam.Name = "InfoPanelCurrentTeam";
+            this.InfoPanelCurrentTeam.Size = new System.Drawing.Size(159, 25);
+            this.InfoPanelCurrentTeam.TabIndex = 10;
+            this.InfoPanelCurrentTeam.Text = "Текущая команда:";
+            this.InfoPanelCurrentTeam.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // roleIDDataGridViewTextBoxColumn
+            // InfoPanelPlayedRounds
             // 
-            this.roleIDDataGridViewTextBoxColumn.DataPropertyName = "RoleID";
-            this.roleIDDataGridViewTextBoxColumn.HeaderText = "RoleID";
-            this.roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
-            this.roleIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.roleIDDataGridViewTextBoxColumn.Visible = false;
+            this.InfoPanelPlayedRounds.AutoSize = true;
+            this.InfoPanelPlayedRounds.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelPlayedRounds.Location = new System.Drawing.Point(26, 242);
+            this.InfoPanelPlayedRounds.Name = "InfoPanelPlayedRounds";
+            this.InfoPanelPlayedRounds.Size = new System.Drawing.Size(161, 25);
+            this.InfoPanelPlayedRounds.TabIndex = 9;
+            this.InfoPanelPlayedRounds.Text = "Сыграно раундов:";
+            this.InfoPanelPlayedRounds.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // emailDataGridViewTextBoxColumn
+            // InfoPanelPlayedMaps
             // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Visible = false;
+            this.InfoPanelPlayedMaps.AutoSize = true;
+            this.InfoPanelPlayedMaps.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelPlayedMaps.Location = new System.Drawing.Point(26, 212);
+            this.InfoPanelPlayedMaps.Name = "InfoPanelPlayedMaps";
+            this.InfoPanelPlayedMaps.Size = new System.Drawing.Size(126, 25);
+            this.InfoPanelPlayedMaps.TabIndex = 8;
+            this.InfoPanelPlayedMaps.Text = "Сыграно карт:";
+            this.InfoPanelPlayedMaps.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // passwordDataGridViewTextBoxColumn
+            // InfoPanelCountry
             // 
-            this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
-            this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
-            this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
-            this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
-            this.passwordDataGridViewTextBoxColumn.Visible = false;
+            this.InfoPanelCountry.AutoSize = true;
+            this.InfoPanelCountry.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelCountry.Location = new System.Drawing.Point(26, 181);
+            this.InfoPanelCountry.Name = "InfoPanelCountry";
+            this.InfoPanelCountry.Size = new System.Drawing.Size(74, 25);
+            this.InfoPanelCountry.TabIndex = 7;
+            this.InfoPanelCountry.Text = "Страна:";
+            this.InfoPanelCountry.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // InfoPanelAge
+            // 
+            this.InfoPanelAge.AutoSize = true;
+            this.InfoPanelAge.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelAge.Location = new System.Drawing.Point(26, 152);
+            this.InfoPanelAge.Name = "InfoPanelAge";
+            this.InfoPanelAge.Size = new System.Drawing.Size(81, 25);
+            this.InfoPanelAge.TabIndex = 6;
+            this.InfoPanelAge.Text = "Возраст:";
+            this.InfoPanelAge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // InfoPanelSurname
+            // 
+            this.InfoPanelSurname.AutoSize = true;
+            this.InfoPanelSurname.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelSurname.Location = new System.Drawing.Point(26, 122);
+            this.InfoPanelSurname.Name = "InfoPanelSurname";
+            this.InfoPanelSurname.Size = new System.Drawing.Size(89, 25);
+            this.InfoPanelSurname.TabIndex = 5;
+            this.InfoPanelSurname.Text = "Фамилия:";
+            this.InfoPanelSurname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // InfoPanelNickname
+            // 
+            this.InfoPanelNickname.AutoSize = true;
+            this.InfoPanelNickname.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelNickname.Location = new System.Drawing.Point(26, 91);
+            this.InfoPanelNickname.Name = "InfoPanelNickname";
+            this.InfoPanelNickname.Size = new System.Drawing.Size(89, 25);
+            this.InfoPanelNickname.TabIndex = 4;
+            this.InfoPanelNickname.Text = "Никнейм:";
+            this.InfoPanelNickname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // InfoPanelName
+            // 
+            this.InfoPanelName.AutoSize = true;
+            this.InfoPanelName.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelName.Location = new System.Drawing.Point(26, 58);
+            this.InfoPanelName.Name = "InfoPanelName";
+            this.InfoPanelName.Size = new System.Drawing.Size(50, 25);
+            this.InfoPanelName.TabIndex = 3;
+            this.InfoPanelName.Text = "Имя:";
+            this.InfoPanelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // InfoPanelHeadLabel
+            // 
+            this.InfoPanelHeadLabel.AutoSize = true;
+            this.InfoPanelHeadLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.InfoPanelHeadLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.InfoPanelHeadLabel.Location = new System.Drawing.Point(64, 12);
+            this.InfoPanelHeadLabel.Name = "InfoPanelHeadLabel";
+            this.InfoPanelHeadLabel.Size = new System.Drawing.Size(218, 25);
+            this.InfoPanelHeadLabel.TabIndex = 2;
+            this.InfoPanelHeadLabel.Text = "Информация об игроке";
+            this.InfoPanelHeadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1468, 534);
+            this.Controls.Add(this.InformationPanel);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.ExitButton);
@@ -439,6 +696,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playersBindingSource)).EndInit();
+            this.InformationPanel.ResumeLayout(false);
+            this.InformationPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,6 +734,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private MetroFramework.Controls.MetroPanel InformationPanel;
+        private MetroFramework.Controls.MetroLabel InfoPanelCountry;
+        private MetroFramework.Controls.MetroLabel InfoPanelAge;
+        private MetroFramework.Controls.MetroLabel InfoPanelSurname;
+        private MetroFramework.Controls.MetroLabel InfoPanelNickname;
+        private MetroFramework.Controls.MetroLabel InfoPanelName;
+        private MetroFramework.Controls.MetroLabel InfoPanelHeadLabel;
+        private MetroFramework.Controls.MetroLabel InfoPanelCurrentTeam;
+        private MetroFramework.Controls.MetroLabel InfoPanelPlayedRounds;
+        private MetroFramework.Controls.MetroLabel InfoPanelPlayedMaps;
+        private MetroFramework.Controls.MetroLabel InfoPanelCurrentTeamField;
+        private MetroFramework.Controls.MetroLabel InfoPanelPlayedRoundsField;
+        private MetroFramework.Controls.MetroLabel InfoPanelPlayedMapsField;
+        private MetroFramework.Controls.MetroLabel InfoPanelCountryField;
+        private MetroFramework.Controls.MetroLabel InfoPanelAgeField;
+        private MetroFramework.Controls.MetroLabel InfoPanelSurnameField;
+        private MetroFramework.Controls.MetroLabel InfoPanelNicknameField;
+        private MetroFramework.Controls.MetroLabel InfoPanelNameField;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

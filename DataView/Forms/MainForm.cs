@@ -107,5 +107,43 @@ namespace Information_System_for_eSport
             this.Enabled = false;
             this.Hide();
         }
+
+        private void PlayerGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (TabControl.SelectedTab.Name)
+            {
+                case "PlayerTab":
+                    timer1.Start();
+                    Player displayedPlayer = null;
+                    foreach (DataGridViewRow row in PlayerGrid.SelectedRows)
+                    {
+                        displayedPlayer = Controller.FindPlayer((Guid)row.Cells[0].Value);
+                    }
+                    InformationPanel.Visible = true;
+                    InformationPanel.Enabled = true;
+                    InfoPanelNameField.Visible = true;
+                    InfoPanelNicknameField.Visible = true;
+                    InfoPanelSurnameField.Visible = true;
+                    InfoPanelAgeField.Visible = true;
+                    InfoPanelPlayedMapsField.Visible = true;
+                    InfoPanelPlayedRoundsField.Visible = true;
+                    InfoPanelCountryField.Visible = true;
+                    InfoPanelCurrentTeam.Visible = true; 
+                    InfoPanelNameField.Text = displayedPlayer.Name;
+                    InfoPanelNicknameField.Text = displayedPlayer.Nickname;
+                    InfoPanelSurnameField.Text = displayedPlayer.Name;
+                    InfoPanelAgeField.Text = displayedPlayer.Age.ToString();
+                    InfoPanelPlayedMapsField.Text = displayedPlayer.PlayedMaps.ToString();
+                    InfoPanelPlayedRoundsField.Text = displayedPlayer.PlayedRounds.ToString();
+                    InfoPanelCountryField.Text = displayedPlayer.CountryName;
+                    InfoPanelCurrentTeam.Text = "***"; //Добавить связь с командами
+                    break;
+            }
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(InformationPanel.Width <=402) InformationPanel.Width += 60;
+            else timer1.Stop();
+        }
     }
 }
