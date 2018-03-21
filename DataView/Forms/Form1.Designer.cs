@@ -29,11 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.PlayerTab = new MetroFramework.Controls.MetroTabPage();
+            this.RoundsLabel = new MetroFramework.Controls.MetroLabel();
+            this.MapsLabel = new MetroFramework.Controls.MetroLabel();
+            this.RatingLabel = new MetroFramework.Controls.MetroLabel();
+            this.ResetButton = new MetroFramework.Controls.MetroLink();
+            this.FilterAge = new MetroFramework.Controls.MetroComboBox();
+            this.FilterPlayedRounds = new MetroFramework.Controls.MetroTrackBar();
+            this.FilterPlayedMaps = new MetroFramework.Controls.MetroTrackBar();
+            this.FilterRating = new MetroFramework.Controls.MetroTrackBar();
+            this.FilterCountry = new MetroFramework.Controls.MetroComboBox();
+            this.countryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.FilterSurname = new MetroFramework.Controls.MetroTextBox();
+            this.FilterNickname = new MetroFramework.Controls.MetroTextBox();
+            this.FilterName = new MetroFramework.Controls.MetroTextBox();
             this.CreateExcelButton = new MetroFramework.Controls.MetroLink();
             this.CreateWordButton = new MetroFramework.Controls.MetroLink();
             this.CreatePdfButton = new MetroFramework.Controls.MetroLink();
@@ -91,6 +104,7 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.TabControl.SuspendLayout();
             this.PlayerTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
@@ -115,6 +129,18 @@
             // 
             // PlayerTab
             // 
+            this.PlayerTab.Controls.Add(this.RoundsLabel);
+            this.PlayerTab.Controls.Add(this.MapsLabel);
+            this.PlayerTab.Controls.Add(this.RatingLabel);
+            this.PlayerTab.Controls.Add(this.ResetButton);
+            this.PlayerTab.Controls.Add(this.FilterAge);
+            this.PlayerTab.Controls.Add(this.FilterPlayedRounds);
+            this.PlayerTab.Controls.Add(this.FilterPlayedMaps);
+            this.PlayerTab.Controls.Add(this.FilterRating);
+            this.PlayerTab.Controls.Add(this.FilterCountry);
+            this.PlayerTab.Controls.Add(this.FilterSurname);
+            this.PlayerTab.Controls.Add(this.FilterNickname);
+            this.PlayerTab.Controls.Add(this.FilterName);
             this.PlayerTab.Controls.Add(this.CreateExcelButton);
             this.PlayerTab.Controls.Add(this.CreateWordButton);
             this.PlayerTab.Controls.Add(this.CreatePdfButton);
@@ -130,6 +156,213 @@
             this.PlayerTab.VerticalScrollbarBarColor = true;
             this.PlayerTab.VerticalScrollbarHighlightOnWheel = false;
             this.PlayerTab.VerticalScrollbarSize = 10;
+            // 
+            // RoundsLabel
+            // 
+            this.RoundsLabel.AutoSize = true;
+            this.RoundsLabel.Location = new System.Drawing.Point(355, 50);
+            this.RoundsLabel.Name = "RoundsLabel";
+            this.RoundsLabel.Size = new System.Drawing.Size(17, 20);
+            this.RoundsLabel.TabIndex = 18;
+            this.RoundsLabel.Text = "0";
+            // 
+            // MapsLabel
+            // 
+            this.MapsLabel.AutoSize = true;
+            this.MapsLabel.Location = new System.Drawing.Point(177, 50);
+            this.MapsLabel.Name = "MapsLabel";
+            this.MapsLabel.Size = new System.Drawing.Size(17, 20);
+            this.MapsLabel.TabIndex = 17;
+            this.MapsLabel.Text = "0";
+            // 
+            // RatingLabel
+            // 
+            this.RatingLabel.AutoSize = true;
+            this.RatingLabel.Location = new System.Drawing.Point(0, 50);
+            this.RatingLabel.Name = "RatingLabel";
+            this.RatingLabel.Size = new System.Drawing.Size(17, 20);
+            this.RatingLabel.TabIndex = 16;
+            this.RatingLabel.Text = "0";
+            // 
+            // ResetButton
+            // 
+            this.ResetButton.Image = global::Information_System_for_eSport.Properties.Resources.loading__1_;
+            this.ResetButton.ImageSize = 25;
+            this.ResetButton.Location = new System.Drawing.Point(520, 13);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(40, 31);
+            this.ResetButton.TabIndex = 15;
+            this.ResetButton.UseSelectable = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // FilterAge
+            // 
+            this.FilterAge.FormattingEnabled = true;
+            this.FilterAge.ItemHeight = 24;
+            this.FilterAge.Location = new System.Drawing.Point(459, 14);
+            this.FilterAge.Name = "FilterAge";
+            this.FilterAge.Size = new System.Drawing.Size(54, 30);
+            this.FilterAge.TabIndex = 14;
+            this.FilterAge.UseSelectable = true;
+            this.FilterAge.SelectionChangeCommitted += new System.EventHandler(this.FilterAge_SelectionChangeCommitted);
+            // 
+            // FilterPlayedRounds
+            // 
+            this.FilterPlayedRounds.BackColor = System.Drawing.Color.Transparent;
+            this.FilterPlayedRounds.Location = new System.Drawing.Point(385, 50);
+            this.FilterPlayedRounds.Maximum = 100000;
+            this.FilterPlayedRounds.Name = "FilterPlayedRounds";
+            this.FilterPlayedRounds.Size = new System.Drawing.Size(175, 23);
+            this.FilterPlayedRounds.Style = MetroFramework.MetroColorStyle.Blue;
+            this.FilterPlayedRounds.TabIndex = 13;
+            this.FilterPlayedRounds.Text = "metroTrackBar3";
+            this.FilterPlayedRounds.Value = 0;
+            this.FilterPlayedRounds.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FilterRating_Scroll);
+            // 
+            // FilterPlayedMaps
+            // 
+            this.FilterPlayedMaps.BackColor = System.Drawing.Color.Transparent;
+            this.FilterPlayedMaps.Location = new System.Drawing.Point(213, 50);
+            this.FilterPlayedMaps.Maximum = 10000;
+            this.FilterPlayedMaps.Name = "FilterPlayedMaps";
+            this.FilterPlayedMaps.Size = new System.Drawing.Size(136, 23);
+            this.FilterPlayedMaps.SmallChange = 10;
+            this.FilterPlayedMaps.Style = MetroFramework.MetroColorStyle.Teal;
+            this.FilterPlayedMaps.TabIndex = 12;
+            this.FilterPlayedMaps.Text = "metroTrackBar2";
+            this.FilterPlayedMaps.Value = 0;
+            this.FilterPlayedMaps.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FilterRating_Scroll);
+            // 
+            // FilterRating
+            // 
+            this.FilterRating.BackColor = System.Drawing.Color.Transparent;
+            this.FilterRating.Location = new System.Drawing.Point(33, 50);
+            this.FilterRating.Maximum = 3000;
+            this.FilterRating.Name = "FilterRating";
+            this.FilterRating.Size = new System.Drawing.Size(138, 23);
+            this.FilterRating.SmallChange = 10;
+            this.FilterRating.Style = MetroFramework.MetroColorStyle.Red;
+            this.FilterRating.TabIndex = 11;
+            this.FilterRating.Text = "metroTrackBar1";
+            this.FilterRating.Value = 1;
+            this.FilterRating.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FilterRating_Scroll);
+            // 
+            // FilterCountry
+            // 
+            this.FilterCountry.DataSource = this.countryBindingSource;
+            this.FilterCountry.DisplayMember = "Country1";
+            this.FilterCountry.FormattingEnabled = true;
+            this.FilterCountry.ItemHeight = 24;
+            this.FilterCountry.Location = new System.Drawing.Point(345, 14);
+            this.FilterCountry.Name = "FilterCountry";
+            this.FilterCountry.Size = new System.Drawing.Size(108, 30);
+            this.FilterCountry.TabIndex = 11;
+            this.FilterCountry.UseSelectable = true;
+            this.FilterCountry.ValueMember = "CountryID";
+            this.FilterCountry.SelectionChangeCommitted += new System.EventHandler(this.FilterCountry_SelectionChangeCommitted);
+            // 
+            // countryBindingSource
+            // 
+            this.countryBindingSource.DataSource = typeof(DataModel.Country);
+            // 
+            // FilterSurname
+            // 
+            // 
+            // 
+            // 
+            this.FilterSurname.CustomButton.Image = null;
+            this.FilterSurname.CustomButton.Location = new System.Drawing.Point(87, 2);
+            this.FilterSurname.CustomButton.Name = "";
+            this.FilterSurname.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.FilterSurname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.FilterSurname.CustomButton.TabIndex = 1;
+            this.FilterSurname.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.FilterSurname.CustomButton.UseSelectable = true;
+            this.FilterSurname.CustomButton.Visible = false;
+            this.FilterSurname.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.FilterSurname.Lines = new string[0];
+            this.FilterSurname.Location = new System.Drawing.Point(224, 14);
+            this.FilterSurname.MaxLength = 32767;
+            this.FilterSurname.Name = "FilterSurname";
+            this.FilterSurname.PasswordChar = '\0';
+            this.FilterSurname.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.FilterSurname.SelectedText = "";
+            this.FilterSurname.SelectionLength = 0;
+            this.FilterSurname.SelectionStart = 0;
+            this.FilterSurname.ShortcutsEnabled = true;
+            this.FilterSurname.Size = new System.Drawing.Size(115, 30);
+            this.FilterSurname.TabIndex = 10;
+            this.FilterSurname.UseSelectable = true;
+            this.FilterSurname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.FilterSurname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterSurname.TextChanged += new System.EventHandler(this.FilterPlayersEvent);
+            this.FilterSurname.Click += new System.EventHandler(this.OnTextboxClick);
+            // 
+            // FilterNickname
+            // 
+            // 
+            // 
+            // 
+            this.FilterNickname.CustomButton.Image = null;
+            this.FilterNickname.CustomButton.Location = new System.Drawing.Point(88, 2);
+            this.FilterNickname.CustomButton.Name = "";
+            this.FilterNickname.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.FilterNickname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.FilterNickname.CustomButton.TabIndex = 1;
+            this.FilterNickname.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.FilterNickname.CustomButton.UseSelectable = true;
+            this.FilterNickname.CustomButton.Visible = false;
+            this.FilterNickname.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.FilterNickname.Lines = new string[0];
+            this.FilterNickname.Location = new System.Drawing.Point(102, 14);
+            this.FilterNickname.MaxLength = 32767;
+            this.FilterNickname.Name = "FilterNickname";
+            this.FilterNickname.PasswordChar = '\0';
+            this.FilterNickname.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.FilterNickname.SelectedText = "";
+            this.FilterNickname.SelectionLength = 0;
+            this.FilterNickname.SelectionStart = 0;
+            this.FilterNickname.ShortcutsEnabled = true;
+            this.FilterNickname.Size = new System.Drawing.Size(116, 30);
+            this.FilterNickname.TabIndex = 9;
+            this.FilterNickname.UseSelectable = true;
+            this.FilterNickname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.FilterNickname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterNickname.TextChanged += new System.EventHandler(this.FilterPlayersEvent);
+            this.FilterNickname.Click += new System.EventHandler(this.OnTextboxClick);
+            // 
+            // FilterName
+            // 
+            // 
+            // 
+            // 
+            this.FilterName.CustomButton.Image = null;
+            this.FilterName.CustomButton.Location = new System.Drawing.Point(72, 2);
+            this.FilterName.CustomButton.Name = "";
+            this.FilterName.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.FilterName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.FilterName.CustomButton.TabIndex = 1;
+            this.FilterName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.FilterName.CustomButton.UseSelectable = true;
+            this.FilterName.CustomButton.Visible = false;
+            this.FilterName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.FilterName.Lines = new string[0];
+            this.FilterName.Location = new System.Drawing.Point(0, 14);
+            this.FilterName.MaxLength = 32767;
+            this.FilterName.Name = "FilterName";
+            this.FilterName.PasswordChar = '\0';
+            this.FilterName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.FilterName.SelectedText = "";
+            this.FilterName.SelectionLength = 0;
+            this.FilterName.SelectionStart = 0;
+            this.FilterName.ShortcutsEnabled = true;
+            this.FilterName.Size = new System.Drawing.Size(100, 30);
+            this.FilterName.TabIndex = 8;
+            this.FilterName.UseSelectable = true;
+            this.FilterName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.FilterName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterName.TextChanged += new System.EventHandler(this.FilterPlayersEvent);
+            this.FilterName.Click += new System.EventHandler(this.OnTextboxClick);
             // 
             // CreateExcelButton
             // 
@@ -176,14 +409,14 @@
             this.PlayerGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PlayerGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.PlayerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.playerIDDataGridViewTextBoxColumn,
@@ -203,14 +436,14 @@
             this.roleDataGridViewTextBoxColumn,
             this.playersInTeamsDataGridViewTextBoxColumn});
             this.PlayerGrid.DataSource = this.playerBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle14;
             this.PlayerGrid.EnableHeadersVisualStyles = false;
             this.PlayerGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PlayerGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -219,14 +452,14 @@
             this.PlayerGrid.Name = "PlayerGrid";
             this.PlayerGrid.ReadOnly = true;
             this.PlayerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.PlayerGrid.RowHeadersVisible = false;
             this.PlayerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PlayerGrid.RowTemplate.Height = 24;
@@ -793,11 +1026,13 @@
             this.Name = "Form1";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Teal;
-            this.Text = "Form1";
+            this.Text = "Cybersport Information System";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.EnabledChanged += new System.EventHandler(this.Form1_EnabledChanged);
             this.TabControl.ResumeLayout(false);
             this.PlayerTab.ResumeLayout(false);
+            this.PlayerTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
@@ -867,6 +1102,19 @@
         private MetroFramework.Controls.MetroLink CloseInfoPanel;
         private MetroFramework.Controls.MetroLink CareerInfo;
         private System.Windows.Forms.Timer timer2;
+        private MetroFramework.Controls.MetroComboBox FilterCountry;
+        private MetroFramework.Controls.MetroTextBox FilterSurname;
+        private MetroFramework.Controls.MetroTextBox FilterNickname;
+        private MetroFramework.Controls.MetroTextBox FilterName;
+        private System.Windows.Forms.BindingSource countryBindingSource;
+        private MetroFramework.Controls.MetroTrackBar FilterRating;
+        private MetroFramework.Controls.MetroTrackBar FilterPlayedRounds;
+        private MetroFramework.Controls.MetroTrackBar FilterPlayedMaps;
+        private MetroFramework.Controls.MetroComboBox FilterAge;
+        private MetroFramework.Controls.MetroLink ResetButton;
+        private MetroFramework.Controls.MetroLabel RatingLabel;
+        private MetroFramework.Controls.MetroLabel RoundsLabel;
+        private MetroFramework.Controls.MetroLabel MapsLabel;
     }
 }
 

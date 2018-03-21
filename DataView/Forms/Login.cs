@@ -37,7 +37,14 @@ namespace Information_System_for_eSport.Forms
                     {
                         Owner.Enabled = true;
                         this.Close();
-                        Controller.SendEmail(Program.currentPlayer.Email, "login");
+                        try
+                        {
+                            Controller.SendEmail(Program.currentPlayer.Email, "login");
+                        }
+                        catch
+                        {
+                            MetroFramework.MetroMessageBox.Show(this, "Не удалось отправить сообщение, возможно отсутствует подключение к интернету.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else MetroFramework.MetroMessageBox.Show(this, "Неправильно введен логин/пароль.", "Ошибка входа", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

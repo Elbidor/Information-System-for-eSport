@@ -23,6 +23,8 @@ namespace Information_System_for_eSport
 {
     public partial class Form1 : MetroFramework.Forms.MetroForm
     {
+        bool comboCountryUsed = false;
+        bool comboAgeUsed = false;
         MetroFramework.Controls.MetroGrid currentGrid = null;
         public Form1()
         {
@@ -34,6 +36,16 @@ namespace Information_System_for_eSport
             currentGrid = PlayerGrid;
             currentGrid.DataSource = Controller.GetPlayers();
             PlayerGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            FilterCountry.DataSource = Controller.GetCountries();
+            for (int i = 1; i <= 100; i++)
+            {
+                string[] numbers = { i.ToString() };
+                FilterAge.Items.AddRange(numbers);
+            }
+            FilterAge.SelectedIndex = 0;
+            FilterRating.Maximum = Controller.GetPlayersMaxValues("rating");
+            FilterPlayedMaps.Maximum = Controller.GetPlayersMaxValues("maps");
+            FilterPlayedRounds.Maximum = Controller.GetPlayersMaxValues("rounds");
         }
 
         private void Registation_Click(object sender, EventArgs e)
@@ -210,27 +222,31 @@ namespace Information_System_for_eSport
                 worksheet.Name = "ExportedFromDatGrid";
                 int cellRowIndex = 1;
                 int cellColumnIndex = 1;
-
-                for (int i = 0; i < currentGrid.Rows.Count - 1; i++)
+                //Fill headers
+                for (int j = 0; j < currentGrid.Columns.Count; j++)
+                {
+                    if (currentGrid.Columns[j].Visible == true)
+                    {
+                        worksheet.Cells[cellRowIndex, cellColumnIndex] = currentGrid.Columns[j].HeaderText;
+                        cellColumnIndex++;
+                    }
+                }
+                cellColumnIndex = 1;
+                cellRowIndex = 2;
+                //Fill data
+                for (int i = 0; i < currentGrid.Rows.Count; i++)
                 {
                     for (int j = 0; j < currentGrid.Columns.Count; j++)
                     {
                         if (currentGrid.Columns[j].Visible == true)
                         {
-                            if (cellRowIndex == 1)
-                            {
-                                worksheet.Cells[cellRowIndex, cellColumnIndex] = currentGrid.Columns[j].HeaderText;
-                            }
-                            else
-                            {
-                                worksheet.Cells[cellRowIndex, cellColumnIndex] = currentGrid.Rows[i].Cells[j].Value.ToString();                                
-                            }
-                            cellColumnIndex++;
+                             worksheet.Cells[cellRowIndex, cellColumnIndex] = currentGrid.Rows[i].Cells[j].Value.ToString();                                
+                             cellColumnIndex++;
                         }
                     }
                     cellColumnIndex = 1;
-                    cellRowIndex++;                }
-                
+                    cellRowIndex++;
+                }                
                 worksheet.Columns["A:D"].ColumnWidth = 15;
                 worksheet.Columns["F:H"].ColumnWidth = 10;
                 if (!isPDF)
@@ -303,8 +319,7 @@ namespace Information_System_for_eSport
                 for (int c = 1; c <= sheet.LastColumn; c++)
                 {
                     CellRange xCell = sheet.Range[r, c];
-                    TableCell wCell = table.Rows[r - 1].Cells[c - 1];
-                    
+                    TableCell wCell = table.Rows[r - 1].Cells[c - 1];                    
                     TextRange textRange = wCell.AddParagraph().AppendText(xCell.NumberText);
                 }
             }
@@ -327,6 +342,69 @@ namespace Information_System_for_eSport
         }
 
         
+        private void OnTextboxClick(object sender, EventArgs e)
+        {
+            MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
+            textBox.SelectAll();
+        }
+            
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            PlayerGrid.DataSource = Controller.GetPlayers();
+            FilterAge.SelectedIndex = 0;
+            FilterCountry.SelectedIndex = 0;
+            FilterName.Text = "";
+            FilterNickname.Text = "";
+            FilterSurname.Text = "";
+            RatingLabel.Text = "0";
+            MapsLabel.Text = "0";
+            RoundsLabel.Text = "0";
+            FilterRating.Value = 0;
+            FilterPlayedMaps.Value = 0;
+            FilterPlayedRounds.Value = 0;
+            comboCountryUsed = false;
+            comboAgeUsed = false;
+        }
+        
+
+        private Dictionary<string, string> FillFilterDictionary()
+        {
+            Dictionary<string, string> filters = new Dictionary<string, string>();
+            filters.Add($"{currentGrid.Columns[1].DataPropertyName}", FilterName.Text);
+            filters.Add($"{currentGrid.Columns[2].DataPropertyName}", FilterNickname.Text);
+            filters.Add($"{currentGrid.Columns[3].DataPropertyName}", FilterSurname.Text);
+            if (comboCountryUsed) filters.Add($"{currentGrid.Columns[5].DataPropertyName}", FilterCountry.Text);
+            if (comboAgeUsed) filters.Add($"{currentGrid.Columns[6].DataPropertyName}", FilterAge.SelectedItem.ToString());
+            filters.Add($"{currentGrid.Columns[7].DataPropertyName}", FilterRating.Value.ToString());
+            filters.Add($"{currentGrid.Columns[8].DataPropertyName}", FilterPlayedMaps.Value.ToString());
+            filters.Add($"{currentGrid.Columns[9].DataPropertyName}", FilterPlayedRounds.Value.ToString());
+            RatingLabel.Text = FilterRating.Value.ToString();
+            MapsLabel.Text = FilterPlayedMaps.Value.ToString();
+            RoundsLabel.Text = FilterPlayedRounds.Value.ToString();
+            return filters;
+        }
+
+        private void FilterPlayersEvent(object sender, EventArgs e)
+        {
+            PlayerGrid.DataSource = Controller.GetPlayers(FillFilterDictionary());            
+        }
+
+        private void FilterRating_Scroll(object sender, ScrollEventArgs e)
+        {
+            PlayerGrid.DataSource = Controller.GetPlayers(FillFilterDictionary());
+        }
+
+        private void FilterCountry_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comboCountryUsed = true;
+            PlayerGrid.DataSource = Controller.GetPlayers(FillFilterDictionary());
+        }
+
+        private void FilterAge_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comboAgeUsed = true;
+            PlayerGrid.DataSource = Controller.GetPlayers(FillFilterDictionary());
+        }
     }
     
 }

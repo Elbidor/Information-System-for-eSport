@@ -2429,7 +2429,7 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, double Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password) {
+            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, int Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password) {
                 PlayersRow rowPlayersRow = ((PlayersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PlayerID,
@@ -2506,7 +2506,7 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnCountryName);
                 this.columnAge = new global::System.Data.DataColumn("Age", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAge);
-                this.columnRating = new global::System.Data.DataColumn("Rating", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnRating = new global::System.Data.DataColumn("Rating", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRating);
                 this.columnPlayedMaps = new global::System.Data.DataColumn("PlayedMaps", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPlayedMaps);
@@ -5118,9 +5118,9 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Rating {
+            public int Rating {
                 get {
-                    return ((double)(this[this.tablePlayers.RatingColumn]));
+                    return ((int)(this[this.tablePlayers.RatingColumn]));
                 }
                 set {
                     this[this.tablePlayers.RatingColumn] = value;
