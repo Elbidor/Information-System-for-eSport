@@ -72,7 +72,7 @@ namespace Information_System_for_eSport {
         
         private global::System.Data.DataRelation relationFK_Tournaments_Cities;
         
-        private global::System.Data.DataRelation relationFK_Tournaments_Countries;
+        private global::System.Data.DataRelation relationFK_Players_Roles;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -496,7 +496,7 @@ namespace Information_System_for_eSport {
             this.relationFK_Sets_MatchesInTournaments = this.Relations["FK_Sets_MatchesInTournaments"];
             this.relationFK_Teams_Regions = this.Relations["FK_Teams_Regions"];
             this.relationFK_Tournaments_Cities = this.Relations["FK_Tournaments_Cities"];
-            this.relationFK_Tournaments_Countries = this.Relations["FK_Tournaments_Countries"];
+            this.relationFK_Players_Roles = this.Relations["FK_Players_Roles"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -579,10 +579,10 @@ namespace Information_System_for_eSport {
                         this.tableCities.CityIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTournaments.CityIDColumn}, false);
             this.Relations.Add(this.relationFK_Tournaments_Cities);
-            this.relationFK_Tournaments_Countries = new global::System.Data.DataRelation("FK_Tournaments_Countries", new global::System.Data.DataColumn[] {
-                        this.tableCountries.CountryIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTournaments.CountryIDColumn}, false);
-            this.Relations.Add(this.relationFK_Tournaments_Countries);
+            this.relationFK_Players_Roles = new global::System.Data.DataRelation("FK_Players_Roles", new global::System.Data.DataColumn[] {
+                        this.tableRoles.RoleIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePlayers.RoleIDColumn}, false);
+            this.Relations.Add(this.relationFK_Players_Roles);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2255,6 +2255,8 @@ namespace Information_System_for_eSport {
             
             private global::System.Data.DataColumn columnPassword;
             
+            private global::System.Data.DataColumn columnPlayersInTeamsID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PlayersDataTable() {
@@ -2394,6 +2396,14 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PlayersInTeamsIDColumn {
+                get {
+                    return this.columnPlayersInTeamsID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2429,7 +2439,7 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, int Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password) {
+            public PlayersRow AddPlayersRow(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, int Rating, int PlayedMaps, int PlayedRounds, RolesRow parentRolesRowByFK_Players_Roles, string Email, string Password, System.Guid PlayersInTeamsID) {
                 PlayersRow rowPlayersRow = ((PlayersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PlayerID,
@@ -2442,9 +2452,13 @@ namespace Information_System_for_eSport {
                         Rating,
                         PlayedMaps,
                         PlayedRounds,
-                        RoleID,
+                        null,
                         Email,
-                        Password};
+                        Password,
+                        PlayersInTeamsID};
+                if ((parentRolesRowByFK_Players_Roles != null)) {
+                    columnValuesArray[10] = parentRolesRowByFK_Players_Roles[0];
+                }
                 rowPlayersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPlayersRow);
                 return rowPlayersRow;
@@ -2487,6 +2501,7 @@ namespace Information_System_for_eSport {
                 this.columnRoleID = base.Columns["RoleID"];
                 this.columnEmail = base.Columns["Email"];
                 this.columnPassword = base.Columns["Password"];
+                this.columnPlayersInTeamsID = base.Columns["PlayersInTeamsID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2518,6 +2533,8 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnEmail);
                 this.columnPassword = new global::System.Data.DataColumn("Password", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassword);
+                this.columnPlayersInTeamsID = new global::System.Data.DataColumn("PlayersInTeamsID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlayersInTeamsID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPlayerID}, true));
                 this.columnPlayerID.AllowDBNull = false;
@@ -2681,6 +2698,8 @@ namespace Information_System_for_eSport {
             
             private global::System.Data.DataColumn columnFinish;
             
+            private global::System.Data.DataColumn columnID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PlayersInTeamsDataTable() {
@@ -2748,6 +2767,14 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2783,13 +2810,14 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PlayersInTeamsRow AddPlayersInTeamsRow(PlayersRow parentPlayersRowByFK_PlayersInTeams_Players, TeamsRow parentTeamsRowByFK_PlayersInTeams_Teams, System.DateTime Start, System.DateTime Finish) {
+            public PlayersInTeamsRow AddPlayersInTeamsRow(PlayersRow parentPlayersRowByFK_PlayersInTeams_Players, TeamsRow parentTeamsRowByFK_PlayersInTeams_Teams, System.DateTime Start, System.DateTime Finish, System.Guid ID) {
                 PlayersInTeamsRow rowPlayersInTeamsRow = ((PlayersInTeamsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         Start,
-                        Finish};
+                        Finish,
+                        ID};
                 if ((parentPlayersRowByFK_PlayersInTeams_Players != null)) {
                     columnValuesArray[0] = parentPlayersRowByFK_PlayersInTeams_Players[0];
                 }
@@ -2803,11 +2831,9 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PlayersInTeamsRow FindByPlayerIDTeamIDStart(System.Guid PlayerID, System.Guid TeamID, System.DateTime Start) {
+            public PlayersInTeamsRow FindByID(System.Guid ID) {
                 return ((PlayersInTeamsRow)(this.Rows.Find(new object[] {
-                            PlayerID,
-                            TeamID,
-                            Start})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2831,6 +2857,7 @@ namespace Information_System_for_eSport {
                 this.columnTeamID = base.Columns["TeamID"];
                 this.columnStart = base.Columns["Start"];
                 this.columnFinish = base.Columns["Finish"];
+                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2844,13 +2871,14 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnStart);
                 this.columnFinish = new global::System.Data.DataColumn("Finish", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFinish);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnPlayerID,
-                                this.columnTeamID,
-                                this.columnStart}, true));
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnPlayerID.AllowDBNull = false;
                 this.columnTeamID.AllowDBNull = false;
-                this.columnStart.AllowDBNull = false;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3875,6 +3903,8 @@ namespace Information_System_for_eSport {
             
             private global::System.Data.DataColumn columnManagerID;
             
+            private global::System.Data.DataColumn columnRegionName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public TeamsDataTable() {
@@ -3982,6 +4012,14 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RegionNameColumn {
+                get {
+                    return this.columnRegionName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4017,7 +4055,7 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TeamsRow AddTeamsRow(System.Guid TeamID, string Name, RegionsRow parentRegionsRowByFK_Teams_Regions, int Wins, int Draws, int Defeats, int Money, double Rating, System.Guid ManagerID) {
+            public TeamsRow AddTeamsRow(System.Guid TeamID, string Name, RegionsRow parentRegionsRowByFK_Teams_Regions, int Wins, int Draws, int Defeats, int Money, int Rating, System.Guid ManagerID, string RegionName) {
                 TeamsRow rowTeamsRow = ((TeamsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TeamID,
@@ -4028,7 +4066,8 @@ namespace Information_System_for_eSport {
                         Defeats,
                         Money,
                         Rating,
-                        ManagerID};
+                        ManagerID,
+                        RegionName};
                 if ((parentRegionsRowByFK_Teams_Regions != null)) {
                     columnValuesArray[2] = parentRegionsRowByFK_Teams_Regions[0];
                 }
@@ -4070,6 +4109,7 @@ namespace Information_System_for_eSport {
                 this.columnMoney = base.Columns["Money"];
                 this.columnRating = base.Columns["Rating"];
                 this.columnManagerID = base.Columns["ManagerID"];
+                this.columnRegionName = base.Columns["RegionName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4089,10 +4129,12 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnDefeats);
                 this.columnMoney = new global::System.Data.DataColumn("Money", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMoney);
-                this.columnRating = new global::System.Data.DataColumn("Rating", typeof(double), null, global::System.Data.MappingType.Element);
+                this.columnRating = new global::System.Data.DataColumn("Rating", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRating);
                 this.columnManagerID = new global::System.Data.DataColumn("ManagerID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnManagerID);
+                this.columnRegionName = new global::System.Data.DataColumn("RegionName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRegionName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTeamID}, true));
                 this.columnTeamID.AllowDBNull = false;
@@ -4106,6 +4148,7 @@ namespace Information_System_for_eSport {
                 this.columnMoney.AllowDBNull = false;
                 this.columnRating.AllowDBNull = false;
                 this.columnManagerID.AllowDBNull = false;
+                this.columnRegionName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4243,8 +4286,6 @@ namespace Information_System_for_eSport {
             
             private global::System.Data.DataColumn columnName;
             
-            private global::System.Data.DataColumn columnCountryID;
-            
             private global::System.Data.DataColumn columnCityID;
             
             private global::System.Data.DataColumn columnMembersCount;
@@ -4254,6 +4295,10 @@ namespace Information_System_for_eSport {
             private global::System.Data.DataColumn columnFinish;
             
             private global::System.Data.DataColumn columnMoney;
+            
+            private global::System.Data.DataColumn columnCountryName;
+            
+            private global::System.Data.DataColumn columnCityName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -4306,14 +4351,6 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn CountryIDColumn {
-                get {
-                    return this.columnCountryID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn CityIDColumn {
                 get {
                     return this.columnCityID;
@@ -4354,6 +4391,22 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CountryNameColumn {
+                get {
+                    return this.columnCountryName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CityNameColumn {
+                get {
+                    return this.columnCityName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4389,22 +4442,20 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TournamentsRow AddTournamentsRow(System.Guid TournamentID, string Name, CountriesRow parentCountriesRowByFK_Tournaments_Countries, CitiesRow parentCitiesRowByFK_Tournaments_Cities, int MembersCount, System.DateTime Start, System.DateTime Finish, int Money) {
+            public TournamentsRow AddTournamentsRow(System.Guid TournamentID, string Name, CitiesRow parentCitiesRowByFK_Tournaments_Cities, int MembersCount, System.DateTime Start, System.DateTime Finish, int Money, string CountryName, string CityName) {
                 TournamentsRow rowTournamentsRow = ((TournamentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TournamentID,
                         Name,
                         null,
-                        null,
                         MembersCount,
                         Start,
                         Finish,
-                        Money};
-                if ((parentCountriesRowByFK_Tournaments_Countries != null)) {
-                    columnValuesArray[2] = parentCountriesRowByFK_Tournaments_Countries[0];
-                }
+                        Money,
+                        CountryName,
+                        CityName};
                 if ((parentCitiesRowByFK_Tournaments_Cities != null)) {
-                    columnValuesArray[3] = parentCitiesRowByFK_Tournaments_Cities[0];
+                    columnValuesArray[2] = parentCitiesRowByFK_Tournaments_Cities[0];
                 }
                 rowTournamentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTournamentsRow);
@@ -4437,12 +4488,13 @@ namespace Information_System_for_eSport {
             internal void InitVars() {
                 this.columnTournamentID = base.Columns["TournamentID"];
                 this.columnName = base.Columns["Name"];
-                this.columnCountryID = base.Columns["CountryID"];
                 this.columnCityID = base.Columns["CityID"];
                 this.columnMembersCount = base.Columns["MembersCount"];
                 this.columnStart = base.Columns["Start"];
                 this.columnFinish = base.Columns["Finish"];
                 this.columnMoney = base.Columns["Money"];
+                this.columnCountryName = base.Columns["CountryName"];
+                this.columnCityName = base.Columns["CityName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4452,8 +4504,6 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnTournamentID);
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
-                this.columnCountryID = new global::System.Data.DataColumn("CountryID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCountryID);
                 this.columnCityID = new global::System.Data.DataColumn("CityID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCityID);
                 this.columnMembersCount = new global::System.Data.DataColumn("MembersCount", typeof(int), null, global::System.Data.MappingType.Element);
@@ -4464,18 +4514,25 @@ namespace Information_System_for_eSport {
                 base.Columns.Add(this.columnFinish);
                 this.columnMoney = new global::System.Data.DataColumn("Money", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMoney);
+                this.columnCountryName = new global::System.Data.DataColumn("CountryName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCountryName);
+                this.columnCityName = new global::System.Data.DataColumn("CityName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCityName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnTournamentID}, true));
                 this.columnTournamentID.AllowDBNull = false;
                 this.columnTournamentID.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 50;
-                this.columnCountryID.AllowDBNull = false;
                 this.columnCityID.AllowDBNull = false;
                 this.columnMembersCount.AllowDBNull = false;
                 this.columnStart.AllowDBNull = false;
                 this.columnFinish.AllowDBNull = false;
                 this.columnMoney.AllowDBNull = false;
+                this.columnCountryName.AllowDBNull = false;
+                this.columnCountryName.MaxLength = 50;
+                this.columnCityName.AllowDBNull = false;
+                this.columnCityName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4733,17 +4790,6 @@ namespace Information_System_for_eSport {
                 }
                 else {
                     return ((CitiesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Cities_Countries"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TournamentsRow[] GetTournamentsRows() {
-                if ((this.Table.ChildRelations["FK_Tournaments_Countries"] == null)) {
-                    return new TournamentsRow[0];
-                }
-                else {
-                    return ((TournamentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tournaments_Countries"])));
                 }
             }
         }
@@ -5184,6 +5230,45 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.Guid PlayersInTeamsID {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tablePlayers.PlayersInTeamsIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PlayersInTeamsID\' в таблице \'Players\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePlayers.PlayersInTeamsIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public RolesRow RolesRow {
+                get {
+                    return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Players_Roles"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Players_Roles"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPlayersInTeamsIDNull() {
+                return this.IsNull(this.tablePlayers.PlayersInTeamsIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPlayersInTeamsIDNull() {
+                this[this.tablePlayers.PlayersInTeamsIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PlayersInTeamsRow[] GetPlayersInTeamsRows() {
                 if ((this.Table.ChildRelations["FK_PlayersInTeams_Players"] == null)) {
                     return new PlayersInTeamsRow[0];
@@ -5234,7 +5319,12 @@ namespace Information_System_for_eSport {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.DateTime Start {
                 get {
-                    return ((global::System.DateTime)(this[this.tablePlayersInTeams.StartColumn]));
+                    try {
+                        return ((global::System.DateTime)(this[this.tablePlayersInTeams.StartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Start\' в таблице \'PlayersInTeams\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePlayersInTeams.StartColumn] = value;
@@ -5259,6 +5349,17 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.Guid ID {
+                get {
+                    return ((global::System.Guid)(this[this.tablePlayersInTeams.IDColumn]));
+                }
+                set {
+                    this[this.tablePlayersInTeams.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public PlayersRow PlayersRow {
                 get {
                     return ((PlayersRow)(this.GetParentRow(this.Table.ParentRelations["FK_PlayersInTeams_Players"])));
@@ -5277,6 +5378,18 @@ namespace Information_System_for_eSport {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_PlayersInTeams_Teams"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsStartNull() {
+                return this.IsNull(this.tablePlayersInTeams.StartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetStartNull() {
+                this[this.tablePlayersInTeams.StartColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5373,6 +5486,17 @@ namespace Information_System_for_eSport {
                 }
                 set {
                     this[this.tableRoles.RoleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public PlayersRow[] GetPlayersRows() {
+                if ((this.Table.ChildRelations["FK_Players_Roles"] == null)) {
+                    return new PlayersRow[0];
+                }
+                else {
+                    return ((PlayersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Players_Roles"])));
                 }
             }
         }
@@ -5562,9 +5686,9 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public double Rating {
+            public int Rating {
                 get {
-                    return ((double)(this[this.tableTeams.RatingColumn]));
+                    return ((int)(this[this.tableTeams.RatingColumn]));
                 }
                 set {
                     this[this.tableTeams.RatingColumn] = value;
@@ -5584,6 +5708,22 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RegionName {
+                get {
+                    try {
+                        return ((string)(this[this.tableTeams.RegionNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'RegionName\' в таблице \'Teams\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTeams.RegionNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public RegionsRow RegionsRow {
                 get {
                     return ((RegionsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Teams_Regions"])));
@@ -5591,6 +5731,18 @@ namespace Information_System_for_eSport {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Teams_Regions"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRegionNameNull() {
+                return this.IsNull(this.tableTeams.RegionNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRegionNameNull() {
+                this[this.tableTeams.RegionNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5676,17 +5828,6 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int CountryID {
-                get {
-                    return ((int)(this[this.tableTournaments.CountryIDColumn]));
-                }
-                set {
-                    this[this.tableTournaments.CountryIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public System.Guid CityID {
                 get {
                     return ((global::System.Guid)(this[this.tableTournaments.CityIDColumn]));
@@ -5742,23 +5883,34 @@ namespace Information_System_for_eSport {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CountryName {
+                get {
+                    return ((string)(this[this.tableTournaments.CountryNameColumn]));
+                }
+                set {
+                    this[this.tableTournaments.CountryNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CityName {
+                get {
+                    return ((string)(this[this.tableTournaments.CityNameColumn]));
+                }
+                set {
+                    this[this.tableTournaments.CityNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CitiesRow CitiesRow {
                 get {
                     return ((CitiesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tournaments_Cities"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Tournaments_Cities"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CountriesRow CountriesRow {
-                get {
-                    return ((CountriesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tournaments_Countries"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tournaments_Countries"]);
                 }
             }
             
@@ -8006,10 +8158,11 @@ SELECT TournamentID, TeamID, Place, Money FROM Participants WHERE (TeamID = @Tea
             tableMapping.ColumnMappings.Add("RoleID", "RoleID");
             tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("Password", "Password");
+            tableMapping.ColumnMappings.Add("PlayersInTeamsID", "PlayersInTeamsID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Players] WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([CountryName] = @Original_CountryName) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Players] WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([CountryName] = @Original_CountryName) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password) AND ((@IsNull_PlayersInTeamsID = 1 AND [PlayersInTeamsID] IS NULL) OR ([PlayersInTeamsID] = @Original_PlayersInTeamsID)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8018,16 +8171,18 @@ SELECT TournamentID, TeamID, Place, Money FROM Participants WHERE (TeamID = @Tea
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PlayersInTeamsID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayersInTeamsID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Players] ([PlayerID], [Name], [Nickname], [Surname], [CountryID], [CountryName], [Age], [Rating], [PlayedMaps], [PlayedRounds], [RoleID], [Email], [Password]) VALUES (@PlayerID, @Name, @Nickname, @Surname, @CountryID, @CountryName, @Age, @Rating, @PlayedMaps, @PlayedRounds, @RoleID, @Email, @Password);
-SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password FROM Players WHERE (PlayerID = @PlayerID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Players] ([PlayerID], [Name], [Nickname], [Surname], [CountryID], [CountryName], [Age], [Rating], [PlayedMaps], [PlayedRounds], [RoleID], [Email], [Password], [PlayersInTeamsID]) VALUES (@PlayerID, @Name, @Nickname, @Surname, @CountryID, @CountryName, @Age, @Rating, @PlayedMaps, @PlayedRounds, @RoleID, @Email, @Password, @PlayersInTeamsID);
+SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password, PlayersInTeamsID FROM Players WHERE (PlayerID = @PlayerID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8036,16 +8191,17 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayersInTeamsID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Players] SET [PlayerID] = @PlayerID, [Name] = @Name, [Nickname] = @Nickname, [Surname] = @Surname, [CountryID] = @CountryID, [CountryName] = @CountryName, [Age] = @Age, [Rating] = @Rating, [PlayedMaps] = @PlayedMaps, [PlayedRounds] = @PlayedRounds, [RoleID] = @RoleID, [Email] = @Email, [Password] = @Password WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([CountryName] = @Original_CountryName) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password));
-SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password FROM Players WHERE (PlayerID = @PlayerID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Players] SET [PlayerID] = @PlayerID, [Name] = @Name, [Nickname] = @Nickname, [Surname] = @Surname, [CountryID] = @CountryID, [CountryName] = @CountryName, [Age] = @Age, [Rating] = @Rating, [PlayedMaps] = @PlayedMaps, [PlayedRounds] = @PlayedRounds, [RoleID] = @RoleID, [Email] = @Email, [Password] = @Password, [PlayersInTeamsID] = @PlayersInTeamsID WHERE (([PlayerID] = @Original_PlayerID) AND ([Name] = @Original_Name) AND ([Nickname] = @Original_Nickname) AND ([Surname] = @Original_Surname) AND ([CountryID] = @Original_CountryID) AND ([CountryName] = @Original_CountryName) AND ([Age] = @Original_Age) AND ([Rating] = @Original_Rating) AND ([PlayedMaps] = @Original_PlayedMaps) AND ([PlayedRounds] = @Original_PlayedRounds) AND ([RoleID] = @Original_RoleID) AND ([Email] = @Original_Email) AND ([Password] = @Original_Password) AND ((@IsNull_PlayersInTeamsID = 1 AND [PlayersInTeamsID] IS NULL) OR ([PlayersInTeamsID] = @Original_PlayersInTeamsID)));
+SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password, PlayersInTeamsID FROM Players WHERE (PlayerID = @PlayerID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8054,12 +8210,13 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayersInTeamsID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nickname", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nickname", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8067,12 +8224,14 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Age", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Age", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedMaps", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedMaps", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayedRounds", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayedRounds", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RoleID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RoleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PlayersInTeamsID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayersInTeamsID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayersInTeamsID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8089,7 +8248,8 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, Pl" +
-                "ayedMaps, PlayedRounds, RoleID, Email, Password FROM dbo.Players";
+                "ayedMaps, PlayedRounds, RoleID, Email, Password, PlayersInTeamsID FROM dbo.Playe" +
+                "rs";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8150,7 +8310,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_PlayerID, string Original_Name, string Original_Nickname, string Original_Surname, int Original_CountryID, string Original_CountryName, int Original_Age, double Original_Rating, int Original_PlayedMaps, int Original_PlayedRounds, System.Guid Original_RoleID, string Original_Email, string Original_Password) {
+        public virtual int Delete(System.Guid Original_PlayerID, string Original_Name, string Original_Nickname, string Original_Surname, int Original_CountryID, string Original_CountryName, int Original_Age, int Original_Rating, int Original_PlayedMaps, int Original_PlayedRounds, System.Guid Original_RoleID, string Original_Email, string Original_Password, global::System.Nullable<global::System.Guid> Original_PlayersInTeamsID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_PlayerID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -8178,7 +8338,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_CountryName));
             }
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Age));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_Rating));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Rating));
             this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_PlayedMaps));
             this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_PlayedRounds));
             this.Adapter.DeleteCommand.Parameters[10].Value = ((System.Guid)(Original_RoleID));
@@ -8193,6 +8353,14 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_Password));
+            }
+            if ((Original_PlayersInTeamsID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((System.Guid)(Original_PlayersInTeamsID.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8214,7 +8382,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, double Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password) {
+        public virtual int Insert(System.Guid PlayerID, string Name, string Nickname, string Surname, int CountryID, string CountryName, int Age, int Rating, int PlayedMaps, int PlayedRounds, System.Guid RoleID, string Email, string Password, global::System.Nullable<global::System.Guid> PlayersInTeamsID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -8242,7 +8410,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(CountryName));
             }
             this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Age));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((double)(Rating));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Rating));
             this.Adapter.InsertCommand.Parameters[8].Value = ((int)(PlayedMaps));
             this.Adapter.InsertCommand.Parameters[9].Value = ((int)(PlayedRounds));
             this.Adapter.InsertCommand.Parameters[10].Value = ((System.Guid)(RoleID));
@@ -8257,6 +8425,12 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Password));
+            }
+            if ((PlayersInTeamsID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((System.Guid)(PlayersInTeamsID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8286,12 +8460,13 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                     int CountryID, 
                     string CountryName, 
                     int Age, 
-                    double Rating, 
+                    int Rating, 
                     int PlayedMaps, 
                     int PlayedRounds, 
                     System.Guid RoleID, 
                     string Email, 
                     string Password, 
+                    global::System.Nullable<global::System.Guid> PlayersInTeamsID, 
                     System.Guid Original_PlayerID, 
                     string Original_Name, 
                     string Original_Nickname, 
@@ -8299,12 +8474,13 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                     int Original_CountryID, 
                     string Original_CountryName, 
                     int Original_Age, 
-                    double Original_Rating, 
+                    int Original_Rating, 
                     int Original_PlayedMaps, 
                     int Original_PlayedRounds, 
                     System.Guid Original_RoleID, 
                     string Original_Email, 
-                    string Original_Password) {
+                    string Original_Password, 
+                    global::System.Nullable<global::System.Guid> Original_PlayersInTeamsID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -8332,7 +8508,7 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(CountryName));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Age));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Rating));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Rating));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(PlayedMaps));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(PlayedRounds));
             this.Adapter.UpdateCommand.Parameters[10].Value = ((System.Guid)(RoleID));
@@ -8348,48 +8524,62 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Password));
             }
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.Guid)(Original_PlayerID));
+            if ((PlayersInTeamsID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.Guid)(PlayersInTeamsID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.Guid)(Original_PlayerID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Name));
             }
             if ((Original_Nickname == null)) {
                 throw new global::System.ArgumentNullException("Original_Nickname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Nickname));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Nickname));
             }
             if ((Original_Surname == null)) {
                 throw new global::System.ArgumentNullException("Original_Surname");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Surname));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Surname));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_CountryID));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_CountryID));
             if ((Original_CountryName == null)) {
                 throw new global::System.ArgumentNullException("Original_CountryName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_CountryName));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_CountryName));
             }
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_Age));
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_Rating));
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_PlayedMaps));
-            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_PlayedRounds));
-            this.Adapter.UpdateCommand.Parameters[23].Value = ((System.Guid)(Original_RoleID));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_Age));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_Rating));
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_PlayedMaps));
+            this.Adapter.UpdateCommand.Parameters[23].Value = ((int)(Original_PlayedRounds));
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((System.Guid)(Original_RoleID));
             if ((Original_Email == null)) {
                 throw new global::System.ArgumentNullException("Original_Email");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Email));
             }
             if ((Original_Password == null)) {
                 throw new global::System.ArgumentNullException("Original_Password");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Password));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Password));
+            }
+            if ((Original_PlayersInTeamsID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((System.Guid)(Original_PlayersInTeamsID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8418,12 +8608,13 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                     int CountryID, 
                     string CountryName, 
                     int Age, 
-                    double Rating, 
+                    int Rating, 
                     int PlayedMaps, 
                     int PlayedRounds, 
                     System.Guid RoleID, 
                     string Email, 
                     string Password, 
+                    global::System.Nullable<global::System.Guid> PlayersInTeamsID, 
                     System.Guid Original_PlayerID, 
                     string Original_Name, 
                     string Original_Nickname, 
@@ -8431,13 +8622,14 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
                     int Original_CountryID, 
                     string Original_CountryName, 
                     int Original_Age, 
-                    double Original_Rating, 
+                    int Original_Rating, 
                     int Original_PlayedMaps, 
                     int Original_PlayedRounds, 
                     System.Guid Original_RoleID, 
                     string Original_Email, 
-                    string Original_Password) {
-            return this.Update(Original_PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password, Original_PlayerID, Original_Name, Original_Nickname, Original_Surname, Original_CountryID, Original_CountryName, Original_Age, Original_Rating, Original_PlayedMaps, Original_PlayedRounds, Original_RoleID, Original_Email, Original_Password);
+                    string Original_Password, 
+                    global::System.Nullable<global::System.Guid> Original_PlayersInTeamsID) {
+            return this.Update(Original_PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, PlayedMaps, PlayedRounds, RoleID, Email, Password, PlayersInTeamsID, Original_PlayerID, Original_Name, Original_Nickname, Original_Surname, Original_CountryID, Original_CountryName, Original_Age, Original_Rating, Original_PlayedMaps, Original_PlayedRounds, Original_RoleID, Original_Email, Original_Password, Original_PlayersInTeamsID);
         }
     }
     
@@ -8566,43 +8758,48 @@ SELECT PlayerID, Name, Nickname, Surname, CountryID, CountryName, Age, Rating, P
             tableMapping.ColumnMappings.Add("TeamID", "TeamID");
             tableMapping.ColumnMappings.Add("Start", "Start");
             tableMapping.ColumnMappings.Add("Finish", "Finish");
+            tableMapping.ColumnMappings.Add("ID", "ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[PlayersInTeams] WHERE (([PlayerID] = @Original_PlayerID) AND (" +
                 "[TeamID] = @Original_TeamID) AND ([Start] = @Original_Start) AND ((@IsNull_Finis" +
-                "h = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)))";
+                "h = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)) AND ([ID] = @Origi" +
+                "nal_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Finish", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Finish", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PlayersInTeams] ([PlayerID], [TeamID], [Start], [Finish]) VALU" +
-                "ES (@PlayerID, @TeamID, @Start, @Finish);\r\nSELECT PlayerID, TeamID, Start, Finis" +
-                "h FROM PlayersInTeams WHERE (PlayerID = @PlayerID) AND (Start = @Start) AND (Tea" +
-                "mID = @TeamID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[PlayersInTeams] ([PlayerID], [TeamID], [Start], [Finish], [ID]" +
+                ") VALUES (@PlayerID, @TeamID, @Start, @Finish, @ID);\r\nSELECT PlayerID, TeamID, S" +
+                "tart, Finish, ID FROM PlayersInTeams WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Finish", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PlayersInTeams] SET [PlayerID] = @PlayerID, [TeamID] = @TeamID, [Start] = @Start, [Finish] = @Finish WHERE (([PlayerID] = @Original_PlayerID) AND ([TeamID] = @Original_TeamID) AND ([Start] = @Original_Start) AND ((@IsNull_Finish = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)));
-SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @PlayerID) AND (Start = @Start) AND (TeamID = @TeamID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[PlayersInTeams] SET [PlayerID] = @PlayerID, [TeamID] = @TeamID, [Start] = @Start, [Finish] = @Finish, [ID] = @ID WHERE (([PlayerID] = @Original_PlayerID) AND ([TeamID] = @Original_TeamID) AND ([Start] = @Original_Start) AND ((@IsNull_Finish = 1 AND [Finish] IS NULL) OR ([Finish] = @Original_Finish)) AND ([ID] = @Original_ID));
+SELECT PlayerID, TeamID, Start, Finish, ID FROM PlayersInTeams WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Finish", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PlayerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PlayerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Finish", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Finish", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Finish", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8618,7 +8815,7 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PlayerID, TeamID, Start, Finish FROM dbo.PlayersInTeams";
+            this._commandCollection[0].CommandText = "SELECT PlayerID, TeamID, Start, Finish, ID FROM dbo.PlayersInTeams";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8673,117 +8870,6 @@ SELECT PlayerID, TeamID, Start, Finish FROM PlayersInTeams WHERE (PlayerID = @Pl
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(global::System.Data.DataRow[] dataRows) {
             return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_PlayerID, System.Guid Original_TeamID, System.DateTime Original_Start, global::System.Nullable<global::System.DateTime> Original_Finish) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_PlayerID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.Guid)(Original_TeamID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_Start));
-            if ((Original_Finish.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_Finish.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid PlayerID, System.Guid TeamID, System.DateTime Start, global::System.Nullable<global::System.DateTime> Finish) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((System.Guid)(TeamID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(Start));
-            if ((Finish.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(Finish.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid PlayerID, System.Guid TeamID, System.DateTime Start, global::System.Nullable<global::System.DateTime> Finish, System.Guid Original_PlayerID, System.Guid Original_TeamID, System.DateTime Original_Start, global::System.Nullable<global::System.DateTime> Original_Finish) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(PlayerID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.Guid)(TeamID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Start));
-            if ((Finish.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Finish.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.Guid)(Original_PlayerID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.Guid)(Original_TeamID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_Start));
-            if ((Original_Finish.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_Finish.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> Finish, System.Guid Original_PlayerID, System.Guid Original_TeamID, System.DateTime Original_Start, global::System.Nullable<global::System.DateTime> Original_Finish) {
-            return this.Update(Original_PlayerID, Original_TeamID, Original_Start, Finish, Original_PlayerID, Original_TeamID, Original_Start, Original_Finish);
         }
     }
     
@@ -9886,56 +9972,63 @@ SELECT SetID, MatchID, MapID, FirstTeam, SecondTeam FROM Sets WHERE (MatchID = @
             tableMapping.ColumnMappings.Add("Money", "Money");
             tableMapping.ColumnMappings.Add("Rating", "Rating");
             tableMapping.ColumnMappings.Add("ManagerID", "ManagerID");
+            tableMapping.ColumnMappings.Add("RegionName", "RegionName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Teams] WHERE (([TeamID] = @Original_TeamID) AND ([Name] = @Original_Name) AND ([RegionID] = @Original_RegionID) AND ([Wins] = @Original_Wins) AND ([Draws] = @Original_Draws) AND ([Defeats] = @Original_Defeats) AND ([Money] = @Original_Money) AND ([Rating] = @Original_Rating) AND ([ManagerID] = @Original_ManagerID))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Teams] WHERE (([TeamID] = @Original_TeamID) AND ([Name] = @Original_Name) AND ([RegionID] = @Original_RegionID) AND ((@IsNull_RegionName = 1 AND [RegionName] IS NULL) OR ([RegionName] = @Original_RegionName)) AND ([Wins] = @Original_Wins) AND ([Draws] = @Original_Draws) AND ([Defeats] = @Original_Defeats) AND ([Money] = @Original_Money) AND ([Rating] = @Original_Rating) AND ([ManagerID] = @Original_ManagerID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegionName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegionName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Wins", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wins", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Draws", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Draws", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Defeats", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Defeats", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ManagerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManagerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Teams] ([TeamID], [Name], [RegionID], [Wins], [Draws], [Defeats], [Money], [Rating], [ManagerID]) VALUES (@TeamID, @Name, @RegionID, @Wins, @Draws, @Defeats, @Money, @Rating, @ManagerID);
-SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FROM Teams WHERE (TeamID = @TeamID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Teams] ([TeamID], [Name], [RegionID], [RegionName], [Wins], [Draws], [Defeats], [Money], [Rating], [ManagerID]) VALUES (@TeamID, @Name, @RegionID, @RegionName, @Wins, @Draws, @Defeats, @Money, @Rating, @ManagerID);
+SELECT TeamID, Name, RegionID, RegionName, Wins, Draws, Defeats, Money, Rating, ManagerID FROM Teams WHERE (TeamID = @TeamID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Wins", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wins", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Draws", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Draws", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Defeats", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Defeats", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ManagerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManagerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Teams] SET [TeamID] = @TeamID, [Name] = @Name, [RegionID] = @RegionID, [Wins] = @Wins, [Draws] = @Draws, [Defeats] = @Defeats, [Money] = @Money, [Rating] = @Rating, [ManagerID] = @ManagerID WHERE (([TeamID] = @Original_TeamID) AND ([Name] = @Original_Name) AND ([RegionID] = @Original_RegionID) AND ([Wins] = @Original_Wins) AND ([Draws] = @Original_Draws) AND ([Defeats] = @Original_Defeats) AND ([Money] = @Original_Money) AND ([Rating] = @Original_Rating) AND ([ManagerID] = @Original_ManagerID));
-SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FROM Teams WHERE (TeamID = @TeamID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Teams] SET [TeamID] = @TeamID, [Name] = @Name, [RegionID] = @RegionID, [RegionName] = @RegionName, [Wins] = @Wins, [Draws] = @Draws, [Defeats] = @Defeats, [Money] = @Money, [Rating] = @Rating, [ManagerID] = @ManagerID WHERE (([TeamID] = @Original_TeamID) AND ([Name] = @Original_Name) AND ([RegionID] = @Original_RegionID) AND ((@IsNull_RegionName = 1 AND [RegionName] IS NULL) OR ([RegionName] = @Original_RegionName)) AND ([Wins] = @Original_Wins) AND ([Draws] = @Original_Draws) AND ([Defeats] = @Original_Defeats) AND ([Money] = @Original_Money) AND ([Rating] = @Original_Rating) AND ([ManagerID] = @Original_ManagerID));
+SELECT TeamID, Name, RegionID, RegionName, Wins, Draws, Defeats, Money, Rating, ManagerID FROM Teams WHERE (TeamID = @TeamID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegionName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Wins", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wins", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Draws", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Draws", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Defeats", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Defeats", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ManagerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManagerID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegionName", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegionName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegionName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Wins", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Wins", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Draws", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Draws", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Defeats", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Defeats", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rating", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rating", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ManagerID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ManagerID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -9952,8 +10045,8 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FRO" +
-                "M dbo.Teams";
+            this._commandCollection[0].CommandText = "SELECT TeamID, Name, RegionID, RegionName, Wins, Draws, Defeats, Money, Rating, M" +
+                "anagerID FROM dbo.Teams";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10014,7 +10107,7 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_TeamID, string Original_Name, System.Guid Original_RegionID, int Original_Wins, int Original_Draws, int Original_Defeats, int Original_Money, double Original_Rating, System.Guid Original_ManagerID) {
+        public virtual int Delete(System.Guid Original_TeamID, string Original_Name, System.Guid Original_RegionID, string Original_RegionName, int Original_Wins, int Original_Draws, int Original_Defeats, int Original_Money, int Original_Rating, System.Guid Original_ManagerID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_TeamID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -10023,12 +10116,20 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
             }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((System.Guid)(Original_RegionID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Wins));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Draws));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Defeats));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Money));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_Rating));
-            this.Adapter.DeleteCommand.Parameters[8].Value = ((System.Guid)(Original_ManagerID));
+            if ((Original_RegionName == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_RegionName));
+            }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Wins));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_Draws));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Defeats));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Money));
+            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_Rating));
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((System.Guid)(Original_ManagerID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10049,7 +10150,7 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid TeamID, string Name, System.Guid RegionID, int Wins, int Draws, int Defeats, int Money, double Rating, System.Guid ManagerID) {
+        public virtual int Insert(System.Guid TeamID, string Name, System.Guid RegionID, string RegionName, int Wins, int Draws, int Defeats, int Money, int Rating, System.Guid ManagerID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(TeamID));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -10058,12 +10159,18 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((System.Guid)(RegionID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Wins));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Draws));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Defeats));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Money));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((double)(Rating));
-            this.Adapter.InsertCommand.Parameters[8].Value = ((System.Guid)(ManagerID));
+            if ((RegionName == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(RegionName));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Wins));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Draws));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Defeats));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Money));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Rating));
+            this.Adapter.InsertCommand.Parameters[9].Value = ((System.Guid)(ManagerID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10088,20 +10195,22 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
                     System.Guid TeamID, 
                     string Name, 
                     System.Guid RegionID, 
+                    string RegionName, 
                     int Wins, 
                     int Draws, 
                     int Defeats, 
                     int Money, 
-                    double Rating, 
+                    int Rating, 
                     System.Guid ManagerID, 
                     System.Guid Original_TeamID, 
                     string Original_Name, 
                     System.Guid Original_RegionID, 
+                    string Original_RegionName, 
                     int Original_Wins, 
                     int Original_Draws, 
                     int Original_Defeats, 
                     int Original_Money, 
-                    double Original_Rating, 
+                    int Original_Rating, 
                     System.Guid Original_ManagerID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(TeamID));
             if ((Name == null)) {
@@ -10111,26 +10220,40 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((System.Guid)(RegionID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Wins));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Draws));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Defeats));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Money));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Rating));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.Guid)(ManagerID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.Guid)(Original_TeamID));
+            if ((RegionName == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(RegionName));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Wins));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Draws));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Defeats));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Money));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Rating));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.Guid)(ManagerID));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((System.Guid)(Original_TeamID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.Guid)(Original_RegionID));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Wins));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Draws));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Defeats));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Money));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_Rating));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.Guid)(Original_ManagerID));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.Guid)(Original_RegionID));
+            if ((Original_RegionName == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_RegionName));
+            }
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Wins));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Draws));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Defeats));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Money));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_Rating));
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((System.Guid)(Original_ManagerID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10154,22 +10277,24 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
         public virtual int Update(
                     string Name, 
                     System.Guid RegionID, 
+                    string RegionName, 
                     int Wins, 
                     int Draws, 
                     int Defeats, 
                     int Money, 
-                    double Rating, 
+                    int Rating, 
                     System.Guid ManagerID, 
                     System.Guid Original_TeamID, 
                     string Original_Name, 
                     System.Guid Original_RegionID, 
+                    string Original_RegionName, 
                     int Original_Wins, 
                     int Original_Draws, 
                     int Original_Defeats, 
                     int Original_Money, 
-                    double Original_Rating, 
+                    int Original_Rating, 
                     System.Guid Original_ManagerID) {
-            return this.Update(Original_TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID, Original_TeamID, Original_Name, Original_RegionID, Original_Wins, Original_Draws, Original_Defeats, Original_Money, Original_Rating, Original_ManagerID);
+            return this.Update(Original_TeamID, Name, RegionID, RegionName, Wins, Draws, Defeats, Money, Rating, ManagerID, Original_TeamID, Original_Name, Original_RegionID, Original_RegionName, Original_Wins, Original_Draws, Original_Defeats, Original_Money, Original_Rating, Original_ManagerID);
         }
     }
     
@@ -10296,20 +10421,22 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
             tableMapping.DataSetTable = "Tournaments";
             tableMapping.ColumnMappings.Add("TournamentID", "TournamentID");
             tableMapping.ColumnMappings.Add("Name", "Name");
-            tableMapping.ColumnMappings.Add("CountryID", "CountryID");
             tableMapping.ColumnMappings.Add("CityID", "CityID");
             tableMapping.ColumnMappings.Add("MembersCount", "MembersCount");
             tableMapping.ColumnMappings.Add("Start", "Start");
             tableMapping.ColumnMappings.Add("Finish", "Finish");
             tableMapping.ColumnMappings.Add("Money", "Money");
+            tableMapping.ColumnMappings.Add("CountryName", "CountryName");
+            tableMapping.ColumnMappings.Add("CityName", "CityName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tournaments] WHERE (([TournamentID] = @Original_TournamentID) AND ([Name] = @Original_Name) AND ([CountryID] = @Original_CountryID) AND ([CityID] = @Original_CityID) AND ([MembersCount] = @Original_MembersCount) AND ([Start] = @Original_Start) AND ([Finish] = @Original_Finish) AND ([Money] = @Original_Money))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tournaments] WHERE (([TournamentID] = @Original_TournamentID) AND ([Name] = @Original_Name) AND ([CountryName] = @Original_CountryName) AND ([CityName] = @Original_CityName) AND ([CityID] = @Original_CityID) AND ([MembersCount] = @Original_MembersCount) AND ([Start] = @Original_Start) AND ([Finish] = @Original_Finish) AND ([Money] = @Original_Money))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TournamentID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TournamentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MembersCount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MembersCount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10317,12 +10444,13 @@ SELECT TeamID, Name, RegionID, Wins, Draws, Defeats, Money, Rating, ManagerID FR
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tournaments] ([TournamentID], [Name], [CountryID], [CityID], [MembersCount], [Start], [Finish], [Money]) VALUES (@TournamentID, @Name, @CountryID, @CityID, @MembersCount, @Start, @Finish, @Money);
-SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money FROM Tournaments WHERE (TournamentID = @TournamentID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tournaments] ([TournamentID], [Name], [CountryName], [CityName], [CityID], [MembersCount], [Start], [Finish], [Money]) VALUES (@TournamentID, @Name, @CountryName, @CityName, @CityID, @MembersCount, @Start, @Finish, @Money);
+SELECT TournamentID, Name, CountryName, CityName, CityID, MembersCount, Start, Finish, Money FROM Tournaments WHERE (TournamentID = @TournamentID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TournamentID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TournamentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MembersCount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MembersCount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10330,12 +10458,13 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tournaments] SET [TournamentID] = @TournamentID, [Name] = @Name, [CountryID] = @CountryID, [CityID] = @CityID, [MembersCount] = @MembersCount, [Start] = @Start, [Finish] = @Finish, [Money] = @Money WHERE (([TournamentID] = @Original_TournamentID) AND ([Name] = @Original_Name) AND ([CountryID] = @Original_CountryID) AND ([CityID] = @Original_CityID) AND ([MembersCount] = @Original_MembersCount) AND ([Start] = @Original_Start) AND ([Finish] = @Original_Finish) AND ([Money] = @Original_Money));
-SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money FROM Tournaments WHERE (TournamentID = @TournamentID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tournaments] SET [TournamentID] = @TournamentID, [Name] = @Name, [CountryName] = @CountryName, [CityName] = @CityName, [CityID] = @CityID, [MembersCount] = @MembersCount, [Start] = @Start, [Finish] = @Finish, [Money] = @Money WHERE (([TournamentID] = @Original_TournamentID) AND ([Name] = @Original_Name) AND ([CountryName] = @Original_CountryName) AND ([CityName] = @Original_CityName) AND ([CityID] = @Original_CityID) AND ([MembersCount] = @Original_MembersCount) AND ([Start] = @Original_Start) AND ([Finish] = @Original_Finish) AND ([Money] = @Original_Money));
+SELECT TournamentID, Name, CountryName, CityName, CityID, MembersCount, Start, Finish, Money FROM Tournaments WHERE (TournamentID = @TournamentID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TournamentID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TournamentID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CityID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MembersCount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MembersCount", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10343,7 +10472,8 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Money", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Money", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TournamentID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TournamentID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CountryName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CountryName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CityID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CityID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MembersCount", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MembersCount", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10364,8 +10494,8 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money " +
-                "FROM dbo.Tournaments";
+            this._commandCollection[0].CommandText = "SELECT TournamentID, Name, CountryName, CityName, CityID, MembersCount, Start, Fi" +
+                "nish, Money FROM dbo.Tournaments";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -10426,7 +10556,7 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_TournamentID, string Original_Name, int Original_CountryID, System.Guid Original_CityID, int Original_MembersCount, System.DateTime Original_Start, System.DateTime Original_Finish, int Original_Money) {
+        public virtual int Delete(System.Guid Original_TournamentID, string Original_Name, string Original_CountryName, string Original_CityName, System.Guid Original_CityID, int Original_MembersCount, System.DateTime Original_Start, System.DateTime Original_Finish, int Original_Money) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_TournamentID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -10434,12 +10564,23 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Name));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_CountryID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.Guid)(Original_CityID));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_MembersCount));
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_Start));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_Finish));
-            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Money));
+            if ((Original_CountryName == null)) {
+                throw new global::System.ArgumentNullException("Original_CountryName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_CountryName));
+            }
+            if ((Original_CityName == null)) {
+                throw new global::System.ArgumentNullException("Original_CityName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_CityName));
+            }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.Guid)(Original_CityID));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_MembersCount));
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_Start));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_Finish));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10460,7 +10601,7 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid TournamentID, string Name, int CountryID, System.Guid CityID, int MembersCount, System.DateTime Start, System.DateTime Finish, int Money) {
+        public virtual int Insert(System.Guid TournamentID, string Name, string CountryName, string CityName, System.Guid CityID, int MembersCount, System.DateTime Start, System.DateTime Finish, int Money) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(TournamentID));
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -10468,12 +10609,23 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(CountryID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.Guid)(CityID));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(MembersCount));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(Start));
-            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(Finish));
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Money));
+            if ((CountryName == null)) {
+                throw new global::System.ArgumentNullException("CountryName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(CountryName));
+            }
+            if ((CityName == null)) {
+                throw new global::System.ArgumentNullException("CityName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(CityName));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.Guid)(CityID));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(MembersCount));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(Start));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(Finish));
+            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(Money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10497,7 +10649,8 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
         public virtual int Update(
                     System.Guid TournamentID, 
                     string Name, 
-                    int CountryID, 
+                    string CountryName, 
+                    string CityName, 
                     System.Guid CityID, 
                     int MembersCount, 
                     System.DateTime Start, 
@@ -10505,7 +10658,8 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                     int Money, 
                     System.Guid Original_TournamentID, 
                     string Original_Name, 
-                    int Original_CountryID, 
+                    string Original_CountryName, 
+                    string Original_CityName, 
                     System.Guid Original_CityID, 
                     int Original_MembersCount, 
                     System.DateTime Original_Start, 
@@ -10518,25 +10672,47 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(CountryID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.Guid)(CityID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(MembersCount));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Start));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Finish));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Money));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.Guid)(Original_TournamentID));
+            if ((CountryName == null)) {
+                throw new global::System.ArgumentNullException("CountryName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(CountryName));
+            }
+            if ((CityName == null)) {
+                throw new global::System.ArgumentNullException("CityName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(CityName));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.Guid)(CityID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(MembersCount));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Start));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Finish));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Money));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.Guid)(Original_TournamentID));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_CountryID));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.Guid)(Original_CityID));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_MembersCount));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_Start));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_Finish));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Money));
+            if ((Original_CountryName == null)) {
+                throw new global::System.ArgumentNullException("Original_CountryName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_CountryName));
+            }
+            if ((Original_CityName == null)) {
+                throw new global::System.ArgumentNullException("Original_CityName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_CityName));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.Guid)(Original_CityID));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MembersCount));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_Start));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_Finish));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Money));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -10557,8 +10733,25 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, int CountryID, System.Guid CityID, int MembersCount, System.DateTime Start, System.DateTime Finish, int Money, System.Guid Original_TournamentID, string Original_Name, int Original_CountryID, System.Guid Original_CityID, int Original_MembersCount, System.DateTime Original_Start, System.DateTime Original_Finish, int Original_Money) {
-            return this.Update(Original_TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money, Original_TournamentID, Original_Name, Original_CountryID, Original_CityID, Original_MembersCount, Original_Start, Original_Finish, Original_Money);
+        public virtual int Update(
+                    string Name, 
+                    string CountryName, 
+                    string CityName, 
+                    System.Guid CityID, 
+                    int MembersCount, 
+                    System.DateTime Start, 
+                    System.DateTime Finish, 
+                    int Money, 
+                    System.Guid Original_TournamentID, 
+                    string Original_Name, 
+                    string Original_CountryName, 
+                    string Original_CityName, 
+                    System.Guid Original_CityID, 
+                    int Original_MembersCount, 
+                    System.DateTime Original_Start, 
+                    System.DateTime Original_Finish, 
+                    int Original_Money) {
+            return this.Update(Original_TournamentID, Name, CountryName, CityName, CityID, MembersCount, Start, Finish, Money, Original_TournamentID, Original_Name, Original_CountryName, Original_CityName, Original_CityID, Original_MembersCount, Original_Start, Original_Finish, Original_Money);
         }
     }
     
@@ -10935,6 +11128,15 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._teamsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Teams.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -10998,15 +11200,6 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._setsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Sets.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -11047,6 +11240,14 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._regionsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11106,14 +11307,6 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._setsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Sets.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11137,14 +11330,6 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._setsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._rolesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._rolesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -11201,6 +11386,14 @@ SELECT TournamentID, Name, CountryID, CityID, MembersCount, Start, Finish, Money
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._teamsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._rolesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Roles.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._rolesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

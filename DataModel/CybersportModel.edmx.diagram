@@ -4,24 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9e9df0617eb240b1b073c533dae21e56" Name="Diagram1">
+      <Diagram DiagramId="9e9df0617eb240b1b073c533dae21e56" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="CybersportDBModel.City" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Country" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Map" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.MatchesInTournament" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Participant" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CybersportDBModel.Player" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CybersportDBModel.PlayersInTeam" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CybersportDBModel.Player" Width="1.5" PointX="9.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CybersportDBModel.PlayersInTeam" Width="1.5" PointX="9.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Region" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Role" Width="1.5" PointX="3.75" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Set" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CybersportDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Team" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CybersportDBModel.Tournament" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CybersportDBModel.FK_Cities_Countries" ManuallyRouted="false" />
-        <AssociationConnector Association="CybersportDBModel.FK_Tournaments_Cities" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="CybersportDBModel.FK_Tournaments_Cities" />
         <AssociationConnector Association="CybersportDBModel.FK_Players_Countries" ManuallyRouted="false" />
-        <AssociationConnector Association="CybersportDBModel.FK_Tournaments_Countries" ManuallyRouted="false" />
         <AssociationConnector Association="CybersportDBModel.FK_Sets_Maps" ManuallyRouted="false" />
         <AssociationConnector Association="CybersportDBModel.FK_MatchesInTournaments_Teams" ManuallyRouted="false" />
         <AssociationConnector Association="CybersportDBModel.FK_MatchesInTournaments_Teams1" ManuallyRouted="false" />

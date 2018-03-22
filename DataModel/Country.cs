@@ -19,7 +19,6 @@ namespace DataModel
         {
             this.Cities = new HashSet<City>();
             this.Players = new HashSet<Player>();
-            this.Tournaments = new HashSet<Tournament>();
         }
     
         public int CountryID { get; set; }
@@ -29,7 +28,5 @@ namespace DataModel
         public virtual ICollection<City> Cities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Player> Players { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tournament> Tournaments { get; set; }
     }
 }

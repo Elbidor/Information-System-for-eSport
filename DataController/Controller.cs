@@ -23,8 +23,73 @@ namespace DataController
             player.Rating = 0;
             player.PlayedMaps = 0;
             player.PlayedRounds = 0;
+            PlayersInTeam pit = new PlayersInTeam();
+            pit.ID = Guid.NewGuid();
+            pit.Start = DateTime.Today;
+            pit.PlayerID = player.PlayerID;
+            pit.TeamID = ctx.Teams.Where(t => t.TeamID == Guid.Empty).FirstOrDefault().TeamID;
+            player.PlayersInTeamsID = pit.ID;
             ctx.Players.Add(player);
+            ctx.PlayersInTeams.Add(pit);
             ctx.SaveChanges();
+        }
+        public static void CreateTeam(Team team)
+        {
+            var ctx = new CybersportDBEntities();
+            if (ctx.Teams.Where(tm => tm.Name == team.Name).Count() != 0)
+            {
+                throw new Exception("Уже есть команда с таким названием.");
+            }
+            team.Wins = 0;
+            team.Draws = 0;
+            team.Defeats = 0;
+            team.Rating = 0;
+            team.Region = ctx.Regions.ToList().First(r => r.RegionID == team.RegionID);
+            team.RegionName = team.Region.Name;
+            ctx.Teams.Add(team);
+            ctx.SaveChanges();
+        }
+        public static void CreateTeam()
+        {
+            var ctx = new CybersportDBEntities();
+            Team t = new Team();
+            t.TeamID = Guid.Empty;
+            t.Name = "Без команды";
+            t.Wins = 0;
+            t.Draws = 0;
+            t.Defeats = 0;
+            t.Rating = 0;
+            t.RegionID = ctx.Regions.First().RegionID;
+            t.Region = ctx.Regions.ToList().First(r => r.RegionID == t.RegionID);
+            ctx.Teams.Add(t);
+            ctx.SaveChanges();
+        }
+        public static void AddPlayerInTeam(Guid playerID, Guid teamID, DateTime date)
+        {
+            var ctx = new CybersportDBEntities();
+            Guid oldValueGuid = GetLastTeam(playerID);
+            ctx.PlayersInTeams.First(x => x.ID == oldValueGuid).Finish = date;
+            PlayersInTeam pit = new PlayersInTeam();
+            pit.ID = Guid.NewGuid();
+            pit.PlayerID = playerID;
+            pit.TeamID = teamID;
+            pit.Start = date;
+            ctx.PlayersInTeams.Add(pit);
+            ctx.SaveChanges();
+        }
+        public static Guid GetLastTeam(Guid playerID)
+        {
+            var ctx = new CybersportDBEntities();
+            PlayersInTeam sc = (PlayersInTeam)ctx.PlayersInTeams
+                .Where(x => x.PlayerID == playerID)
+                .OrderByDescending(x => x.Start).First();
+            return sc.ID;
+        }
+        public static bool IsAlreadyHasATeam (Guid managerID)
+        {
+            var ctx = new CybersportDBEntities();
+            var test = ctx.Teams.Where(x => x.ManagerID == managerID).ToList();
+            return test.Count() == 0 ? false : true;
         }
         public static void DeletePlayer(Player player)
         {
@@ -56,7 +121,30 @@ namespace DataController
             var ctx = new CybersportDBEntities();
             return ctx.Players.ToList().First(pl => pl.PlayerID == id);
         }
-
+        public static string ReturnNickname (Guid id)
+        {
+            var ctx = new CybersportDBEntities();
+            return ctx.Players.ToList().First(pl => pl.PlayerID == id).Nickname;
+        }
+        public static string ReturnLatestTeam(Guid id)
+        {
+            var ctx = new CybersportDBEntities();
+            try
+            {
+               return ctx.PlayersInTeams
+                .Where(x => x.PlayerID == id)
+                .OrderByDescending(x => x.Start).First().Team.Name;
+            }
+            catch
+            {
+                return "Без команды";
+            }
+        }
+        public static Team FindTeam (Guid id)
+        {
+            var ctx = new CybersportDBEntities();
+            return ctx.Teams.ToList().First(t => t.TeamID == id);
+        }
         public static Player FindPlayer(string log, string pass)
         {
             var ctx = new CybersportDBEntities();
@@ -75,7 +163,30 @@ namespace DataController
             var players = ctx.Players.ToList();
             return players;
         }
+        public static List<Team> GetTeams()
+        {
+            var ctx = new CybersportDBEntities();
+            var teams = ctx.Teams.Where(t => t.TeamID != Guid.Empty).ToList();
+            return teams;
+        }
 
+        public static List<Region> GetRegions()
+        {
+            var ctx = new CybersportDBEntities();
+            var regions = ctx.Regions.ToList();
+            return regions;
+        }
+        public static string ReturnRegionName(Guid regID)
+        {
+            var ctx = new CybersportDBEntities();
+            return ctx.Regions.First(x => x.RegionID == regID).Name;
+        }
+        public static List<Player> GetFreePlayers()
+        {
+            var ctx = new CybersportDBEntities();
+            var freePlayers = ctx.Players.Where(p => p.PlayersInTeams.Where(x => x.PlayerID == p.PlayerID).FirstOrDefault().Team.Name == "Без команды" && p.PlayersInTeams.Where(x => x.PlayerID == p.PlayerID).FirstOrDefault().Finish == null).ToList();
+            return freePlayers;
+        }
         public static List<Player> GetPlayers(Dictionary<string, string> filters)
         {
             string nameF = filters["Name"];
@@ -103,7 +214,29 @@ namespace DataController
             }
             return playersF;
         }
-
+        public static List<Team> GetTeams(Dictionary<string, string> filters)
+        {
+            string nameF = filters["Name"];            
+            int winsF = Convert.ToInt32(filters["Wins"]);
+            int drawsF = Convert.ToInt32(filters["Draws"]);
+            int defeatsF = Convert.ToInt32(filters["Defeats"]);
+            int moneyF = Convert.ToInt32(filters["Money"]);
+            int ratingF = Convert.ToInt32(filters["Rating"]);
+            var ctx = new CybersportDBEntities();
+            var teamsF = ctx.Teams.Where(p => (p.Name.Contains(nameF) 
+                                                    && p.Name != "Без команды"
+                                                    && p.Rating >= ratingF
+                                                    && p.Wins >= winsF
+                                                    && p.Defeats >= defeatsF
+                                                    && p.Money >= moneyF
+                                                    && p.Draws >= drawsF)).ToList();
+            if (filters.ContainsKey("RegionName"))
+            {
+                string regionF = filters["RegionName"];
+                teamsF = teamsF.Where(p => p.RegionName.Contains(regionF)).ToList();
+            }
+            return teamsF;
+        }
         public static List<Country> GetCountries()
         {
             var ctx = new CybersportDBEntities();

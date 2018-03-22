@@ -23,15 +23,15 @@ namespace DataModel
     
         public System.Guid TournamentID { get; set; }
         public string Name { get; set; }
-        public int CountryID { get; set; }
         public System.Guid CityID { get; set; }
         public int MembersCount { get; set; }
         public System.DateTime Start { get; set; }
         public System.DateTime Finish { get; set; }
         public int Money { get; set; }
+        public string CountryName { get; set; }
+        public string CityName { get; set; }
     
         public virtual City City { get; set; }
-        public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchesInTournament> MatchesInTournaments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

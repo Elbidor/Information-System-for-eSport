@@ -36,6 +36,7 @@ namespace Information_System_for_eSport
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
+            errorsExist = false;
             if (string.IsNullOrWhiteSpace(NameField.Text) || string.IsNullOrWhiteSpace(NicknameField.Text) || string.IsNullOrWhiteSpace(SurnameField.Text) || string.IsNullOrWhiteSpace(AgeField.Text) || string.IsNullOrWhiteSpace(PasswordField.Text))
             {
                 MetroFramework.MetroMessageBox.Show(this, "Необходимо заполнить все поля.", "Ошибка заполнения", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -10,8 +10,8 @@
             <PropertyRef Name="CityID" />
           </Key>
           <Property Name="CityID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="CountryID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -64,17 +64,17 @@
           <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlayersInTeamsID" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="PlayersInTeams">
           <Key>
-            <PropertyRef Name="PlayerID" />
-            <PropertyRef Name="TeamID" />
-            <PropertyRef Name="Start" />
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="PlayerID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TeamID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Start" Type="date" Nullable="false" />
+          <Property Name="Start" Type="date" />
           <Property Name="Finish" Type="date" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Regions">
           <Key>
@@ -101,16 +101,6 @@
           <Property Name="FirstTeam" Type="int" Nullable="false" />
           <Property Name="SecondTeam" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Teams">
           <Key>
             <PropertyRef Name="TeamID" />
@@ -122,8 +112,9 @@
           <Property Name="Draws" Type="int" Nullable="false" />
           <Property Name="Defeats" Type="int" Nullable="false" />
           <Property Name="Money" Type="int" Nullable="false" />
-          <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
           <Property Name="ManagerID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Tournaments">
           <Key>
@@ -131,12 +122,13 @@
           </Key>
           <Property Name="TournamentID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CityID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="MembersCount" Type="int" Nullable="false" />
           <Property Name="Start" Type="date" Nullable="false" />
           <Property Name="Finish" Type="date" Nullable="false" />
           <Property Name="Money" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Cities_Countries">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
@@ -210,6 +202,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Players_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Players_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Players" Type="Self.Players" Multiplicity="*" />
@@ -222,7 +226,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PlayersInTeams_Players">
+        <Association Name="FK_PlayersInTeams_Players1">
           <End Role="Players" Type="Self.Players" Multiplicity="1" />
           <End Role="PlayersInTeams" Type="Self.PlayersInTeams" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +238,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PlayersInTeams_Teams">
+        <Association Name="FK_PlayersInTeams_Teams1">
           <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
           <End Role="PlayersInTeams" Type="Self.PlayersInTeams" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,18 +298,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tournaments_Countries">
-          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
-          <End Role="Tournaments" Type="Self.Tournaments" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Countries">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="Tournaments">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -348,7 +340,6 @@
           <EntitySet Name="Regions" EntityType="Self.Regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sets" EntityType="Self.Sets" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tournaments" EntityType="Self.Tournaments" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
@@ -375,15 +366,19 @@
             <End Role="Tournaments" EntitySet="Tournaments" />
             <End Role="Participants" EntitySet="Participants" />
           </AssociationSet>
+          <AssociationSet Name="FK_Players_Countries" Association="Self.FK_Players_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
           <AssociationSet Name="FK_Players_Roles" Association="Self.FK_Players_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
-          <AssociationSet Name="FK_PlayersInTeams_Players" Association="Self.FK_PlayersInTeams_Players">
+          <AssociationSet Name="FK_PlayersInTeams_Players1" Association="Self.FK_PlayersInTeams_Players1">
             <End Role="Players" EntitySet="Players" />
             <End Role="PlayersInTeams" EntitySet="PlayersInTeams" />
           </AssociationSet>
-          <AssociationSet Name="FK_PlayersInTeams_Teams" Association="Self.FK_PlayersInTeams_Teams">
+          <AssociationSet Name="FK_PlayersInTeams_Teams1" Association="Self.FK_PlayersInTeams_Teams1">
             <End Role="Teams" EntitySet="Teams" />
             <End Role="PlayersInTeams" EntitySet="PlayersInTeams" />
           </AssociationSet>
@@ -401,10 +396,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Tournaments_Cities" Association="Self.FK_Tournaments_Cities">
             <End Role="Cities" EntitySet="Cities" />
-            <End Role="Tournaments" EntitySet="Tournaments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tournaments_Countries" Association="Self.FK_Tournaments_Countries">
-            <End Role="Countries" EntitySet="Countries" />
             <End Role="Tournaments" EntitySet="Tournaments" />
           </AssociationSet>
         </EntityContainer>
@@ -430,7 +421,6 @@
           <Property Name="Country1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Countries" FromRole="Countries" ToRole="Cities" />
           <NavigationProperty Name="Players" Relationship="Self.FK_Players_Countries" FromRole="Countries" ToRole="Players" />
-          <NavigationProperty Name="Tournaments" Relationship="Self.FK_Tournaments_Countries" FromRole="Countries" ToRole="Tournaments" />
         </EntityType>
         <EntityType Name="Map">
           <Key>
@@ -486,19 +476,19 @@
           <NavigationProperty Name="PlayersInTeams" Relationship="Self.FK_PlayersInTeams_Players" FromRole="Players" ToRole="PlayersInTeams" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlayersInTeamsID" Type="Guid" />
         </EntityType>
         <EntityType Name="PlayersInTeam">
           <Key>
-            <PropertyRef Name="PlayerID" />
-            <PropertyRef Name="TeamID" />
-            <PropertyRef Name="Start" />
+            <PropertyRef Name="ID" />
           </Key>
           <Property Name="PlayerID" Type="Guid" Nullable="false" />
           <Property Name="TeamID" Type="Guid" Nullable="false" />
-          <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Finish" Type="DateTime" Precision="0" />
+          <Property Name="Start" Type="DateTime" Precision="0" Nullable="true" />
+          <Property Name="Finish" Type="DateTime" Precision="0" Nullable="true" />
           <NavigationProperty Name="Player" Relationship="Self.FK_PlayersInTeams_Players" FromRole="PlayersInTeams" ToRole="Players" />
           <NavigationProperty Name="Team" Relationship="Self.FK_PlayersInTeams_Teams" FromRole="PlayersInTeams" ToRole="Teams" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -529,16 +519,6 @@
           <NavigationProperty Name="Map" Relationship="Self.FK_Sets_Maps" FromRole="Sets" ToRole="Maps" />
           <NavigationProperty Name="MatchesInTournament" Relationship="Self.FK_Sets_MatchesInTournaments" FromRole="Sets" ToRole="MatchesInTournaments" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Team">
           <Key>
             <PropertyRef Name="TeamID" />
@@ -550,13 +530,14 @@
           <Property Name="Draws" Type="Int32" Nullable="false" />
           <Property Name="Defeats" Type="Int32" Nullable="false" />
           <Property Name="Money" Type="Int32" Nullable="false" />
-          <Property Name="Rating" Type="Double" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="ManagerID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="MatchesInTournaments" Relationship="Self.FK_MatchesInTournaments_Teams" FromRole="Teams" ToRole="MatchesInTournaments" />
           <NavigationProperty Name="MatchesInTournaments1" Relationship="Self.FK_MatchesInTournaments_Teams1" FromRole="Teams" ToRole="MatchesInTournaments" />
           <NavigationProperty Name="Participants" Relationship="Self.FK_Participants_Teams" FromRole="Teams" ToRole="Participants" />
           <NavigationProperty Name="PlayersInTeams" Relationship="Self.FK_PlayersInTeams_Teams" FromRole="Teams" ToRole="PlayersInTeams" />
           <NavigationProperty Name="Region" Relationship="Self.FK_Teams_Regions" FromRole="Teams" ToRole="Regions" />
+          <Property Name="RegionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tournament">
           <Key>
@@ -564,16 +545,16 @@
           </Key>
           <Property Name="TournamentID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountryID" Type="Int32" Nullable="false" />
           <Property Name="CityID" Type="Guid" Nullable="false" />
           <Property Name="MembersCount" Type="Int32" Nullable="false" />
           <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Finish" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Money" Type="Int32" Nullable="false" />
           <NavigationProperty Name="City" Relationship="Self.FK_Tournaments_Cities" FromRole="Tournaments" ToRole="Cities" />
-          <NavigationProperty Name="Country" Relationship="Self.FK_Tournaments_Countries" FromRole="Tournaments" ToRole="Countries" />
           <NavigationProperty Name="MatchesInTournaments" Relationship="Self.FK_MatchesInTournaments_Tournaments" FromRole="Tournaments" ToRole="MatchesInTournaments" />
           <NavigationProperty Name="Participants" Relationship="Self.FK_Participants_Tournaments" FromRole="Tournaments" ToRole="Participants" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Cities_Countries">
           <End Role="Countries" Type="Self.Country" Multiplicity="1" />
@@ -588,8 +569,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tournaments_Cities">
-          <End Role="Cities" Type="Self.City" Multiplicity="1" />
-          <End Role="Tournaments" Type="Self.Tournament" Multiplicity="*" />
+          <End Type="Self.City" Multiplicity="1" Role="Cities" />
+          <End Type="Self.Tournament" Multiplicity="*" Role="Tournaments" />
           <ReferentialConstraint>
             <Principal Role="Cities">
               <PropertyRef Name="CityID" />
@@ -607,18 +588,6 @@
               <PropertyRef Name="CountryID" />
             </Principal>
             <Dependent Role="Players">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tournaments_Countries">
-          <End Role="Countries" Type="Self.Country" Multiplicity="1" />
-          <End Role="Tournaments" Type="Self.Tournament" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Countries">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="Tournaments">
               <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
@@ -766,7 +735,6 @@
           <EntitySet Name="Regions" EntityType="Self.Region" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Sets" EntityType="Self.Set" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Teams" EntityType="Self.Team" />
           <EntitySet Name="Tournaments" EntityType="Self.Tournament" />
           <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
@@ -774,16 +742,12 @@
             <End Role="Cities" EntitySet="Cities" />
           </AssociationSet>
           <AssociationSet Name="FK_Tournaments_Cities" Association="Self.FK_Tournaments_Cities">
-            <End Role="Cities" EntitySet="Cities" />
-            <End Role="Tournaments" EntitySet="Tournaments" />
+            <End EntitySet="Cities" Role="Cities" />
+            <End EntitySet="Tournaments" Role="Tournaments" />
           </AssociationSet>
           <AssociationSet Name="FK_Players_Countries" Association="Self.FK_Players_Countries">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Players" EntitySet="Players" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tournaments_Countries" Association="Self.FK_Tournaments_Countries">
-            <End Role="Countries" EntitySet="Countries" />
-            <End Role="Tournaments" EntitySet="Tournaments" />
           </AssociationSet>
           <AssociationSet Name="FK_Sets_Maps" Association="Self.FK_Sets_Maps">
             <End Role="Maps" EntitySet="Maps" />
@@ -926,6 +890,7 @@
           <EntitySetMapping Name="Players">
             <EntityTypeMapping TypeName="CybersportDBModel.Player">
               <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="PlayersInTeamsID" ColumnName="PlayersInTeamsID" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
@@ -945,6 +910,7 @@
           <EntitySetMapping Name="PlayersInTeams">
             <EntityTypeMapping TypeName="CybersportDBModel.PlayersInTeam">
               <MappingFragment StoreEntitySet="PlayersInTeams">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />
                 <ScalarProperty Name="Start" ColumnName="Start" />
@@ -979,20 +945,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="CybersportDBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Teams">
             <EntityTypeMapping TypeName="CybersportDBModel.Team">
               <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
                 <ScalarProperty Name="TeamID" ColumnName="TeamID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
@@ -1008,9 +964,10 @@
           <EntitySetMapping Name="Tournaments">
             <EntityTypeMapping TypeName="CybersportDBModel.Tournament">
               <MappingFragment StoreEntitySet="Tournaments">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="TournamentID" ColumnName="TournamentID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="MembersCount" ColumnName="MembersCount" />
                 <ScalarProperty Name="Start" ColumnName="Start" />

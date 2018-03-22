@@ -25,7 +25,6 @@ namespace DataModel
         public string Nickname { get; set; }
         public string Surname { get; set; }
         public int CountryID { get; set; }
-        public string CountryName { get; set; }
         public int Age { get; set; }
         public int Rating { get; set; }
         public int PlayedMaps { get; set; }
@@ -33,6 +32,8 @@ namespace DataModel
         public System.Guid RoleID { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public string CountryName { get; set; }
+        public Nullable<System.Guid> PlayersInTeamsID { get; set; }
     
         public virtual Country Country { get; set; }
         public virtual Role Role { get; set; }

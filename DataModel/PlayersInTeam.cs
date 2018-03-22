@@ -16,8 +16,9 @@ namespace DataModel
     {
         public System.Guid PlayerID { get; set; }
         public System.Guid TeamID { get; set; }
-        public System.DateTime Start { get; set; }
+        public Nullable<System.DateTime> Start { get; set; }
         public Nullable<System.DateTime> Finish { get; set; }
+        public System.Guid ID { get; set; }
     
         public virtual Player Player { get; set; }
         public virtual Team Team { get; set; }
