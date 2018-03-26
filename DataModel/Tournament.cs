@@ -28,8 +28,7 @@ namespace DataModel
         public System.DateTime Start { get; set; }
         public System.DateTime Finish { get; set; }
         public int Money { get; set; }
-        public string CountryName { get; set; }
-        public string CityName { get; set; }
+        public System.Guid OrgID { get; set; }
     
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

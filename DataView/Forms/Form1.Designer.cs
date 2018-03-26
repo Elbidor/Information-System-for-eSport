@@ -1,6 +1,6 @@
 ﻿namespace Information_System_for_eSport
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
             this.PlayerTab = new MetroFramework.Controls.MetroTabPage();
             this.RoundsLabel = new MetroFramework.Controls.MetroLabel();
@@ -59,7 +65,6 @@
             this.nicknameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.countryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ratingDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.playedMapsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +89,7 @@
             this.TeamDrawsLabel = new MetroFramework.Controls.MetroLabel();
             this.FilterTeamDraws = new MetroFramework.Controls.MetroTrackBar();
             this.FilterTeamRegion = new MetroFramework.Controls.MetroComboBox();
+            this.regionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.FilterTeamName = new MetroFramework.Controls.MetroTextBox();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroLink2 = new MetroFramework.Controls.MetroLink();
@@ -104,6 +110,32 @@
             this.regionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teamBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.TournamentTab = new MetroFramework.Controls.MetroTabPage();
+            this.FilterFinishTime = new MetroFramework.Controls.MetroDateTime();
+            this.FilterStartTime = new MetroFramework.Controls.MetroDateTime();
+            this.TournamentGrid = new MetroFramework.Controls.MetroGrid();
+            this.tournamentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.membersCountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.moneyDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matchesInTournamentsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.participantsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tournamentBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.metroLink7 = new MetroFramework.Controls.MetroLink();
+            this.FilterPrizeLabel = new MetroFramework.Controls.MetroLabel();
+            this.FilterChampPrize = new MetroFramework.Controls.MetroTrackBar();
+            this.FilterChampCity = new MetroFramework.Controls.MetroComboBox();
+            this.FilterTeamsCountLabel = new MetroFramework.Controls.MetroLabel();
+            this.FilterTeamsCount = new MetroFramework.Controls.MetroTrackBar();
+            this.FilterChampName = new MetroFramework.Controls.MetroTextBox();
+            this.metroLink4 = new MetroFramework.Controls.MetroLink();
+            this.metroLink5 = new MetroFramework.Controls.MetroLink();
+            this.metroLink6 = new MetroFramework.Controls.MetroLink();
+            this.tournamentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cybersportDBDataSet2 = new Information_System_for_eSport.CybersportDBDataSet2();
             this.RegistrationButton = new MetroFramework.Controls.MetroTile();
@@ -115,6 +147,10 @@
             this.EditButton = new MetroFramework.Controls.MetroTile();
             this.DeleteButton = new MetroFramework.Controls.MetroTile();
             this.InformationPanel = new MetroFramework.Controls.MetroPanel();
+            this.careerGrid = new MetroFramework.Controls.MetroGrid();
+            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finishDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.playersInTeamBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.CareerInfo = new MetroFramework.Controls.MetroLink();
             this.CloseInfoPanel = new MetroFramework.Controls.MetroLink();
             this.InfoPanelLabelField8 = new MetroFramework.Controls.MetroLabel();
@@ -134,25 +170,44 @@
             this.InfoPanelLabel2 = new MetroFramework.Controls.MetroLabel();
             this.InfoPanelLabel1 = new MetroFramework.Controls.MetroLabel();
             this.InfoPanelHeadLabel = new MetroFramework.Controls.MetroLabel();
+            this.playersInTeamBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.citiesTableAdapter = new Information_System_for_eSport.CybersportDBDataSet2TableAdapters.CitiesTableAdapter();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.CreateTeamButton = new MetroFramework.Controls.MetroTile();
             this.ChangeTeamButton = new MetroFramework.Controls.MetroTile();
             this.DeleteTeamButton = new MetroFramework.Controls.MetroTile();
-            this.regionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teamBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.playersInTeamBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.playersInTeamBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.CreateChamp = new MetroFramework.Controls.MetroTile();
+            this.UpdateChamp = new MetroFramework.Controls.MetroTile();
+            this.DeleteChamp = new MetroFramework.Controls.MetroTile();
+            this.cityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TabControl.SuspendLayout();
             this.PlayerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             this.TeamTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource1)).BeginInit();
+            this.TournamentTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TournamentGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tournamentBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tournamentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).BeginInit();
             this.InformationPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.careerGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
@@ -166,7 +221,7 @@
             this.TabControl.ItemSize = new System.Drawing.Size(57, 35);
             this.TabControl.Location = new System.Drawing.Point(23, 74);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 1;
+            this.TabControl.SelectedIndex = 2;
             this.TabControl.Size = new System.Drawing.Size(811, 419);
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
@@ -454,14 +509,14 @@
             this.PlayerGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PlayerGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.PlayerGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle73.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle73.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle73.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle73;
             this.PlayerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PlayerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.playerIDDataGridViewTextBoxColumn,
@@ -469,7 +524,6 @@
             this.nicknameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
             this.countryIDDataGridViewTextBoxColumn,
-            this.countryNameDataGridViewTextBoxColumn,
             this.ageDataGridViewTextBoxColumn,
             this.ratingDataGridViewTextBoxColumn,
             this.playedMapsDataGridViewTextBoxColumn,
@@ -481,14 +535,14 @@
             this.roleDataGridViewTextBoxColumn,
             this.playersInTeamsDataGridViewTextBoxColumn});
             this.PlayerGrid.DataSource = this.playerBindingSource;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle74.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle74.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle74.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PlayerGrid.DefaultCellStyle = dataGridViewCellStyle74;
             this.PlayerGrid.EnableHeadersVisualStyles = false;
             this.PlayerGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.PlayerGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -497,14 +551,14 @@
             this.PlayerGrid.Name = "PlayerGrid";
             this.PlayerGrid.ReadOnly = true;
             this.PlayerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle75.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle75.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle75.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PlayerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle75;
             this.PlayerGrid.RowHeadersVisible = false;
             this.PlayerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.PlayerGrid.RowTemplate.Height = 24;
@@ -550,20 +604,11 @@
             // 
             // countryIDDataGridViewTextBoxColumn
             // 
-            this.countryIDDataGridViewTextBoxColumn.DataPropertyName = "CountryID";
-            this.countryIDDataGridViewTextBoxColumn.HeaderText = "CountryID";
+            this.countryIDDataGridViewTextBoxColumn.DataPropertyName = "CountryName";
+            this.countryIDDataGridViewTextBoxColumn.HeaderText = "Страна";
             this.countryIDDataGridViewTextBoxColumn.Name = "countryIDDataGridViewTextBoxColumn";
             this.countryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.countryIDDataGridViewTextBoxColumn.Visible = false;
-            this.countryIDDataGridViewTextBoxColumn.Width = 133;
-            // 
-            // countryNameDataGridViewTextBoxColumn
-            // 
-            this.countryNameDataGridViewTextBoxColumn.DataPropertyName = "CountryName";
-            this.countryNameDataGridViewTextBoxColumn.HeaderText = "Страна";
-            this.countryNameDataGridViewTextBoxColumn.Name = "countryNameDataGridViewTextBoxColumn";
-            this.countryNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.countryNameDataGridViewTextBoxColumn.Width = 104;
+            this.countryIDDataGridViewTextBoxColumn.Width = 104;
             // 
             // ageDataGridViewTextBoxColumn
             // 
@@ -710,7 +755,7 @@
             // 
             this.FilterTeamRating.BackColor = System.Drawing.Color.Transparent;
             this.FilterTeamRating.Location = new System.Drawing.Point(438, 21);
-            this.FilterTeamRating.Maximum = 3000;
+            this.FilterTeamRating.Maximum = 5000;
             this.FilterTeamRating.Name = "FilterTeamRating";
             this.FilterTeamRating.Size = new System.Drawing.Size(122, 23);
             this.FilterTeamRating.SmallChange = 10;
@@ -733,7 +778,7 @@
             // 
             this.FilterTeamMoney.BackColor = System.Drawing.Color.Transparent;
             this.FilterTeamMoney.Location = new System.Drawing.Point(276, 21);
-            this.FilterTeamMoney.Maximum = 3000;
+            this.FilterTeamMoney.Maximum = 1000000;
             this.FilterTeamMoney.Name = "FilterTeamMoney";
             this.FilterTeamMoney.Size = new System.Drawing.Size(122, 23);
             this.FilterTeamMoney.SmallChange = 10;
@@ -746,7 +791,7 @@
             // 
             this.FilterTeamDefeats.BackColor = System.Drawing.Color.Transparent;
             this.FilterTeamDefeats.Location = new System.Drawing.Point(379, 50);
-            this.FilterTeamDefeats.Maximum = 3000;
+            this.FilterTeamDefeats.Maximum = 1000;
             this.FilterTeamDefeats.Name = "FilterTeamDefeats";
             this.FilterTeamDefeats.Size = new System.Drawing.Size(138, 23);
             this.FilterTeamDefeats.SmallChange = 10;
@@ -778,7 +823,7 @@
             // 
             this.FilterTeamWins.BackColor = System.Drawing.Color.Transparent;
             this.FilterTeamWins.Location = new System.Drawing.Point(33, 50);
-            this.FilterTeamWins.Maximum = 3000;
+            this.FilterTeamWins.Maximum = 1000;
             this.FilterTeamWins.Name = "FilterTeamWins";
             this.FilterTeamWins.Size = new System.Drawing.Size(138, 23);
             this.FilterTeamWins.SmallChange = 10;
@@ -801,7 +846,7 @@
             // 
             this.FilterTeamDraws.BackColor = System.Drawing.Color.Transparent;
             this.FilterTeamDraws.Location = new System.Drawing.Point(209, 50);
-            this.FilterTeamDraws.Maximum = 3000;
+            this.FilterTeamDraws.Maximum = 1000;
             this.FilterTeamDraws.Name = "FilterTeamDraws";
             this.FilterTeamDraws.Size = new System.Drawing.Size(138, 23);
             this.FilterTeamDraws.SmallChange = 10;
@@ -824,6 +869,10 @@
             this.FilterTeamRegion.UseSelectable = true;
             this.FilterTeamRegion.ValueMember = "RegionID";
             this.FilterTeamRegion.SelectionChangeCommitted += new System.EventHandler(this.FilterTeamRegion_SelectionChangeCommitted);
+            // 
+            // regionBindingSource
+            // 
+            this.regionBindingSource.DataSource = typeof(DataModel.Region);
             // 
             // FilterTeamName
             // 
@@ -903,14 +952,14 @@
             this.TeamGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TeamGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.TeamGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle76.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle76.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle76.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle76.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle76.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TeamGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle76;
             this.TeamGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TeamGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamIDDataGridViewTextBoxColumn,
@@ -927,14 +976,14 @@
             this.playersInTeamsDataGridViewTextBoxColumn1,
             this.regionDataGridViewTextBoxColumn});
             this.TeamGrid.DataSource = this.teamBindingSource1;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TeamGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle77.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle77.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TeamGrid.DefaultCellStyle = dataGridViewCellStyle77;
             this.TeamGrid.EnableHeadersVisualStyles = false;
             this.TeamGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.TeamGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -943,14 +992,14 @@
             this.TeamGrid.Name = "TeamGrid";
             this.TeamGrid.ReadOnly = true;
             this.TeamGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TeamGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(81)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle78.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(100)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle78.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TeamGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle78;
             this.TeamGrid.RowHeadersVisible = false;
             this.TeamGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.TeamGrid.RowTemplate.Height = 24;
@@ -1076,6 +1125,19 @@
             // 
             // TournamentTab
             // 
+            this.TournamentTab.Controls.Add(this.FilterFinishTime);
+            this.TournamentTab.Controls.Add(this.FilterStartTime);
+            this.TournamentTab.Controls.Add(this.TournamentGrid);
+            this.TournamentTab.Controls.Add(this.metroLink7);
+            this.TournamentTab.Controls.Add(this.FilterPrizeLabel);
+            this.TournamentTab.Controls.Add(this.FilterChampPrize);
+            this.TournamentTab.Controls.Add(this.FilterChampCity);
+            this.TournamentTab.Controls.Add(this.FilterTeamsCountLabel);
+            this.TournamentTab.Controls.Add(this.FilterTeamsCount);
+            this.TournamentTab.Controls.Add(this.FilterChampName);
+            this.TournamentTab.Controls.Add(this.metroLink4);
+            this.TournamentTab.Controls.Add(this.metroLink5);
+            this.TournamentTab.Controls.Add(this.metroLink6);
             this.TournamentTab.HorizontalScrollbarBarColor = true;
             this.TournamentTab.HorizontalScrollbarHighlightOnWheel = false;
             this.TournamentTab.HorizontalScrollbarSize = 10;
@@ -1087,6 +1149,313 @@
             this.TournamentTab.VerticalScrollbarBarColor = true;
             this.TournamentTab.VerticalScrollbarHighlightOnWheel = false;
             this.TournamentTab.VerticalScrollbarSize = 10;
+            // 
+            // FilterFinishTime
+            // 
+            this.FilterFinishTime.Location = new System.Drawing.Point(409, 8);
+            this.FilterFinishTime.MinimumSize = new System.Drawing.Size(0, 30);
+            this.FilterFinishTime.Name = "FilterFinishTime";
+            this.FilterFinishTime.Size = new System.Drawing.Size(146, 30);
+            this.FilterFinishTime.TabIndex = 35;
+            this.FilterFinishTime.ValueChanged += new System.EventHandler(this.FilterFinishTime_ValueChanged);
+            // 
+            // FilterStartTime
+            // 
+            this.FilterStartTime.Location = new System.Drawing.Point(259, 8);
+            this.FilterStartTime.MinimumSize = new System.Drawing.Size(0, 30);
+            this.FilterStartTime.Name = "FilterStartTime";
+            this.FilterStartTime.Size = new System.Drawing.Size(144, 30);
+            this.FilterStartTime.TabIndex = 34;
+            this.FilterStartTime.ValueChanged += new System.EventHandler(this.FilterStartTime_ValueChanged);
+            // 
+            // TournamentGrid
+            // 
+            this.TournamentGrid.AllowUserToAddRows = false;
+            this.TournamentGrid.AllowUserToDeleteRows = false;
+            this.TournamentGrid.AllowUserToResizeRows = false;
+            this.TournamentGrid.AutoGenerateColumns = false;
+            this.TournamentGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TournamentGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TournamentGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TournamentGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle79.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle79.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle79.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TournamentGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle79;
+            this.TournamentGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TournamentGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tournamentIDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn2,
+            this.cityIDDataGridViewTextBoxColumn,
+            this.cityNameDataGridViewTextBoxColumn,
+            this.membersCountDataGridViewTextBoxColumn,
+            this.startDataGridViewTextBoxColumn1,
+            this.finishDataGridViewTextBoxColumn1,
+            this.moneyDataGridViewTextBoxColumn1,
+            this.cityDataGridViewTextBoxColumn,
+            this.matchesInTournamentsDataGridViewTextBoxColumn1,
+            this.participantsDataGridViewTextBoxColumn1});
+            this.TournamentGrid.DataSource = this.tournamentBindingSource1;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle80.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TournamentGrid.DefaultCellStyle = dataGridViewCellStyle80;
+            this.TournamentGrid.EnableHeadersVisualStyles = false;
+            this.TournamentGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.TournamentGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.TournamentGrid.Location = new System.Drawing.Point(7, 77);
+            this.TournamentGrid.Name = "TournamentGrid";
+            this.TournamentGrid.ReadOnly = true;
+            this.TournamentGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle81.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle81.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle81.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TournamentGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle81;
+            this.TournamentGrid.RowHeadersVisible = false;
+            this.TournamentGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.TournamentGrid.RowTemplate.Height = 24;
+            this.TournamentGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.TournamentGrid.Size = new System.Drawing.Size(834, 249);
+            this.TournamentGrid.TabIndex = 33;
+            // 
+            // tournamentIDDataGridViewTextBoxColumn
+            // 
+            this.tournamentIDDataGridViewTextBoxColumn.DataPropertyName = "TournamentID";
+            this.tournamentIDDataGridViewTextBoxColumn.HeaderText = "TournamentID";
+            this.tournamentIDDataGridViewTextBoxColumn.Name = "tournamentIDDataGridViewTextBoxColumn";
+            this.tournamentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tournamentIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn2
+            // 
+            this.nameDataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn2.HeaderText = "Название";
+            this.nameDataGridViewTextBoxColumn2.Name = "nameDataGridViewTextBoxColumn2";
+            this.nameDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // cityIDDataGridViewTextBoxColumn
+            // 
+            this.cityIDDataGridViewTextBoxColumn.DataPropertyName = "CityID";
+            this.cityIDDataGridViewTextBoxColumn.HeaderText = "CityID";
+            this.cityIDDataGridViewTextBoxColumn.Name = "cityIDDataGridViewTextBoxColumn";
+            this.cityIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // cityNameDataGridViewTextBoxColumn
+            // 
+            this.cityNameDataGridViewTextBoxColumn.DataPropertyName = "CityName";
+            this.cityNameDataGridViewTextBoxColumn.HeaderText = "Город";
+            this.cityNameDataGridViewTextBoxColumn.Name = "cityNameDataGridViewTextBoxColumn";
+            this.cityNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // membersCountDataGridViewTextBoxColumn
+            // 
+            this.membersCountDataGridViewTextBoxColumn.DataPropertyName = "MembersCount";
+            this.membersCountDataGridViewTextBoxColumn.HeaderText = "Число участников";
+            this.membersCountDataGridViewTextBoxColumn.Name = "membersCountDataGridViewTextBoxColumn";
+            this.membersCountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.membersCountDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // startDataGridViewTextBoxColumn1
+            // 
+            this.startDataGridViewTextBoxColumn1.DataPropertyName = "Start";
+            this.startDataGridViewTextBoxColumn1.HeaderText = "Начало";
+            this.startDataGridViewTextBoxColumn1.Name = "startDataGridViewTextBoxColumn1";
+            this.startDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // finishDataGridViewTextBoxColumn1
+            // 
+            this.finishDataGridViewTextBoxColumn1.DataPropertyName = "Finish";
+            this.finishDataGridViewTextBoxColumn1.HeaderText = "Конец";
+            this.finishDataGridViewTextBoxColumn1.Name = "finishDataGridViewTextBoxColumn1";
+            this.finishDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // moneyDataGridViewTextBoxColumn1
+            // 
+            this.moneyDataGridViewTextBoxColumn1.DataPropertyName = "Money";
+            this.moneyDataGridViewTextBoxColumn1.HeaderText = "Призовой фонд";
+            this.moneyDataGridViewTextBoxColumn1.Name = "moneyDataGridViewTextBoxColumn1";
+            this.moneyDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.moneyDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // matchesInTournamentsDataGridViewTextBoxColumn1
+            // 
+            this.matchesInTournamentsDataGridViewTextBoxColumn1.DataPropertyName = "MatchesInTournaments";
+            this.matchesInTournamentsDataGridViewTextBoxColumn1.HeaderText = "MatchesInTournaments";
+            this.matchesInTournamentsDataGridViewTextBoxColumn1.Name = "matchesInTournamentsDataGridViewTextBoxColumn1";
+            this.matchesInTournamentsDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.matchesInTournamentsDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // participantsDataGridViewTextBoxColumn1
+            // 
+            this.participantsDataGridViewTextBoxColumn1.DataPropertyName = "Participants";
+            this.participantsDataGridViewTextBoxColumn1.HeaderText = "Participants";
+            this.participantsDataGridViewTextBoxColumn1.Name = "participantsDataGridViewTextBoxColumn1";
+            this.participantsDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.participantsDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // tournamentBindingSource1
+            // 
+            this.tournamentBindingSource1.DataSource = typeof(DataModel.Tournament);
+            // 
+            // metroLink7
+            // 
+            this.metroLink7.Image = global::Information_System_for_eSport.Properties.Resources.loading__1_;
+            this.metroLink7.ImageSize = 25;
+            this.metroLink7.Location = new System.Drawing.Point(457, 44);
+            this.metroLink7.Name = "metroLink7";
+            this.metroLink7.Size = new System.Drawing.Size(40, 31);
+            this.metroLink7.TabIndex = 31;
+            this.metroLink7.UseSelectable = true;
+            this.metroLink7.Click += new System.EventHandler(this.metroLink7_Click);
+            // 
+            // FilterPrizeLabel
+            // 
+            this.FilterPrizeLabel.AutoSize = true;
+            this.FilterPrizeLabel.Location = new System.Drawing.Point(158, 48);
+            this.FilterPrizeLabel.Name = "FilterPrizeLabel";
+            this.FilterPrizeLabel.Size = new System.Drawing.Size(17, 20);
+            this.FilterPrizeLabel.TabIndex = 30;
+            this.FilterPrizeLabel.Text = "0";
+            // 
+            // FilterChampPrize
+            // 
+            this.FilterChampPrize.BackColor = System.Drawing.Color.Transparent;
+            this.FilterChampPrize.Location = new System.Drawing.Point(219, 48);
+            this.FilterChampPrize.Maximum = 1500000;
+            this.FilterChampPrize.Name = "FilterChampPrize";
+            this.FilterChampPrize.Size = new System.Drawing.Size(184, 23);
+            this.FilterChampPrize.SmallChange = 10;
+            this.FilterChampPrize.Style = MetroFramework.MetroColorStyle.Red;
+            this.FilterChampPrize.TabIndex = 29;
+            this.FilterChampPrize.Value = 0;
+            this.FilterChampPrize.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FilterRating_Scroll);
+            // 
+            // FilterChampCity
+            // 
+            this.FilterChampCity.DataSource = this.cityBindingSource;
+            this.FilterChampCity.DisplayMember = "Name";
+            this.FilterChampCity.FormattingEnabled = true;
+            this.FilterChampCity.ItemHeight = 24;
+            this.FilterChampCity.Location = new System.Drawing.Point(109, 8);
+            this.FilterChampCity.Name = "FilterChampCity";
+            this.FilterChampCity.Size = new System.Drawing.Size(144, 30);
+            this.FilterChampCity.TabIndex = 27;
+            this.FilterChampCity.UseSelectable = true;
+            this.FilterChampCity.ValueMember = "CityID";
+            this.FilterChampCity.SelectionChangeCommitted += new System.EventHandler(this.FilterChampCity_SelectionChangeCommitted);
+            // 
+            // FilterTeamsCountLabel
+            // 
+            this.FilterTeamsCountLabel.AutoSize = true;
+            this.FilterTeamsCountLabel.Location = new System.Drawing.Point(7, 48);
+            this.FilterTeamsCountLabel.Name = "FilterTeamsCountLabel";
+            this.FilterTeamsCountLabel.Size = new System.Drawing.Size(17, 20);
+            this.FilterTeamsCountLabel.TabIndex = 26;
+            this.FilterTeamsCountLabel.Text = "0";
+            // 
+            // FilterTeamsCount
+            // 
+            this.FilterTeamsCount.BackColor = System.Drawing.Color.Transparent;
+            this.FilterTeamsCount.Location = new System.Drawing.Point(30, 48);
+            this.FilterTeamsCount.Maximum = 8;
+            this.FilterTeamsCount.Name = "FilterTeamsCount";
+            this.FilterTeamsCount.Size = new System.Drawing.Size(122, 23);
+            this.FilterTeamsCount.SmallChange = 10;
+            this.FilterTeamsCount.Style = MetroFramework.MetroColorStyle.Red;
+            this.FilterTeamsCount.TabIndex = 25;
+            this.FilterTeamsCount.Value = 0;
+            this.FilterTeamsCount.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FilterRating_Scroll);
+            // 
+            // FilterChampName
+            // 
+            // 
+            // 
+            // 
+            this.FilterChampName.CustomButton.Image = null;
+            this.FilterChampName.CustomButton.Location = new System.Drawing.Point(72, 2);
+            this.FilterChampName.CustomButton.Name = "";
+            this.FilterChampName.CustomButton.Size = new System.Drawing.Size(25, 25);
+            this.FilterChampName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.FilterChampName.CustomButton.TabIndex = 1;
+            this.FilterChampName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.FilterChampName.CustomButton.UseSelectable = true;
+            this.FilterChampName.CustomButton.Visible = false;
+            this.FilterChampName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.FilterChampName.Lines = new string[0];
+            this.FilterChampName.Location = new System.Drawing.Point(3, 8);
+            this.FilterChampName.MaxLength = 32767;
+            this.FilterChampName.Name = "FilterChampName";
+            this.FilterChampName.PasswordChar = '\0';
+            this.FilterChampName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.FilterChampName.SelectedText = "";
+            this.FilterChampName.SelectionLength = 0;
+            this.FilterChampName.SelectionStart = 0;
+            this.FilterChampName.ShortcutsEnabled = true;
+            this.FilterChampName.Size = new System.Drawing.Size(100, 30);
+            this.FilterChampName.TabIndex = 15;
+            this.FilterChampName.UseSelectable = true;
+            this.FilterChampName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.FilterChampName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.FilterChampName.TextChanged += new System.EventHandler(this.FilterPlayersEvent);
+            this.FilterChampName.Click += new System.EventHandler(this.OnTextboxClick);
+            // 
+            // metroLink4
+            // 
+            this.metroLink4.Image = global::Information_System_for_eSport.Properties.Resources._001_xls;
+            this.metroLink4.ImageSize = 60;
+            this.metroLink4.Location = new System.Drawing.Point(723, 3);
+            this.metroLink4.Name = "metroLink4";
+            this.metroLink4.Size = new System.Drawing.Size(75, 72);
+            this.metroLink4.TabIndex = 14;
+            this.metroLink4.UseSelectable = true;
+            this.metroLink4.Click += new System.EventHandler(this.CreateExcelButton_Click);
+            // 
+            // metroLink5
+            // 
+            this.metroLink5.Image = global::Information_System_for_eSport.Properties.Resources._003_doc;
+            this.metroLink5.ImageSize = 60;
+            this.metroLink5.Location = new System.Drawing.Point(642, 3);
+            this.metroLink5.Name = "metroLink5";
+            this.metroLink5.Size = new System.Drawing.Size(75, 72);
+            this.metroLink5.TabIndex = 13;
+            this.metroLink5.UseSelectable = true;
+            this.metroLink5.Click += new System.EventHandler(this.CreateWordButton_Click);
+            // 
+            // metroLink6
+            // 
+            this.metroLink6.Image = global::Information_System_for_eSport.Properties.Resources._002_pdf;
+            this.metroLink6.ImageSize = 60;
+            this.metroLink6.Location = new System.Drawing.Point(561, 3);
+            this.metroLink6.Name = "metroLink6";
+            this.metroLink6.Size = new System.Drawing.Size(75, 72);
+            this.metroLink6.TabIndex = 12;
+            this.metroLink6.UseSelectable = true;
+            this.metroLink6.Click += new System.EventHandler(this.CreatePdfButton_Click);
+            // 
+            // tournamentBindingSource
+            // 
+            this.tournamentBindingSource.DataSource = typeof(DataModel.Tournament);
             // 
             // teamBindingSource
             // 
@@ -1202,6 +1571,7 @@
             // InformationPanel
             // 
             this.InformationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InformationPanel.Controls.Add(this.careerGrid);
             this.InformationPanel.Controls.Add(this.CareerInfo);
             this.InformationPanel.Controls.Add(this.CloseInfoPanel);
             this.InformationPanel.Controls.Add(this.InfoPanelLabelField8);
@@ -1227,28 +1597,104 @@
             this.InformationPanel.HorizontalScrollbarSize = 10;
             this.InformationPanel.Location = new System.Drawing.Point(840, 113);
             this.InformationPanel.Name = "InformationPanel";
-            this.InformationPanel.Size = new System.Drawing.Size(298, 380);
+            this.InformationPanel.Size = new System.Drawing.Size(10, 370);
             this.InformationPanel.TabIndex = 10;
             this.InformationPanel.VerticalScrollbarBarColor = true;
             this.InformationPanel.VerticalScrollbarHighlightOnWheel = false;
             this.InformationPanel.VerticalScrollbarSize = 10;
             this.InformationPanel.Visible = false;
             // 
+            // careerGrid
+            // 
+            this.careerGrid.AllowUserToAddRows = false;
+            this.careerGrid.AllowUserToDeleteRows = false;
+            this.careerGrid.AllowUserToResizeRows = false;
+            this.careerGrid.AutoGenerateColumns = false;
+            this.careerGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.careerGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.careerGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.careerGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle82.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle82.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle82.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle82.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle82.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle82.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.careerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle82;
+            this.careerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.careerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.startDataGridViewTextBoxColumn,
+            this.finishDataGridViewTextBoxColumn});
+            this.careerGrid.DataSource = this.playersInTeamBindingSource3;
+            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle83.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle83.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle83.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle83.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.careerGrid.DefaultCellStyle = dataGridViewCellStyle83;
+            this.careerGrid.EnableHeadersVisualStyles = false;
+            this.careerGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.careerGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.careerGrid.Location = new System.Drawing.Point(8, 2);
+            this.careerGrid.Name = "careerGrid";
+            this.careerGrid.ReadOnly = true;
+            this.careerGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle84.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle84.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle84.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle84.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.careerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle84;
+            this.careerGrid.RowHeadersVisible = false;
+            this.careerGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.careerGrid.RowTemplate.Height = 24;
+            this.careerGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.careerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.careerGrid.ShowRowErrors = false;
+            this.careerGrid.Size = new System.Drawing.Size(279, 298);
+            this.careerGrid.TabIndex = 21;
+            // 
+            // startDataGridViewTextBoxColumn
+            // 
+            this.startDataGridViewTextBoxColumn.DataPropertyName = "Start";
+            this.startDataGridViewTextBoxColumn.HeaderText = "Start";
+            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
+            this.startDataGridViewTextBoxColumn.ReadOnly = true;
+            this.startDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // finishDataGridViewTextBoxColumn
+            // 
+            this.finishDataGridViewTextBoxColumn.DataPropertyName = "Finish";
+            this.finishDataGridViewTextBoxColumn.HeaderText = "Finish";
+            this.finishDataGridViewTextBoxColumn.Name = "finishDataGridViewTextBoxColumn";
+            this.finishDataGridViewTextBoxColumn.ReadOnly = true;
+            this.finishDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // playersInTeamBindingSource3
+            // 
+            this.playersInTeamBindingSource3.DataSource = typeof(DataModel.PlayersInTeam);
+            // 
             // CareerInfo
             // 
             this.CareerInfo.Image = global::Information_System_for_eSport.Properties.Resources.group;
             this.CareerInfo.ImageSize = 50;
-            this.CareerInfo.Location = new System.Drawing.Point(19, 293);
+            this.CareerInfo.Location = new System.Drawing.Point(109, 306);
             this.CareerInfo.Name = "CareerInfo";
-            this.CareerInfo.Size = new System.Drawing.Size(101, 82);
+            this.CareerInfo.Size = new System.Drawing.Size(82, 52);
             this.CareerInfo.TabIndex = 20;
             this.CareerInfo.UseSelectable = true;
+            this.CareerInfo.Click += new System.EventHandler(this.CareerInfo_Click);
             // 
             // CloseInfoPanel
             // 
             this.CloseInfoPanel.Image = global::Information_System_for_eSport.Properties.Resources.previous;
             this.CloseInfoPanel.ImageSize = 30;
-            this.CloseInfoPanel.Location = new System.Drawing.Point(232, -5);
+            this.CloseInfoPanel.Location = new System.Drawing.Point(232, 3);
             this.CloseInfoPanel.Name = "CloseInfoPanel";
             this.CloseInfoPanel.Size = new System.Drawing.Size(55, 60);
             this.CloseInfoPanel.TabIndex = 19;
@@ -1259,7 +1705,7 @@
             // 
             this.InfoPanelLabelField8.AutoSize = true;
             this.InfoPanelLabelField8.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField8.Location = new System.Drawing.Point(165, 265);
+            this.InfoPanelLabelField8.Location = new System.Drawing.Point(165, 268);
             this.InfoPanelLabelField8.Name = "InfoPanelLabelField8";
             this.InfoPanelLabelField8.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField8.TabIndex = 18;
@@ -1270,7 +1716,7 @@
             // 
             this.InfoPanelLabelField7.AutoSize = true;
             this.InfoPanelLabelField7.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField7.Location = new System.Drawing.Point(165, 234);
+            this.InfoPanelLabelField7.Location = new System.Drawing.Point(165, 238);
             this.InfoPanelLabelField7.Name = "InfoPanelLabelField7";
             this.InfoPanelLabelField7.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField7.TabIndex = 17;
@@ -1281,7 +1727,7 @@
             // 
             this.InfoPanelLabelField6.AutoSize = true;
             this.InfoPanelLabelField6.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField6.Location = new System.Drawing.Point(131, 204);
+            this.InfoPanelLabelField6.Location = new System.Drawing.Point(131, 208);
             this.InfoPanelLabelField6.Name = "InfoPanelLabelField6";
             this.InfoPanelLabelField6.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField6.TabIndex = 16;
@@ -1292,7 +1738,7 @@
             // 
             this.InfoPanelLabelField5.AutoSize = true;
             this.InfoPanelLabelField5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField5.Location = new System.Drawing.Point(80, 174);
+            this.InfoPanelLabelField5.Location = new System.Drawing.Point(80, 178);
             this.InfoPanelLabelField5.Name = "InfoPanelLabelField5";
             this.InfoPanelLabelField5.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField5.TabIndex = 15;
@@ -1303,7 +1749,7 @@
             // 
             this.InfoPanelLabelField4.AutoSize = true;
             this.InfoPanelLabelField4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField4.Location = new System.Drawing.Point(84, 146);
+            this.InfoPanelLabelField4.Location = new System.Drawing.Point(86, 148);
             this.InfoPanelLabelField4.Name = "InfoPanelLabelField4";
             this.InfoPanelLabelField4.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField4.TabIndex = 14;
@@ -1314,7 +1760,7 @@
             // 
             this.InfoPanelLabelField3.AutoSize = true;
             this.InfoPanelLabelField3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabelField3.Location = new System.Drawing.Point(95, 116);
+            this.InfoPanelLabelField3.Location = new System.Drawing.Point(95, 118);
             this.InfoPanelLabelField3.Name = "InfoPanelLabelField3";
             this.InfoPanelLabelField3.Size = new System.Drawing.Size(20, 25);
             this.InfoPanelLabelField3.TabIndex = 13;
@@ -1348,7 +1794,7 @@
             // 
             this.InfoPanelLabel8.AutoSize = true;
             this.InfoPanelLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel8.Location = new System.Drawing.Point(11, 265);
+            this.InfoPanelLabel8.Location = new System.Drawing.Point(11, 268);
             this.InfoPanelLabel8.Name = "InfoPanelLabel8";
             this.InfoPanelLabel8.Size = new System.Drawing.Size(159, 25);
             this.InfoPanelLabel8.TabIndex = 10;
@@ -1359,7 +1805,7 @@
             // 
             this.InfoPanelLabel7.AutoSize = true;
             this.InfoPanelLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel7.Location = new System.Drawing.Point(11, 234);
+            this.InfoPanelLabel7.Location = new System.Drawing.Point(11, 238);
             this.InfoPanelLabel7.Name = "InfoPanelLabel7";
             this.InfoPanelLabel7.Size = new System.Drawing.Size(161, 25);
             this.InfoPanelLabel7.TabIndex = 9;
@@ -1370,7 +1816,7 @@
             // 
             this.InfoPanelLabel6.AutoSize = true;
             this.InfoPanelLabel6.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel6.Location = new System.Drawing.Point(11, 204);
+            this.InfoPanelLabel6.Location = new System.Drawing.Point(11, 208);
             this.InfoPanelLabel6.Name = "InfoPanelLabel6";
             this.InfoPanelLabel6.Size = new System.Drawing.Size(126, 25);
             this.InfoPanelLabel6.TabIndex = 8;
@@ -1381,7 +1827,7 @@
             // 
             this.InfoPanelLabel5.AutoSize = true;
             this.InfoPanelLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel5.Location = new System.Drawing.Point(11, 174);
+            this.InfoPanelLabel5.Location = new System.Drawing.Point(11, 178);
             this.InfoPanelLabel5.Name = "InfoPanelLabel5";
             this.InfoPanelLabel5.Size = new System.Drawing.Size(74, 25);
             this.InfoPanelLabel5.TabIndex = 7;
@@ -1392,7 +1838,7 @@
             // 
             this.InfoPanelLabel4.AutoSize = true;
             this.InfoPanelLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel4.Location = new System.Drawing.Point(11, 146);
+            this.InfoPanelLabel4.Location = new System.Drawing.Point(11, 148);
             this.InfoPanelLabel4.Name = "InfoPanelLabel4";
             this.InfoPanelLabel4.Size = new System.Drawing.Size(81, 25);
             this.InfoPanelLabel4.TabIndex = 6;
@@ -1403,7 +1849,7 @@
             // 
             this.InfoPanelLabel3.AutoSize = true;
             this.InfoPanelLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.InfoPanelLabel3.Location = new System.Drawing.Point(11, 116);
+            this.InfoPanelLabel3.Location = new System.Drawing.Point(11, 118);
             this.InfoPanelLabel3.Name = "InfoPanelLabel3";
             this.InfoPanelLabel3.Size = new System.Drawing.Size(89, 25);
             this.InfoPanelLabel3.TabIndex = 5;
@@ -1443,6 +1889,10 @@
             this.InfoPanelHeadLabel.TabIndex = 2;
             this.InfoPanelHeadLabel.Text = "Информация об игроке";
             this.InfoPanelHeadLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // playersInTeamBindingSource1
+            // 
+            this.playersInTeamBindingSource1.DataSource = typeof(DataModel.PlayersInTeam);
             // 
             // timer1
             // 
@@ -1486,6 +1936,7 @@
             this.ChangeTeamButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.ChangeTeamButton.UseSelectable = true;
             this.ChangeTeamButton.Visible = false;
+            this.ChangeTeamButton.Click += new System.EventHandler(this.ChangeTeamButton_Click);
             // 
             // DeleteTeamButton
             // 
@@ -1501,15 +1952,83 @@
             this.DeleteTeamButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.DeleteTeamButton.UseSelectable = true;
             this.DeleteTeamButton.Visible = false;
+            this.DeleteTeamButton.Click += new System.EventHandler(this.DeleteTeamButton_Click);
             // 
-            // regionBindingSource
+            // teamBindingSource2
             // 
-            this.regionBindingSource.DataSource = typeof(DataModel.Region);
+            this.teamBindingSource2.DataSource = typeof(DataModel.Team);
             // 
-            // Form1
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // playersInTeamBindingSource
+            // 
+            this.playersInTeamBindingSource.DataSource = typeof(DataModel.PlayersInTeam);
+            // 
+            // playersInTeamBindingSource2
+            // 
+            this.playersInTeamBindingSource2.DataSource = typeof(DataModel.PlayersInTeam);
+            // 
+            // CreateChamp
+            // 
+            this.CreateChamp.ActiveControl = null;
+            this.CreateChamp.Enabled = false;
+            this.CreateChamp.Location = new System.Drawing.Point(863, 304);
+            this.CreateChamp.Name = "CreateChamp";
+            this.CreateChamp.Size = new System.Drawing.Size(275, 55);
+            this.CreateChamp.Style = MetroFramework.MetroColorStyle.Teal;
+            this.CreateChamp.TabIndex = 34;
+            this.CreateChamp.Text = "Создать чемпионат";
+            this.CreateChamp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CreateChamp.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.CreateChamp.UseSelectable = true;
+            this.CreateChamp.Visible = false;
+            this.CreateChamp.Click += new System.EventHandler(this.CreateChamp_Click);
+            // 
+            // UpdateChamp
+            // 
+            this.UpdateChamp.ActiveControl = null;
+            this.UpdateChamp.Enabled = false;
+            this.UpdateChamp.Location = new System.Drawing.Point(863, 362);
+            this.UpdateChamp.Name = "UpdateChamp";
+            this.UpdateChamp.Size = new System.Drawing.Size(275, 55);
+            this.UpdateChamp.Style = MetroFramework.MetroColorStyle.Lime;
+            this.UpdateChamp.TabIndex = 35;
+            this.UpdateChamp.Text = "Изменить чемпионат";
+            this.UpdateChamp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.UpdateChamp.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.UpdateChamp.UseSelectable = true;
+            this.UpdateChamp.Visible = false;
+            this.UpdateChamp.Click += new System.EventHandler(this.UpdateChamp_Click);
+            // 
+            // DeleteChamp
+            // 
+            this.DeleteChamp.ActiveControl = null;
+            this.DeleteChamp.Enabled = false;
+            this.DeleteChamp.Location = new System.Drawing.Point(863, 420);
+            this.DeleteChamp.Name = "DeleteChamp";
+            this.DeleteChamp.Size = new System.Drawing.Size(275, 55);
+            this.DeleteChamp.Style = MetroFramework.MetroColorStyle.Red;
+            this.DeleteChamp.TabIndex = 36;
+            this.DeleteChamp.Text = "Удалить чемпионат";
+            this.DeleteChamp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DeleteChamp.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.DeleteChamp.UseSelectable = true;
+            this.DeleteChamp.Visible = false;
+            this.DeleteChamp.Click += new System.EventHandler(this.DeleteChamp_Click);
+            // 
+            // cityBindingSource
+            // 
+            this.cityBindingSource.DataSource = typeof(DataModel.City);
+            // 
+            // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1138, 506);
+            this.Controls.Add(this.CreateChamp);
+            this.Controls.Add(this.UpdateChamp);
+            this.Controls.Add(this.DeleteChamp);
             this.Controls.Add(this.InformationPanel);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
@@ -1522,7 +2041,7 @@
             this.Controls.Add(this.CreateTeamButton);
             this.Controls.Add(this.ChangeTeamButton);
             this.Controls.Add(this.DeleteTeamButton);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.Teal;
             this.Text = "Cybersport Information System";
@@ -1536,13 +2055,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             this.TeamTab.ResumeLayout(false);
             this.TeamTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TeamGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource1)).EndInit();
+            this.TournamentTab.ResumeLayout(false);
+            this.TournamentTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TournamentGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tournamentBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tournamentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cybersportDBDataSet2)).EndInit();
             this.InformationPanel.ResumeLayout(false);
             this.InformationPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.careerGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cityBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1588,22 +2119,7 @@
         private MetroFramework.Controls.MetroLink CreatePdfButton;
         private CybersportDBDataSet2TableAdapters.CitiesTableAdapter citiesTableAdapter;
         private System.Windows.Forms.BindingSource playerBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nicknameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn countryNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playedMapsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playedRoundsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn playersInTeamsDataGridViewTextBoxColumn;
         private MetroFramework.Controls.MetroLink CloseInfoPanel;
         private MetroFramework.Controls.MetroLink CareerInfo;
         private System.Windows.Forms.Timer timer2;
@@ -1656,6 +2172,61 @@
         private MetroFramework.Controls.MetroTrackBar FilterTeamDefeats;
         private MetroFramework.Controls.MetroLabel TeamDefeatsLabel;
         private System.Windows.Forms.BindingSource regionBindingSource;
+        private MetroFramework.Controls.MetroLink metroLink7;
+        private MetroFramework.Controls.MetroLabel FilterPrizeLabel;
+        private MetroFramework.Controls.MetroTrackBar FilterChampPrize;
+        private MetroFramework.Controls.MetroComboBox FilterChampCity;
+        private MetroFramework.Controls.MetroLabel FilterTeamsCountLabel;
+        private MetroFramework.Controls.MetroTrackBar FilterTeamsCount;
+        private MetroFramework.Controls.MetroTextBox FilterChampName;
+        private MetroFramework.Controls.MetroLink metroLink4;
+        private MetroFramework.Controls.MetroLink metroLink5;
+        private MetroFramework.Controls.MetroLink metroLink6;
+        private System.Windows.Forms.BindingSource tournamentBindingSource;
+        private System.Windows.Forms.BindingSource teamBindingSource2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nicknameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ratingDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playedMapsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playedRoundsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn playersInTeamsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource playersInTeamBindingSource;
+        private System.Windows.Forms.BindingSource playersInTeamBindingSource1;
+        private System.Windows.Forms.BindingSource playersInTeamBindingSource3;
+        private System.Windows.Forms.BindingSource playersInTeamBindingSource2;
+        private MetroFramework.Controls.MetroGrid careerGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teamNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource tournamentBindingSource1;
+        private MetroFramework.Controls.MetroGrid TournamentGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tournamentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membersCountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finishDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn moneyDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn matchesInTournamentsDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn participantsDataGridViewTextBoxColumn1;
+        private MetroFramework.Controls.MetroTile CreateChamp;
+        private MetroFramework.Controls.MetroTile UpdateChamp;
+        private MetroFramework.Controls.MetroTile DeleteChamp;
+        private MetroFramework.Controls.MetroDateTime FilterFinishTime;
+        private MetroFramework.Controls.MetroDateTime FilterStartTime;
+        private System.Windows.Forms.BindingSource cityBindingSource;
     }
 }
 

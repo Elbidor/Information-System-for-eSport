@@ -121,6 +121,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateChamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateChamp.Designer.cs">
+      <DependentUpon>CreateChamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCity.Designer.cs">
+      <DependentUpon>CreateCity.cs</DependentUpon>
+    </Compile>
     <Compile Include="CybersportDBDataSet2.cs">
       <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
     </Compile>
@@ -155,6 +167,18 @@
     <Compile Include="Forms\RegistrationAndEditing.Designer.cs">
       <DependentUpon>RegistrationAndEditing.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateChamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateChamp.Designer.cs">
+      <DependentUpon>UpdateChamp.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateChamp.resx">
+      <DependentUpon>CreateChamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCity.resx">
+      <DependentUpon>CreateCity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CreateTeam.resx">
       <DependentUpon>CreateTeam.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +196,9 @@
     <EmbeddedResource Include="Forms\RegistrationAndEditing.resx">
       <DependentUpon>RegistrationAndEditing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateChamp.resx">
+      <DependentUpon>UpdateChamp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Configs\packages.config" />
     <None Include="CybersportDBDataSet2.xsc">
@@ -186,10 +213,15 @@
       <DependentUpon>CybersportDBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataModel.City.datasource" />
     <None Include="Properties\DataSources\DataModel.Country.datasource" />
+    <None Include="Properties\DataSources\DataModel.Map.datasource" />
+    <None Include="Properties\DataSources\DataModel.Participant.datasource" />
     <None Include="Properties\DataSources\DataModel.Player.datasource" />
+    <None Include="Properties\DataSources\DataModel.PlayersInTeam.datasource" />
     <None Include="Properties\DataSources\DataModel.Region.datasource" />
     <None Include="Properties\DataSources\DataModel.Team.datasource" />
+    <None Include="Properties\DataSources\DataModel.Tournament.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -241,6 +273,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loading %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

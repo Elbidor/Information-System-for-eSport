@@ -35,6 +35,7 @@
             this.AcceptButton = new MetroFramework.Controls.MetroLink();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.FirstPlayerBox = new MetroFramework.Controls.MetroComboBox();
+            this.playersInTeamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.playerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SecondPlayerBox = new MetroFramework.Controls.MetroComboBox();
@@ -42,6 +43,7 @@
             this.FourthPlayerBox = new MetroFramework.Controls.MetroComboBox();
             this.FifthPlayerBox = new MetroFramework.Controls.MetroComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +103,7 @@
             // AcceptButton
             // 
             this.AcceptButton.Image = global::Information_System_for_eSport.Properties.Resources.security;
-            this.AcceptButton.ImageSize = 90;
+            this.AcceptButton.ImageSize = 85;
             this.AcceptButton.Location = new System.Drawing.Point(246, 232);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(118, 129);
@@ -121,8 +123,8 @@
             // 
             // FirstPlayerBox
             // 
-            this.FirstPlayerBox.DataSource = this.playerBindingSource1;
-            this.FirstPlayerBox.DisplayMember = "Nickname";
+            this.FirstPlayerBox.DataSource = this.playersInTeamBindingSource;
+            this.FirstPlayerBox.DisplayMember = "PlayerNickName";
             this.FirstPlayerBox.FormattingEnabled = true;
             this.FirstPlayerBox.ItemHeight = 24;
             this.FirstPlayerBox.Location = new System.Drawing.Point(23, 186);
@@ -131,6 +133,10 @@
             this.FirstPlayerBox.TabIndex = 20;
             this.FirstPlayerBox.UseSelectable = true;
             this.FirstPlayerBox.ValueMember = "PlayerID";
+            // 
+            // playersInTeamBindingSource
+            // 
+            this.playersInTeamBindingSource.DataSource = typeof(DataModel.PlayersInTeam);
             // 
             // playerBindingSource1
             // 
@@ -142,8 +148,8 @@
             // 
             // SecondPlayerBox
             // 
-            this.SecondPlayerBox.DataSource = this.playerBindingSource1;
-            this.SecondPlayerBox.DisplayMember = "Nickname";
+            this.SecondPlayerBox.DataSource = this.playersInTeamBindingSource;
+            this.SecondPlayerBox.DisplayMember = "PlayerNickName";
             this.SecondPlayerBox.FormattingEnabled = true;
             this.SecondPlayerBox.ItemHeight = 24;
             this.SecondPlayerBox.Location = new System.Drawing.Point(23, 222);
@@ -155,8 +161,8 @@
             // 
             // ThirdPlayerBox
             // 
-            this.ThirdPlayerBox.DataSource = this.playerBindingSource1;
-            this.ThirdPlayerBox.DisplayMember = "Nickname";
+            this.ThirdPlayerBox.DataSource = this.playersInTeamBindingSource;
+            this.ThirdPlayerBox.DisplayMember = "PlayerNickName";
             this.ThirdPlayerBox.FormattingEnabled = true;
             this.ThirdPlayerBox.ItemHeight = 24;
             this.ThirdPlayerBox.Location = new System.Drawing.Point(23, 258);
@@ -168,8 +174,8 @@
             // 
             // FourthPlayerBox
             // 
-            this.FourthPlayerBox.DataSource = this.playerBindingSource1;
-            this.FourthPlayerBox.DisplayMember = "Nickname";
+            this.FourthPlayerBox.DataSource = this.playersInTeamBindingSource;
+            this.FourthPlayerBox.DisplayMember = "PlayerNickName";
             this.FourthPlayerBox.FormattingEnabled = true;
             this.FourthPlayerBox.ItemHeight = 24;
             this.FourthPlayerBox.Location = new System.Drawing.Point(23, 294);
@@ -181,8 +187,8 @@
             // 
             // FifthPlayerBox
             // 
-            this.FifthPlayerBox.DataSource = this.playerBindingSource1;
-            this.FifthPlayerBox.DisplayMember = "Nickname";
+            this.FifthPlayerBox.DataSource = this.playersInTeamBindingSource;
+            this.FifthPlayerBox.DisplayMember = "PlayerNickName";
             this.FifthPlayerBox.FormattingEnabled = true;
             this.FifthPlayerBox.ItemHeight = 24;
             this.FifthPlayerBox.Location = new System.Drawing.Point(23, 330);
@@ -211,6 +217,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CreateTeam_FormClosed);
             this.Load += new System.EventHandler(this.CreateTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.regionBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playersInTeamBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -223,11 +230,12 @@
         private MetroFramework.Controls.MetroTextBox TeamNameField;
         private MetroFramework.Controls.MetroComboBox RegionBox;
         private System.Windows.Forms.BindingSource regionBindingSource;
-        private MetroFramework.Controls.MetroLink AcceptButton;
+        private new MetroFramework.Controls.MetroLink AcceptButton;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroComboBox FirstPlayerBox;
         private System.Windows.Forms.BindingSource playerBindingSource1;
         private System.Windows.Forms.BindingSource playerBindingSource;
+        private System.Windows.Forms.BindingSource playersInTeamBindingSource;
         private MetroFramework.Controls.MetroComboBox SecondPlayerBox;
         private MetroFramework.Controls.MetroComboBox ThirdPlayerBox;
         private MetroFramework.Controls.MetroComboBox FourthPlayerBox;

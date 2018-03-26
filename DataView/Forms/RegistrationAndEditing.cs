@@ -101,7 +101,6 @@ namespace Information_System_for_eSport
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            //this.countriesTableAdapter.Fill(this.cybersportDBDataSet2.Countries);
             CountryField.DataSource = Controller.GetCountries();
             if (Program.currentPlayer !=null)
             {

@@ -102,6 +102,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>CybersportModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CybersportModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Team.cs">
       <DependentUpon>CybersportModel.tt</DependentUpon>
     </Compile>

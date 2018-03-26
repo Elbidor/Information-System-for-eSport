@@ -32,7 +32,6 @@ namespace DataModel
         public System.Guid RoleID { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public string CountryName { get; set; }
         public Nullable<System.Guid> PlayersInTeamsID { get; set; }
     
         public virtual Country Country { get; set; }

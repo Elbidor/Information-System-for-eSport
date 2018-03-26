@@ -14,7 +14,7 @@ namespace Information_System_for_eSport
 {
     public partial class CreateTeam : MetroFramework.Forms.MetroForm
     {
-        bool errorsExist = false;
+        bool errorsExist = false;        
         Team team = new Team();
         public CreateTeam()
         {
@@ -29,6 +29,17 @@ namespace Information_System_for_eSport
             ThirdPlayerBox.DataSource = Controller.GetFreePlayers();
             FourthPlayerBox.DataSource = Controller.GetFreePlayers();
             FifthPlayerBox.DataSource = Controller.GetFreePlayers();
+            if(Controller.IsAlreadyHasATeam(Program.currentPlayer.PlayerID))
+            {
+                team = Controller.FindTeamByManager(Program.currentPlayer.PlayerID);
+                TeamNameField.Text = team.Name;
+                RegionBox.SelectedValue = team.RegionID;
+                FirstPlayerBox.DataSource = Controller.GetFreePlayers(team.TeamID);
+                SecondPlayerBox.DataSource = Controller.GetFreePlayers(team.TeamID);
+                ThirdPlayerBox.DataSource = Controller.GetFreePlayers(team.TeamID);
+                FourthPlayerBox.DataSource = Controller.GetFreePlayers(team.TeamID);
+                FifthPlayerBox.DataSource = Controller.GetFreePlayers(team.TeamID);
+            }
         }
         private void OnTextboxClick(object sender, EventArgs e)
         {
@@ -50,7 +61,6 @@ namespace Information_System_for_eSport
             }
             else
             {
-                team.TeamID = Guid.NewGuid();
                 team.Name = TeamNameField.Text;
             }
             try
@@ -70,14 +80,34 @@ namespace Information_System_for_eSport
             }
             if (!errorsExist)
             {
-                team.ManagerID = Program.currentPlayer.PlayerID;
-                DateTime today = DateTime.Today;
-                Controller.CreateTeam(team);
-                Controller.AddPlayerInTeam((Guid)FirstPlayerBox.SelectedValue, team.TeamID, today);
-                Controller.AddPlayerInTeam((Guid)SecondPlayerBox.SelectedValue, team.TeamID, today);
-                Controller.AddPlayerInTeam((Guid)ThirdPlayerBox.SelectedValue, team.TeamID, today);
-                Controller.AddPlayerInTeam((Guid)FourthPlayerBox.SelectedValue, team.TeamID, today);
-                Controller.AddPlayerInTeam((Guid)FifthPlayerBox.SelectedValue, team.TeamID, today);
+                if(!Controller.IsAlreadyHasATeam(Program.currentPlayer.PlayerID))
+                {
+                    team.TeamID = Guid.NewGuid();
+                    team.ManagerID = Program.currentPlayer.PlayerID;
+                    DateTime today = DateTime.Today;
+                    Controller.CreateTeam(team);
+                    Controller.AddPlayerInTeam((Guid)FirstPlayerBox.SelectedValue, team.TeamID, today);
+                    Controller.AddPlayerInTeam((Guid)SecondPlayerBox.SelectedValue, team.TeamID, today);
+                    Controller.AddPlayerInTeam((Guid)ThirdPlayerBox.SelectedValue, team.TeamID, today);
+                    Controller.AddPlayerInTeam((Guid)FourthPlayerBox.SelectedValue, team.TeamID, today);
+                    Controller.AddPlayerInTeam((Guid)FifthPlayerBox.SelectedValue, team.TeamID, today);
+                }
+                else
+                {
+                    Controller.EditTeam(team);
+                    if(!Controller.CheckTeamMember((Guid)FirstPlayerBox.SelectedValue, team.TeamID)) Controller.AddPlayerInTeam((Guid)FirstPlayerBox.SelectedValue, team.TeamID, DateTime.Today);
+                    if (!Controller.CheckTeamMember((Guid)SecondPlayerBox.SelectedValue, team.TeamID)) Controller.AddPlayerInTeam((Guid)SecondPlayerBox.SelectedValue, team.TeamID, DateTime.Today);
+                    if (!Controller.CheckTeamMember((Guid)ThirdPlayerBox.SelectedValue, team.TeamID)) Controller.AddPlayerInTeam((Guid)ThirdPlayerBox.SelectedValue, team.TeamID, DateTime.Today);
+                    if (!Controller.CheckTeamMember((Guid)FourthPlayerBox.SelectedValue, team.TeamID)) Controller.AddPlayerInTeam((Guid)FourthPlayerBox.SelectedValue, team.TeamID, DateTime.Today);
+                    if (!Controller.CheckTeamMember((Guid)FifthPlayerBox.SelectedValue, team.TeamID)) Controller.AddPlayerInTeam((Guid)FifthPlayerBox.SelectedValue, team.TeamID, DateTime.Today);
+                    List<Guid> newMembers = new List<Guid>();
+                    newMembers.Add((Guid)FirstPlayerBox.SelectedValue);
+                    newMembers.Add((Guid)SecondPlayerBox.SelectedValue);
+                    newMembers.Add((Guid)ThirdPlayerBox.SelectedValue);
+                    newMembers.Add((Guid)FourthPlayerBox.SelectedValue);
+                    newMembers.Add((Guid)FifthPlayerBox.SelectedValue);
+                    Controller.RefreshTeamMembers(newMembers, team.TeamID);
+                }
                 Owner.Enabled = true;
                 Owner.Show();
                 this.Close();

@@ -32,7 +32,6 @@ namespace DataModel
         public int Money { get; set; }
         public int Rating { get; set; }
         public System.Guid ManagerID { get; set; }
-        public string RegionName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MatchesInTournament> MatchesInTournaments { get; set; }

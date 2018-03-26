@@ -10,13 +10,18 @@ using Spire.Xls;
 
 namespace Information_System_for_eSport
 {
-    public partial class Form1 : MetroFramework.Forms.MetroForm
+    public partial class MainForm : MetroFramework.Forms.MetroForm
     {
         bool comboCountryUsed = false;
         bool comboAgeUsed = false;
         bool comboRegionUsed = false;
+        bool teamsAreOpend = false;
+        bool comboCityUsed = false;
+        bool startDateUsed = false;
+        bool finishtDateUsed = false;
+        Player displayedPlayer = null;
         MetroFramework.Controls.MetroGrid currentGrid = null;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -28,6 +33,7 @@ namespace Information_System_for_eSport
             PlayerGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             FilterCountry.DataSource = Controller.GetCountries();
             FilterTeamRegion.DataSource = Controller.GetRegions();
+            FilterChampCity.DataSource = Controller.GetCities();
             for (int i = 1; i <= 100; i++)
             {
                 string[] numbers = { i.ToString() };
@@ -40,6 +46,7 @@ namespace Information_System_for_eSport
             TabControl.SelectedTab = PlayerTab;
         }
 
+        #region Аутентификация
         private void Registation_Click(object sender, EventArgs e)
         {
             Registration reg = new Registration();
@@ -56,20 +63,22 @@ namespace Information_System_for_eSport
             log.Show();
             this.Enabled = false;
         }
+        #endregion
 
+        #region Изменения на форме
         private void Form1_EnabledChanged(object sender, EventArgs e)
         {
             ChangeView(Program.currentPlayer != null);
             TabControl_SelectedIndexChanged(sender, e);
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
+        private void OnTextboxClick(object sender, EventArgs e)
         {
-            ChangeView(Program.currentPlayer == null);
-            TabControl_SelectedIndexChanged(sender, e);
+            MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
+            textBox.SelectAll();
         }
-        
-        /// <summary>
+
+        // <summary>
         /// Смена состояния формы в зависимости от входа/выхода.
         /// </summary>
         /// <param name="isLogged"></param>
@@ -98,6 +107,10 @@ namespace Information_System_for_eSport
                 {
                     CreateTeamButton.Enabled = false;
                     CreateTeamButton.Visible = false;
+                    DeleteTeamButton.Enabled = false;
+                    DeleteTeamButton.Visible = false;
+                    ChangeTeamButton.Enabled = false;
+                    ChangeTeamButton.Visible = false;
                 }
                 Program.currentPlayer = null;
                 EnterButton.Enabled = true;
@@ -119,13 +132,77 @@ namespace Information_System_for_eSport
             }
         }
 
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (TabControl.SelectedTab.Text)
+            {
+                case "Команды":
+                    currentGrid = TeamGrid;
+                    TeamGrid.DataSource = Controller.GetTeams();
+                    TeamGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+                    TeamGrid.Refresh();
+                    TeamGrid.Update();
+                    CreateTeamButton.Enabled = false;
+                    if (Program.currentPlayer != null && (Program.currentPlayer.Role.Role1 == "Менеджер" || Program.currentPlayer.Role.Role1 == "Администратор"))
+                    {
+                        CreateTeamButton.Visible = true;
+                        if (Controller.IsAlreadyHasATeam(Program.currentPlayer.PlayerID))
+                        {
+                            CreateTeamButton.Enabled = false;
+                        }
+                        else CreateTeamButton.Enabled = true;
+                    }
+                    break;
+                case "Игроки":
+                    currentGrid = PlayerGrid;
+                    currentGrid.DataSource = Controller.GetPlayers();
+                    PlayerGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+                    CreateTeamButton.Enabled = false;
+                    CreateTeamButton.Visible = false;
+                    DeleteTeamButton.Enabled = false;
+                    DeleteTeamButton.Visible = false;
+                    ChangeTeamButton.Enabled = false;
+                    ChangeTeamButton.Visible = false;
+                    CreateChamp.Enabled = false;
+                    CreateChamp.Visible = false;
+                    DeleteChamp.Enabled = false;
+                    DeleteChamp.Visible = false;
+                    UpdateChamp.Enabled = false;
+                    UpdateChamp.Visible = false;
+                    break;
+                case "Чемпионаты":
+                    currentGrid = TournamentGrid;
+                    TournamentGrid.DataSource = Controller.GetTournaments();
+                    TournamentGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+                    TournamentGrid.Refresh();
+                    TournamentGrid.Update();
+                    CreateChamp.Enabled = false;
+                    if (Program.currentPlayer != null && (Program.currentPlayer.Role.Role1 == "Организатор" || Program.currentPlayer.Role.Role1 == "Администратор"))
+                    {
+                        CreateChamp.Visible = true;
+                        CreateChamp.Enabled = true;
+                        DeleteChamp.Enabled = true;
+                        DeleteChamp.Visible = true;
+                        UpdateChamp.Enabled = true;
+                        UpdateChamp.Visible = true;
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+        #region Контролы игрока
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            ChangeView(Program.currentPlayer == null);
+            TabControl_SelectedIndexChanged(sender, e);
+        }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             Controller.DeletePlayer(Program.currentPlayer);
             Program.currentPlayer = null;
             Form1_EnabledChanged(sender, e);
         }
-
         private void EditButton_Click(object sender, EventArgs e)
         {
             Registration reg = new Registration();
@@ -134,7 +211,9 @@ namespace Information_System_for_eSport
             this.Enabled = false;
             this.Hide();
         }
-
+        #endregion
+        
+        #region Информационная панель
         /// <summary>
         /// Демонстрация информации о объекте в информационную панель.
         /// </summary>
@@ -145,8 +224,8 @@ namespace Information_System_for_eSport
             switch (TabControl.SelectedTab.Text)
             {
                 case "Игроки":
+                    careerGrid.Height = 0;
                     timer1.Start();
-                    Player displayedPlayer = null;
                     foreach (DataGridViewRow row in currentGrid.SelectedRows)
                     {
                         displayedPlayer = Controller.FindPlayer((Guid)row.Cells[0].Value);
@@ -155,13 +234,21 @@ namespace Information_System_for_eSport
                     InformationPanel.Enabled = true;
                     InfoPanelHeadLabel.Text = "Информация об игроке";
                     InfoPanelLabelField1.Text = displayedPlayer.Name;
+                    InfoPanelLabelField1.Location = new System.Drawing.Point(53,58);
                     InfoPanelLabelField2.Text = displayedPlayer.Nickname;
+                    InfoPanelLabelField2.Location = new System.Drawing.Point(97, 88);
                     InfoPanelLabelField3.Text = displayedPlayer.Surname;
+                    InfoPanelLabelField3.Location = new System.Drawing.Point(95, 118);
                     InfoPanelLabelField4.Text = displayedPlayer.Age.ToString();
+                    InfoPanelLabelField4.Location = new System.Drawing.Point(86, 148);
                     InfoPanelLabelField6.Text = displayedPlayer.PlayedMaps.ToString();
+                    InfoPanelLabelField6.Location = new System.Drawing.Point(131, 208);
                     InfoPanelLabelField7.Text = displayedPlayer.PlayedRounds.ToString();
+                    InfoPanelLabelField7.Location = new System.Drawing.Point(165, 238);
                     InfoPanelLabelField5.Text = displayedPlayer.CountryName;
-                    InfoPanelLabelField8.Text = Controller.ReturnLatestTeam(displayedPlayer.PlayerID); 
+                    InfoPanelLabelField5.Location = new System.Drawing.Point(80, 178);
+                    InfoPanelLabelField8.Text = Controller.ReturnLatestTeam(displayedPlayer.PlayerID);
+                    InfoPanelLabelField8.Location = new System.Drawing.Point(165, 268);
                     InfoPanelLabel1.Text = "Имя:";
                     InfoPanelLabel2.Text = "Никнейм:";
                     InfoPanelLabel3.Text = "Фамилия:";
@@ -176,33 +263,47 @@ namespace Information_System_for_eSport
                     Team displayedTeam = null;
                     foreach (DataGridViewRow row in currentGrid.SelectedRows)
                     {
-                        displayedTeam = Controller.FindTeam((Guid)row.Cells[0].Value);
+                        displayedTeam = Controller.FindTeamByID((Guid)row.Cells[0].Value);
                     }
                     InformationPanel.Visible = true;
                     InformationPanel.Enabled = true;
                     InfoPanelHeadLabel.Text = "Информация о команде:";                    
                     InfoPanelLabel1.Text = "Имя:";
-                    InfoPanelLabelField1.Text = displayedTeam.Name;                    
+                    InfoPanelLabelField1.Text = displayedTeam.Name;
                     InfoPanelLabel2.Text = "Регион:";
                     InfoPanelLabelField2.Text = displayedTeam.RegionName;
+                    InfoPanelLabelField2.Location = new System.Drawing.Point(83, 88);
                     InfoPanelLabel3.Text = "Побед:";
                     InfoPanelLabelField3.Text = displayedTeam.Wins.ToString();
+                    InfoPanelLabelField3.Location = new System.Drawing.Point(80, 118);
                     InfoPanelLabel4.Text = "Ничьих:";
                     InfoPanelLabelField4.Text = displayedTeam.Draws.ToString();
+                    InfoPanelLabelField4.Location = new System.Drawing.Point(76, 148);
                     InfoPanelLabel5.Text = "Поражений:";
                     InfoPanelLabelField5.Text = displayedTeam.Defeats.ToString();
+                    InfoPanelLabelField5.Location = new System.Drawing.Point(110, 178);
                     InfoPanelLabel6.Text = "Выиграно денег:";
                     InfoPanelLabelField6.Text = displayedTeam.Money.ToString();
+                    InfoPanelLabelField6.Location = new System.Drawing.Point(145, 208);
                     InfoPanelLabel7.Text = "Рейтинг:";
                     InfoPanelLabelField7.Text = displayedTeam.Rating.ToString();
+                    InfoPanelLabelField7.Location = new System.Drawing.Point(95, 238);
                     InfoPanelLabel8.Text = "Менеджер:";
                     InfoPanelLabelField8.Text = Controller.ReturnNickname(displayedTeam.ManagerID);
+                    InfoPanelLabelField8.Location = new System.Drawing.Point(106, 268);
+                    break;
+                case "Чемпионаты":                    
                     break;
 
             }
         }
-        
 
+        private void CloseInfoPanel_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+            InformationPanel.Enabled = false;
+            InformationPanel.Visible = false;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (InformationPanel.Width < 300) InformationPanel.Width += 60;
@@ -213,6 +314,35 @@ namespace Information_System_for_eSport
             if (InformationPanel.Width > 10) InformationPanel.Width -= 60;
             else timer2.Stop();
         }
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if (careerGrid.Height < 298) careerGrid.Height += 100;
+            else timer3.Stop();
+        }
+        private void CareerInfo_Click(object sender, EventArgs e)
+        {
+            switch (TabControl.SelectedTab.Text)
+            {
+                case "Игроки":
+                    if (!teamsAreOpend)
+                    {
+                        timer3.Start();
+                        careerGrid.DataSource = Controller.GetCareer(displayedPlayer.PlayerID);
+                        teamsAreOpend = true;
+                    }
+                    else
+                    {
+                        careerGrid.Height = 0;
+                        teamsAreOpend = false;
+                    }
+                    break;
+                case "Команды":
+                    timer3.Start();
+                    break;
+            }
+        }
+        
+        #endregion
 
         #region Экспорт данных
         private void CreatePdfButton_Click(object sender, EventArgs e)
@@ -358,39 +488,7 @@ namespace Information_System_for_eSport
             System.Diagnostics.Process.Start("result.doc");
         }
         #endregion
-
-        private void CloseInfoPanel_Click(object sender, EventArgs e)
-        {
-            timer2.Start();
-            InformationPanel.Enabled = false;
-            InformationPanel.Visible = false;
-        }
-
         
-        private void OnTextboxClick(object sender, EventArgs e)
-        {
-            MetroFramework.Controls.MetroTextBox textBox = (MetroFramework.Controls.MetroTextBox)sender;
-            textBox.SelectAll();
-        }
-            
-        private void ResetButton_Click(object sender, EventArgs e)
-        {
-            PlayerGrid.DataSource = Controller.GetPlayers();
-            FilterAge.SelectedIndex = 0;
-            FilterCountry.SelectedIndex = 0;
-            FilterName.Text = "";
-            FilterNickname.Text = "";
-            FilterSurname.Text = "";
-            RatingLabel.Text = "0";
-            MapsLabel.Text = "0";
-            RoundsLabel.Text = "0";
-            FilterRating.Value = 0;
-            FilterPlayedMaps.Value = 0;
-            FilterPlayedRounds.Value = 0;
-            comboCountryUsed = false;
-            comboAgeUsed = false;
-        }
-
         #region Фильтрация
         private Dictionary<string, string> FillFilterDictionary()
         {
@@ -413,7 +511,7 @@ namespace Information_System_for_eSport
                     break;
                 case "Команды":
                     filters.Add($"{currentGrid.Columns[1].DataPropertyName}", FilterTeamName.Text);
-                    if(comboRegionUsed) filters.Add($"{currentGrid.Columns[2].DataPropertyName}", FilterTeamRegion.Text);
+                    if (comboRegionUsed) filters.Add($"{currentGrid.Columns[2].DataPropertyName}", FilterTeamRegion.Text);
                     filters.Add($"{currentGrid.Columns[3].DataPropertyName}", FilterTeamWins.Value.ToString());
                     filters.Add($"{currentGrid.Columns[4].DataPropertyName}", FilterTeamDraws.Value.ToString());
                     filters.Add($"{currentGrid.Columns[5].DataPropertyName}", FilterTeamDefeats.Value.ToString());
@@ -424,6 +522,16 @@ namespace Information_System_for_eSport
                     TeamDefeatsLabel.Text = FilterTeamDefeats.Value.ToString();
                     TeamMoneyLabel.Text = FilterTeamMoney.Value.ToString();
                     TeamRatingLabel.Text = FilterTeamRating.Value.ToString();
+                    break;
+                case "Чемпионаты":
+                    filters.Add($"{currentGrid.Columns[1].DataPropertyName}", FilterChampName.Text);
+                    if (comboCityUsed) filters.Add($"{currentGrid.Columns[2].DataPropertyName}", FilterChampCity.SelectedValue.ToString());
+                    filters.Add($"{currentGrid.Columns[4].DataPropertyName}", FilterTeamsCount.Value.ToString());
+                    if (startDateUsed) filters.Add($"{currentGrid.Columns[5].DataPropertyName}", FilterStartTime.Value.ToString());
+                    if (finishtDateUsed) filters.Add($"{currentGrid.Columns[6].DataPropertyName}", FilterFinishTime.Value.ToString());
+                    filters.Add($"{currentGrid.Columns[7].DataPropertyName}", FilterChampPrize.Value.ToString());                    
+                    FilterTeamsCountLabel.Text = FilterTeamsCount.Value.ToString();
+                    FilterPrizeLabel.Text = FilterChampPrize.Value.ToString();                    
                     break;
             }
             return filters;
@@ -440,6 +548,9 @@ namespace Information_System_for_eSport
                 case "Команды":
                     currentGrid.DataSource = Controller.GetTeams(FillFilterDictionary());
                     break;
+                case "Чемпионаты":
+                    currentGrid.DataSource = Controller.GetTournaments(FillFilterDictionary());
+                    break;
             }        
         }
 
@@ -453,13 +564,32 @@ namespace Information_System_for_eSport
                 case "Команды":
                     currentGrid.DataSource = Controller.GetTeams(FillFilterDictionary());
                     break;
+                case "Чемпионаты":
+                    currentGrid.DataSource = Controller.GetTournaments(FillFilterDictionary());
+                    break;
             }
         }
 
+        private void FilterStartTime_ValueChanged(object sender, EventArgs e)
+        {
+            startDateUsed = true;
+            currentGrid.DataSource = Controller.GetTournaments(FillFilterDictionary());
+        }
+
+        private void FilterFinishTime_ValueChanged(object sender, EventArgs e)
+        {
+            finishtDateUsed = true;
+            currentGrid.DataSource = Controller.GetTournaments(FillFilterDictionary());
+        }
         private void FilterCountry_SelectionChangeCommitted(object sender, EventArgs e)
         {
             comboCountryUsed = true;
             currentGrid.DataSource = Controller.GetPlayers(FillFilterDictionary());
+        }
+        private void FilterChampCity_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            comboCityUsed = true;
+            currentGrid.DataSource = Controller.GetTournaments(FillFilterDictionary());
         }
 
         private void FilterAge_SelectionChangeCommitted(object sender, EventArgs e)
@@ -472,51 +602,23 @@ namespace Information_System_for_eSport
             comboRegionUsed = true;
             currentGrid.DataSource = Controller.GetTeams(FillFilterDictionary());
         }
-        #endregion
-
-
-        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void ResetButton_Click(object sender, EventArgs e)
         {
-            switch(TabControl.SelectedTab.Text)
-            {
-                case "Команды":
-                    currentGrid = TeamGrid;
-                    TeamGrid.DataSource = Controller.GetTeams();
-                    TeamGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
-                    TeamGrid.Refresh();
-                    TeamGrid.Update();
-                    CreateTeamButton.Enabled = false;
-                    if (Program.currentPlayer != null && (Program.currentPlayer.Role.Role1 == "Менеджер" || Program.currentPlayer.Role.Role1 == "Администратор"))
-                    {
-                        CreateTeamButton.Visible = true;
-                        if (Controller.IsAlreadyHasATeam(Program.currentPlayer.PlayerID))
-                        {
-                            CreateTeamButton.Enabled = false;
-                        }
-                        else CreateTeamButton.Enabled = true;
-                    }
-                    break;
-                case "Игроки":
-                    currentGrid = PlayerGrid;
-                    currentGrid.DataSource = Controller.GetPlayers();
-                    PlayerGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
-                    CreateTeamButton.Enabled = false;
-                    CreateTeamButton.Visible = false;
-                    break;
-                case "Чемпионаты":                    
-                    break;
-            }
+            PlayerGrid.DataSource = Controller.GetPlayers();
+            FilterAge.SelectedIndex = 0;
+            FilterCountry.SelectedIndex = 0;
+            FilterName.Text = "";
+            FilterNickname.Text = "";
+            FilterSurname.Text = "";
+            RatingLabel.Text = "0";
+            MapsLabel.Text = "0";
+            RoundsLabel.Text = "0";
+            FilterRating.Value = 0;
+            FilterPlayedMaps.Value = 0;
+            FilterPlayedRounds.Value = 0;
+            comboCountryUsed = false;
+            comboAgeUsed = false;
         }
-
-        private void CreateTeamButton_Click(object sender, EventArgs e)
-        {
-            CreateTeam ct = new CreateTeam();
-            ct.Owner = this;
-            ct.Show();
-            this.Enabled = false;
-            this.Hide();
-        }
-
         private void ResetTeamButton_Click(object sender, EventArgs e)
         {
             TeamGrid.DataSource = Controller.GetTeams();
@@ -534,6 +636,77 @@ namespace Information_System_for_eSport
             FilterTeamMoney.Value = 0;
             comboRegionUsed = false;
         }
+        private void metroLink7_Click(object sender, EventArgs e)
+        {
+            TournamentGrid.DataSource = Controller.GetTournaments();
+            FilterChampName.Text = "";
+            FilterChampCity.SelectedIndex = 0;
+            FilterStartTime.Value = DateTime.Today;
+            FilterFinishTime.Value = DateTime.Today;
+            FilterTeamsCount.Value = 0;
+            FilterChampPrize.Value = 0;
+            FilterTeamsCountLabel.Text = "0";
+            FilterPrizeLabel.Text = "0";
+            comboCityUsed = false;
+            finishtDateUsed = false;
+            startDateUsed = false;
+        }
+
+        #endregion
+
+        #region Контролы менеджера
+        private void CreateTeamButton_Click(object sender, EventArgs e)
+        {
+            CreateTeam ct = new CreateTeam();
+            ct.Owner = this;
+            ct.Show();
+            this.Enabled = false;
+            this.Hide();
+        }
+        private void ChangeTeamButton_Click(object sender, EventArgs e)
+        {
+            CreateTeam ct = new CreateTeam();
+            ct.Owner = this;
+            ct.Show();
+            this.Enabled = false;
+            this.Hide();
+        }
+        private void DeleteTeamButton_Click(object sender, EventArgs e)
+        {
+            Controller.DeleteTeam(Program.currentPlayer.PlayerID);
+            DeleteTeamButton.Enabled = false;
+            CreateTeamButton.Enabled = true;
+            ChangeTeamButton.Enabled = true;
+        }
+
+
+        #endregion
+
+        private void CreateChamp_Click(object sender, EventArgs e)
+        {
+            CreateChamp ct = new CreateChamp();
+            ct.Owner = this;
+            ct.Show();
+            this.Enabled = false;
+            this.Hide();
+            UpdateChamp.Enabled = true;
+            DeleteChamp.Enabled = true;
+        }
+
+        private void DeleteChamp_Click(object sender, EventArgs e)
+        {
+            Controller.DeleteTeam(Program.currentPlayer.PlayerID);
+
+        }
+
+        private void UpdateChamp_Click(object sender, EventArgs e)
+        {
+            UpdateChamp ct = new UpdateChamp();
+            ct.Owner = this;
+            ct.Show();
+            this.Enabled = false;
+            this.Hide();
+        }
     }
-    
+
 }
